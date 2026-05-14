@@ -1,14 +1,16 @@
-# Resume Website — SDET/QA AI Portfolio
+# SDET AI Toolkit — Portfolio Site
+
+*Working title — final branding TBD.*
 
 ## What This Is
 
-A personal resume website for a senior SDET / QA automation engineer that doubles as a live demonstration of AI-powered testing skill. Recruiters get a fast, polished resume scan above the fold; hiring managers get interactive AI tools (starting with an AI test generator) that prove the candidate can actually build the things they list. Built to stand out in a crowded senior-QA market where most applicants send a PDF.
+A web-based suite of free, AI-powered utilities for SDET / QA automation engineers — test code generation, test data synthesis, API test generation, and more on the roadmap. It is also the personal portfolio of a senior SDET / QA automation engineer: the resume and about-me content sit alongside the tools so that recruiters and hiring managers immediately see the builder behind them. "Tools showcase the resume" — the candidate's skill is proved by daily-useful software running in the recruiter's browser, not by claims on a PDF.
 
 ## Core Value
 
-**A recruiter or hiring manager leaves the page believing this candidate is the strongest senior SDET they've seen this week — because the site itself is the proof, not just a claim.**
+**A visitor leaves the page either (a) actually using a tool to do their SDET work, or (b) thinking "I need to interview this person." Ideally both.**
 
-If everything else fails, that judgment must still land in the first 30 seconds.
+If everything else fails, the v1 tools must work well enough that an SDET would bookmark the site, and the resume must be one click away from any page.
 
 ## Requirements
 
@@ -24,78 +26,100 @@ If everything else fails, that judgment must still land in the first 30 seconds.
 
 **v1 — Ship now (lands the first interviews):**
 
-- [ ] Resume-forward landing page (name, title, years, top companies, key skills — recruiter-scan optimized)
-- [ ] Full resume content (work history, projects, skills, contact) rendered cleanly on the page
-- [ ] One flagship interactive AI demo: **AI Test Generator** (input: URL or user story → output: working Playwright/Pytest code)
-- [ ] Project showcase pages for the four testing specialties (Web E2E, API/integration, Performance, AI-powered)
-- [ ] Mobile-responsive, accessible, fast (LCP < 2s on 4G)
-- [ ] Deployed to a public URL (Vercel)
-- [ ] Basic analytics so candidate can see which sections recruiters engage with
+Tools (the "breadth pick" — three specialties, all stateless, all shipable fast):
 
-**v1.5 — Add within weeks:**
+- [ ] **Test Automator** — input: URL or user story; output: working Playwright (TypeScript) and Pytest (Python) test code
+- [ ] **Test Data Generator** — input: schema description / constraints; output: realistic synthetic data in JSON, CSV, and SQL formats
+- [ ] **API Test Generator** — input: OpenAPI / Swagger spec (paste, URL, or upload); output: REST test suite covering positive, negative, and edge cases (Pytest + Playwright/RestAssured-style)
 
-- [ ] AI resume chatbot ("ask me anything about my experience" — grounded in resume + projects, with citations)
-- [ ] Downloadable PDF resume (kept in sync with site content)
-- [ ] SEO + social preview cards (recruiter shares the link → it looks good in Slack/LinkedIn)
+Site & content:
+
+- [ ] Polished landing page that leads with the tools (cards, what each does, "try it" CTAs) — recruiters understand the value in 6 seconds
+- [ ] Resume / About page accessible from primary nav: work history, projects, skills, contact, downloadable PDF
+- [ ] "Coming soon" shelf visible on day one, naming the v1.5 tools by name — signals the bigger vision without pretending they exist
+- [ ] Mobile-responsive, accessible (WCAG AA), fast (LCP < 2s on 4G); landing page statically rendered
+- [ ] Deployed to a public Vercel URL with privacy-friendly analytics
+
+Trust & safety:
+
+- [ ] Rate limiting on tool endpoints (per IP) so a single user can't burn the API budget
+- [ ] No persistence of user inputs — submitted prompts/specs are processed and discarded; site states this clearly
+- [ ] Sensible error states for the tools (timeout, model error, malformed input) — must never look broken to a recruiter trying a demo
+
+**v1.5 — Add within weeks of v1 ship:**
+
+- [ ] **Flaky Test Diagnoser** — paste test + failure log → likely flake cause + fix suggestions
+- [ ] **Jira Ticket Analyzer** — paste ticket text → "how to test" steps, edge cases, acceptance criteria gaps
+- [ ] **Bug Report Polisher** — rough notes / screenshot → structured bug report (repro, expected/actual, severity hint)
+- [ ] **Test Review Assistant** — paste a test → critique (naming, brittleness, smells) with concrete fixes
+- [ ] Local-only "save my outputs" via browser localStorage + JSON export (no accounts, no backend)
+- [ ] SEO + social preview cards (Open Graph) so the URL looks good in Slack / LinkedIn / X
 
 **v2 — Later layers:**
 
-- [ ] Additional live testing demos (self-healing test repair, visual diff AI, flaky-test detector)
+- [ ] Locator Strategy Advisor, Page Object Generator, Coverage Gap Finder (additional tools)
 - [ ] Embedded Playwright sandbox running real tests against a demo site
-- [ ] Blog / writing section for thought leadership
+- [ ] Public usage metrics (tools-run counter) — social proof for both audiences
 
 ### Out of Scope
 
 <!-- Explicit boundaries. Includes reasoning to prevent re-adding. -->
 
-- **User accounts / login** — This is a public resume, not a SaaS. No auth.
-- **Multi-tenant / "build your own resume site"** — This is *the candidate's* site, not a product for others.
-- **CMS / admin UI** — Content edits via code/markdown is fine; building an editor is overscope for the timeline.
-- **Real browser automation sandboxes in v1** — Live Playwright running in a recruiter's browser is high ops cost (browser pool, abuse, $$). Deferred to v2; v1 uses code generation + recorded demo videos instead.
-- **Custom domain & email setup as a phase** — User will wire DNS/domain themselves when ready. Site must work on the Vercel default URL on day one.
-- **i18n / multi-language** — Audience is English-speaking recruiters.
+- **AI chatbot ("ask my resume anything")** — Explicitly cut by user. Tools demonstrate skill directly; a chatbot adds another surface without unique value.
+- **Test Case Manager** — Implies accounts, database, multi-tenancy, persistence, search. Scope-explosion that would push ship date by weeks. Local-only "save outputs" in v1.5 covers the lightweight version.
+- **User accounts / login** — These are public stateless tools. No auth, no DB, no user data stored server-side.
+- **CMS / authoring UI** — Single-author content; editing markdown/code is fine. CMS adds days of scope for zero visitor-facing value.
+- **Real browser automation sandboxes in v1** — Browser pool ops, cost spikes, abuse risk. Deferred to v2 where Test Automator only *generates* code; running it is the visitor's job.
+- **Custom domain setup as a project phase** — Candidate will wire DNS when ready. Site must work on the Vercel default URL on day one.
+- **i18n / multi-language** — Audience is English-speaking recruiters and SDETs.
+- **Server-side queue / async jobs** — Every v1 tool must respond in a single request within ~30s. If a tool can't, scope it down.
 
 ## Context
 
-**Candidate profile:** Senior SDET / QA automation engineer targeting senior IC roles. Wants to differentiate via AI fluency (test generation, AI agents, LLM-assisted QA) on top of solid traditional automation foundations (Playwright/Cypress, API testing, performance/k6).
+**Candidate profile:** Senior SDET / QA automation engineer targeting senior IC roles. Differentiation strategy: demonstrate AI fluency (LLM-driven test generation, agentic test workflows) on top of solid traditional foundations (Playwright/Cypress, API testing, performance/k6). Specialties to surface: Web E2E, API/integration, performance, AI-powered testing.
 
-**Job-search urgency:** Applying *now*. Every week without a live site is opportunity cost. The site must ship a credible v1 in days, then layer up.
+**Job-search urgency:** Applying *now*. Every week without a live site is opportunity cost. The site must ship a credible v1 in days, then layer up. Quality bar in v1: nothing visibly broken to a recruiter trying a tool.
 
-**Content state:** Candidate has a resume/CV. No pre-built tools, project descriptions, GitHub showcase repos, or written bios ready for drop-in yet. The site will need a content scaffolding step (resume → structured site content) early in execution.
+**Content state:** Candidate has a resume/CV. No pre-built tool code, no project descriptions, no GitHub showcase repos, no written bios ready for drop-in. The site needs a content scaffolding step (resume → structured site content) early in execution.
 
 **Audience model:** Two viewers with different attention budgets.
-- *Recruiter* — 6-second scan: name, title, years, top companies, headline skills. If hooked, may click one thing.
-- *Hiring manager / EM* — 2-5 minute exploration: project depth, code samples, the AI test generator demo, GitHub links. Wants proof of skill.
-The site must serve both without making either feel like a second-class visitor.
+- *SDET / QA engineer* — comes for the tools, may use them daily. Conversion = bookmark + return. Site looking like a real product (not a portfolio toy) is what earns the return visit.
+- *Recruiter* — 6-second scan: tools that look real + obvious "who built this" path. If hooked, may click resume.
+- *Hiring manager / EM* — 2-5 minute exploration: tries a tool, looks at how it's built, reads About, clicks GitHub. Wants proof of skill, not claims.
 
-**Strategic positioning:** "The site is the demo." Most QA candidates list AI skills; few demonstrate them in their own portfolio. A working AI test generator on day one is the single highest-impact differentiator.
+**Strategic positioning:** "The candidate's portfolio is a product real SDETs use." Most senior-QA candidates send a PDF + LinkedIn. A handful host a demo. Very few build something the community would adopt. This site aims for the third tier.
 
 **Risks to watch:**
-- Building too many interactive features before launch → site doesn't ship → no interview lift.
-- AI demo embarrassingly broken (wrong code, hallucinated APIs) → worse than no demo. Demo must be reliable on the URLs/stories it's pitched against; bound the input space.
-- Heavy live-execution features (real browsers in the cloud) → cost spikes, abuse vectors. Stick to code generation in v1.
+- *Quality vs. speed.* A tool that hallucinates broken Playwright code or generates obviously-wrong test data is worse than no tool at all. v1 tools must be reliable on the realistic inputs they'll be tried with; bound the input space (size limits, supported formats) and ship golden-path quality before exotic-input handling.
+- *Scope creep.* "Just one more tool" is the path to never shipping. v1 is locked at 3 tools; new ideas land in v1.5 or v2.
+- *Cost spikes.* Public LLM-backed tools = abuse risk (botnets, prompt injection harvesting). Rate limiting, input size caps, and Vercel budget alerts from day one.
+- *Looking like a toy.* A site that says "AI-powered" but produces obvious GPT-soup will damage the candidate's brand more than help. Quality of output is the entire game.
 
 ## Constraints
 
-- **Timeline**: Ship v1 within days, not weeks — candidate is applying actively. Anything that doesn't directly contribute to v1 ships time is deferred.
-- **Tech stack**: Next.js (App Router) on Vercel. Reason: best-in-class for AI-powered sites — server actions, API routes for the LLM call, edge runtime, zero-config deploy, generous free tier. No alternative platforms considered for v1.
-- **AI model**: Anthropic Claude (latest Sonnet) for the test generator — strong code generation, structured output via tool use, fast enough for an interactive UX. API key lives in Vercel env vars; never exposed client-side.
-- **Cost**: Keep monthly run cost near $0 — Vercel hobby tier + pay-per-token LLM. Rate-limit the AI demo to prevent abuse spikes.
-- **Performance**: Recruiter-scan path (landing page above the fold) must be statically rendered, no LLM dependency. AI demo is a separate interactive component, not blocking initial render.
-- **Accessibility**: WCAG AA minimum — recruiters use screen readers and varied devices; an inaccessible site reads as careless.
-- **Privacy**: No user accounts means no PII storage. Analytics must be privacy-friendly (Vercel Analytics or Plausible — no cookies/consent banner needed).
-- **Brand assets**: None confirmed yet. v1 ships with a clean, professional default look; brand polish is a v1.5 task once candidate provides a headshot / preferred typography.
+- **Timeline**: Ship v1 within days, not weeks — candidate is applying actively. Anything that doesn't directly contribute to v1 ship is deferred.
+- **Tech stack**: Next.js (App Router) on Vercel. Server actions / API routes host each tool's LLM call. Tailwind for styling. Reason: best-in-class for AI-powered sites, free hobby tier, zero-config deploy. No alternative platforms evaluated for v1.
+- **AI model**: Anthropic Claude (latest Sonnet) for the tools — strong code generation, structured tool-use output, fast enough for an interactive UX. Single provider in v1 to minimize integration surface. API key in Vercel env vars; never exposed client-side.
+- **Cost ceiling**: Target near-$0/month at low traffic. Vercel hobby + pay-per-token Claude. Per-IP rate limit + per-request input size caps. Vercel spend alerts configured.
+- **Performance**: Recruiter-scan path (landing page) statically rendered, no LLM dependency, LCP < 2s on 4G. Each tool responds within ~30s; longer requests are rejected with a clear message.
+- **Accessibility**: WCAG AA minimum across all pages and tool UIs. Keyboard-navigable forms, focus management, screen-reader-friendly tool output.
+- **Privacy**: No accounts, no PII storage server-side, no third-party trackers. Privacy-friendly analytics only (Vercel Analytics or Plausible). User input is processed in-request and discarded; site explicitly says so.
+- **Security**: Inputs are LLM-bound user content — prompt-injection is a *response quality* concern, not a security one (no privileged tools/data behind the LLM in v1). Standard web hardening (CSP, no eval, sanitize rendered LLM output as text, no `dangerouslyInnerHTML`).
+- **Brand assets**: None confirmed yet. v1 ships with a clean, professional default visual identity; brand polish (logo, headshot, custom palette) is a v1.5 task once candidate provides assets.
 
 ## Key Decisions
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Site doubles as live demo, not just static resume | Differentiator vs. typical PDF resume + LinkedIn — proves AI/automation skill, doesn't just claim it | — Pending |
-| AI Test Generator as v1 flagship demo (not chatbot, not live Playwright) | Highest impact-to-build-time ratio: shows AI + testing in one widget, ships fast with only a resume as content, low ops risk vs. browser sandboxes | — Pending |
-| Resume-forward landing (not demo-forward) | Recruiters scan in 6 seconds; a demo-first landing risks bounces when recruiter doesn't understand what they're looking at | — Pending |
-| Next.js on Vercel (no alternatives evaluated) | Optimal fit for AI-powered site with server-side LLM calls; fastest path to ship | — Pending |
-| Defer live browser sandboxes to v2 | Browser-pool ops, abuse risk, cost — disproportionate to v1 timeline benefit | — Pending |
-| No CMS / authoring UI | Content edits via code is acceptable for a single-author site; CMS adds days of scope for zero recruiter-facing value | — Pending |
+| Pivot from "resume + AI demo" to "SDET tool suite + resume" | Tools that real SDETs would *use* are more credible proof than a single demo; differentiates from the long tail of portfolio sites | — Pending |
+| No AI chatbot | Explicit user cut. Tools demonstrate skill more concretely than a chatbot summary of the resume | — Pending |
+| v1 trio = Test Automator + Test Data Generator + API Test Generator (breadth pick) | Spans three specialties (E2E, data, API), all stateless, all single-request, fastest credible v1 | — Pending |
+| Stateless tools only in v1 (no DB, no accounts) | Eliminates entire categories of scope and ops complexity; keeps ship date in days | — Pending |
+| Test Case Manager dropped | Implies persistence + accounts + multi-tenancy; explodes scope. Local-only "save output" in v1.5 covers most of the value | — Pending |
+| "Coming soon" shelf shown on day one | Signals the broader vision (4+ more tools listed) without pretending unbuilt features exist | — Pending |
+| Next.js App Router on Vercel; Anthropic Claude Sonnet as the only model in v1 | One-provider simplicity, fastest path to ship, ideal fit for AI-backed tools | — Pending |
+| Defer live browser sandboxes to v2 | Browser-pool ops, abuse risk, cost. v1 tools generate code; visitors run it | — Pending |
+| No CMS / authoring UI | Single-author site; markdown/code edits acceptable | — Pending |
 
 ## Evolution
 
@@ -115,4 +139,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-05-14 after initialization*
+*Last updated: 2026-05-14 after initialization (revised after pivot from "resume + chatbot" to "SDET tool suite")*
