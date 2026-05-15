@@ -156,17 +156,81 @@ Explicitly excluded. Logged so they don't sneak back in.
 
 ## Traceability
 
-Will be populated by the roadmapper during phase mapping. Each requirement above maps to exactly one phase.
+Every v1 requirement maps to exactly one phase. Mapped by `gsd-roadmapper` on 2026-05-14.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| (populated by gsd-roadmapper) | — | — |
+| FOUND-01 | Phase 1 | Pending |
+| FOUND-02 | Phase 1 | Pending |
+| FOUND-03 | Phase 1 | Pending |
+| FOUND-04 | Phase 1 | Pending |
+| FOUND-05 | Phase 1 | Pending |
+| FOUND-06 | Phase 1 | Pending |
+| FOUND-07 | Phase 1 | Pending |
+| FOUND-08 | Phase 1 | Pending |
+| FRAME-01 | Phase 1 | Pending |
+| FRAME-02 | Phase 1 | Pending |
+| FRAME-03 | Phase 1 | Pending |
+| FRAME-04 | Phase 1 | Pending |
+| FRAME-05 | Phase 1 | Pending |
+| FRAME-06 | Phase 1 | Pending |
+| FRAME-07 | Phase 1 | Pending |
+| FRAME-08 | Phase 1 | Pending |
+| FRAME-09 | Phase 1 | Pending |
+| FRAME-10 | Phase 1 | Pending |
+| FRAME-11 | Phase 1 | Pending |
+| AUTO-01 | Phase 1 | Pending |
+| AUTO-02 | Phase 1 | Pending |
+| AUTO-03 | Phase 1 | Pending |
+| AUTO-04 | Phase 1 | Pending |
+| AUTO-05 | Phase 1 | Pending |
+| AUTO-06 | Phase 1 | Pending |
+| AUTO-07 | Phase 1 | Pending |
+| DATA-01 | Phase 2 | Pending |
+| DATA-02 | Phase 2 | Pending |
+| DATA-03 | Phase 2 | Pending |
+| DATA-04 | Phase 2 | Pending |
+| DATA-05 | Phase 2 | Pending |
+| DATA-06 | Phase 2 | Pending |
+| DATA-07 | Phase 2 | Pending |
+| API-01 | Phase 3 | Pending |
+| API-02 | Phase 3 | Pending |
+| API-03 | Phase 3 | Pending |
+| API-04 | Phase 3 | Pending |
+| API-05 | Phase 3 | Pending |
+| API-06 | Phase 3 | Pending |
+| API-07 | Phase 3 | Pending |
+| API-08 | Phase 3 | Pending |
+| API-09 | Phase 3 | Pending |
+| CONT-01 | Phase 3 | Pending |
+| CONT-03 | Phase 3 | Pending |
+| CONT-02 | Phase 4 | Pending |
+| CONT-04 | Phase 4 | Pending |
+| CONT-05 | Phase 4 | Pending |
+| CONT-06 | Phase 4 | Pending |
+| CONT-07 | Phase 4 | Pending |
+| HARD-01 | Phase 5 | Pending |
+| HARD-02 | Phase 5 | Pending |
+| HARD-03 | Phase 5 | Pending |
+| HARD-04 | Phase 5 | Pending |
+| HARD-05 | Phase 5 | Pending |
+| HARD-06 | Phase 5 | Pending |
+| HARD-07 | Phase 5 | Pending |
+| HARD-08 | Phase 5 | Pending |
+| HARD-09 | Phase 5 | Pending |
 
 **Coverage:**
-- v1 requirements: 50 total (FOUND × 8, FRAME × 11, AUTO × 7, DATA × 7, API × 9, CONT × 7, HARD × 9 — accounting for sub-counts: 8+11+7+7+9+7+9 = 58 — recount during traceability)
-- Mapped to phases: (pending)
-- Unmapped: (pending)
+- v1 requirements: 58 total (FOUND × 8, FRAME × 11, AUTO × 7, DATA × 7, API × 9, CONT × 7, HARD × 9 = 58)
+- Mapped to phases: 58/58 ✓
+- Unmapped: 0
+
+**Phase totals:**
+- Phase 1 (Foundations + Test Automator Live): 26 requirements (FOUND × 8, FRAME × 11, AUTO × 7)
+- Phase 2 (Test Data Generator Live): 7 requirements (DATA × 7)
+- Phase 3 (API Test Generator Live + Tools-First Landing): 11 requirements (API × 9, CONT-01, CONT-03)
+- Phase 4 (Resume & About Layer): 5 requirements (CONT-02, CONT-04, CONT-05, CONT-06, CONT-07)
+- Phase 5 (Hardening & Pre-Launch): 9 requirements (HARD × 9)
 
 ---
 *Requirements defined: 2026-05-14*
-*Last updated: 2026-05-14 after research synthesis*
+*Last updated: 2026-05-14 after roadmap traceability mapping*
