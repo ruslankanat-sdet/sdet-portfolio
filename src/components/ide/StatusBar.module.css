@@ -1,0 +1,55 @@
+/* ─── StatusBar ─── */
+
+.statusbar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  height: 26px;
+  padding: 0 12px;
+  background: var(--bg-deep);
+  border-top: 1px solid var(--border);
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.sbL,
+.sbR {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: 1;
+}
+
+.sbR {
+  justify-content: flex-end;
+}
+
+.sbItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 10px;
+  height: 26px;
+  cursor: default;
+  white-space: nowrap;
+}
+
+.sbItem:hover {
+  background: var(--hover);
+  color: var(--text);
+}
+
+.green {
+  color: var(--green);
+}
+
+.lang {
+  color: var(--green-bright);
+  font-weight: 500;
+}
+
+.hireCta {
+  color: var(--green);
+  font-weight: 400;
+}

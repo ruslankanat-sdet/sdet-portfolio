@@ -1,0 +1,146 @@
+/* ─── EditorArea ─── */
+
+.editorWrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* Tab bar */
+.tabbar {
+  display: flex;
+  background: var(--bg-deepest);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  height: 36px;
+}
+
+.tabbar::-webkit-scrollbar {
+  display: none;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px 9px 14px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  background: var(--bg-deepest);
+  border-right: 1px solid var(--border-soft);
+  cursor: pointer;
+  position: relative;
+  min-width: 0;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.tab:hover {
+  color: var(--text);
+  background: var(--bg-deep);
+}
+
+.tab.active {
+  color: var(--text);
+  background: var(--bg-elevated);
+}
+
+.tab.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 2px;
+  background: var(--green);
+}
+
+.tabIcon {
+  display: flex;
+  opacity: 0.85;
+}
+
+.tabName {
+  /* inherits from .tab */
+}
+
+.tabClose {
+  width: 16px;
+  height: 16px;
+  display: grid;
+  place-items: center;
+  border-radius: 3px;
+  color: var(--text-faint);
+  opacity: 0;
+  transition: opacity 0.12s, background 0.12s, color 0.12s;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.tab:hover .tabClose,
+.tab.active .tabClose {
+  opacity: 1;
+}
+
+.tabClose:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.tabSpacer {
+  flex: 1;
+  background: var(--bg-deepest);
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-faint);
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border-soft);
+  flex-shrink: 0;
+  height: 28px;
+}
+
+.crumb {
+  color: var(--text-faint);
+}
+
+.crumbActive {
+  color: var(--text-muted);
+}
+
+.crumbSep {
+  color: var(--text-faint);
+}
+
+/* Content area */
+.editorContent {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+  background: var(--bg-elevated);
+  overflow: hidden;
+}
+
+.emptyState {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-faint);
+  padding: 24px;
+}

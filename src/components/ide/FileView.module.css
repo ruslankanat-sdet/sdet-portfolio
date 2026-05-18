@@ -1,0 +1,99 @@
+/* ─── FileView ─── */
+
+.editorInner {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+  background: var(--bg-elevated);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gutter — line numbers */
+.gutter {
+  flex-shrink: 0;
+  padding: 16px 14px 16px 12px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-faint);
+  text-align: right;
+  user-select: none;
+  background: var(--bg-elevated);
+  border-right: 1px solid var(--border-soft);
+  line-height: 1.65;
+}
+
+.ln {
+  padding-right: 2px;
+}
+
+.ln.active {
+  color: var(--text);
+}
+
+/* Code area */
+.code {
+  flex: 1;
+  margin: 0;
+  padding: 16px 24px;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--text);
+  overflow: auto;
+  white-space: pre;
+  tab-size: 2;
+  min-width: 0;
+}
+
+.code code {
+  font-family: inherit;
+}
+
+/* Scrollbar styling */
+.code::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.code::-webkit-scrollbar-thumb {
+  background: var(--glass-border);
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.code::-webkit-scrollbar-thumb:hover {
+  background: var(--surface-2);
+  background-clip: padding-box;
+}
+
+/* Decorative minimap */
+.minimap {
+  width: 70px;
+  padding: 16px 8px;
+  background: var(--bg-elevated);
+  border-left: 1px solid var(--border-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.mmRow {
+  height: 3px;
+  background: var(--text-faint);
+  opacity: 0.3;
+  border-radius: 1px;
+}
+
+.mmRow:nth-child(2n) {
+  background: var(--syn-key);
+  opacity: 0.4;
+}
+
+.mmRow:nth-child(3n) {
+  background: var(--syn-str);
+  opacity: 0.35;
+}
