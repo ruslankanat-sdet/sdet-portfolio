@@ -103,31 +103,31 @@ Open to senior / staff SDET roles. Reach me at \`ruslankanat.b@gmail.com\`.
 `,
   },
 
-  'skills.toml': {
-    lang: 'toml',
-    path: '~/portfolio/skills.toml',
-    icon: 'toml',
+  'skills.yaml': {
+    lang: 'yaml',
+    path: '~/portfolio/skills.yaml',
+    icon: 'yaml',
     content: `# Tools I reach for every day.
 
-[languages]
-primary   = ["Python", "TypeScript"]
-secondary = ["Java"]
+languages:
+  primary:   [Python, TypeScript]
+  secondary: [Java]
 
-[testing]
-e2e_web    = "Playwright"
-e2e_mobile = "Appium"
-api        = "Pytest + httpx"
-load       = "k6"
-bdd        = "pytest-bdd"
+testing:
+  e2e_web:    Playwright
+  e2e_mobile: Appium
+  api:        Pytest + httpx
+  load:       k6
+  bdd:        pytest-bdd
 
-[ai_automation]
-orchestration = "LangGraph"
-evals         = "Custom + Braintrust"
-inference     = ["Anthropic Claude", "OpenAI"]
+ai_automation:
+  orchestration: LangGraph
+  evals:         Custom + Braintrust
+  inference:     [Anthropic Claude, OpenAI]
 
-[infra]
-ci    = "GitHub Actions"
-cloud = ["AWS", "GCP"]
+infra:
+  ci:    GitHub Actions
+  cloud: [AWS, GCP]
 `,
   },
 
