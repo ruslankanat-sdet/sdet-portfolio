@@ -70,5 +70,5 @@ Items acknowledged and carried forward from previous milestone close:
 ## Session Continuity
 
 Last session: 2026-05-18
-Stopped at: Plan 01-04 complete (tokenizer + content modules). Next: plan 01-03 (IDE chrome components).
-Resume file: None
+Stopped at: Plan 01-01 Tasks 1+2 complete. Task 3 is checkpoint:human-action — requires Vercel repo link.
+Resume file: None — resume with `vercel-ready: <production-url>`
