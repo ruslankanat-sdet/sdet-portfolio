@@ -4,34 +4,34 @@
 
 See: .planning/PROJECT.md (updated 2026-05-14)
 
-**Core value:** A visitor leaves the page either (a) actually using a tool to do their SDET work, or (b) thinking "I need to interview this person." Ideally both.
-**Current focus:** Phase 1 — Foundations + Test Automator Live
+**Core value:** A recruiter opens the page and immediately sees working code — real Playwright tests, real TypeScript — and thinks "I need to interview this person."
+**Current focus:** Phase 1 — Foundation + IDE Shell
 
 ## Current Position
 
-Phase: 1 of 5 (Foundations + Test Automator Live)
-Plan: 6 of 6 in current phase
-Status: Ready to execute
-Last activity: 2026-05-14 — Roadmap created (5 phases, 58/58 v1 requirements mapped)
+Phase: 1 of 3 (Foundation + IDE Shell)
+Plan: 4 of TBD in current phase (01-04 complete)
+Status: In progress
+Last activity: 2026-05-18 — Plans 01-01, 01-02, 01-04 complete; ready for 01-03
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [███░░░░░░░] 30%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 0
-- Average duration: —
-- Total execution time: —
+- Total plans completed: 3 (01-01, 01-02, 01-04)
+- Average duration: ~15 min
+- Total execution time: ~45 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| - | - | - | - |
+| 1 - Foundation + IDE Shell | 3 | ~45 min | ~15 min |
 
 **Recent Trend:**
-- Last 5 plans: —
-- Trend: —
+- Last 3 plans: 01-01 (scaffold + types), 01-02 (CI), 01-04 (tokenizer + content)
+- Trend: steady
 
 *Updated after each plan completion*
 
@@ -42,21 +42,22 @@ Progress: [░░░░░░░░░░] 0%
 Decisions are logged in PROJECT.md Key Decisions table.
 Recent decisions affecting current work:
 
-- Project: Pivot from "resume + AI demo" to "SDET tool suite + resume" — Pending
-- Project: No AI chatbot in v1 — Pending
-- Project: v1 trio = Test Automator + Test Data Generator + API Test Generator — Pending
-- Project: Stateless tools only in v1 (no DB, no accounts) — Pending
-- Project: Next.js App Router on Vercel + Anthropic Claude Sonnet (sole model in v1) — Pending
-
-**Open decision (resolve in Phase 1):** Vercel AI SDK vs direct `@anthropic-ai/sdk` — FOUND-08 is the decision-gate task.
+- Project: Pivot to IDE-style portfolio with Playwright showcase (2026-05-18) — confirmed
+- Project: No AI tools in v1 — no API keys, no LLM, no Upstash Redis
+- Project: v1 = Foundation + IDE Shell → Resume/About → Playwright Showcase + Hardening (3 phases)
+- Project: Site is stateless and fully static-hostable on Vercel Hobby tier
+- 01-04: TypeScript tokenizer added (not in design handoff) — required for Phase 3 Playwright .ts files
+- 01-04: No TOOLS export in files-data.ts — v1 has no AI tools
+- 01-04: FileEntryLang includes 'typescript' for Phase 3 compatibility
+- 01-01: skills.toml converted to skills.yaml — toml not in FileEntryLang type set
 
 ### Pending Todos
 
-None yet.
+- Execute plan 01-03 (IDE chrome components: IDEShell, Sidebar, EditorArea, FileView, Terminal, StatusBar, AIChat)
 
 ### Blockers/Concerns
 
-None yet.
+None.
 
 ## Deferred Items
 
@@ -68,6 +69,6 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-05-14
-Stopped at: ROADMAP.md and STATE.md created; REQUIREMENTS.md traceability populated; ready for `/gsd-plan-phase 1`.
+Last session: 2026-05-18
+Stopped at: Plan 01-04 complete (tokenizer + content modules). Next: plan 01-03 (IDE chrome components).
 Resume file: None
