@@ -46,7 +46,3 @@ next-env.d.ts
 playwright-report
 test-results
 .vitest-cache
-
-# env (local secrets — .env.example is committed intentionally)
-.env
-.env.local
