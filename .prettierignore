@@ -1,0 +1,5 @@
+node_modules
+.next
+out
+pnpm-lock.yaml
+.planning/design/design_handoff_ide_portfolio/**
