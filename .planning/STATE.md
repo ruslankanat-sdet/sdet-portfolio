@@ -10,27 +10,27 @@ See: .planning/PROJECT.md (updated 2026-05-14)
 ## Current Position
 
 Phase: 1 of 3 (Foundation + IDE Shell)
-Plan: 4 of TBD in current phase (01-04 complete)
+Plan: 5 of TBD in current phase (01-01, 01-02, 01-03, 01-04 complete)
 Status: In progress
-Last activity: 2026-05-18 — Plans 01-01, 01-02, 01-04 complete; ready for 01-03
+Last activity: 2026-05-18 — Plans 01-01, 01-02, 01-03, 01-04 complete; IDE chrome live
 
-Progress: [███░░░░░░░] 30%
+Progress: [████░░░░░░] 40%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 3 (01-01, 01-02, 01-04)
-- Average duration: ~15 min
-- Total execution time: ~45 min
+- Total plans completed: 4 (01-01, 01-02, 01-03, 01-04)
+- Average duration: ~20 min
+- Total execution time: ~80 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 1 - Foundation + IDE Shell | 3 | ~45 min | ~15 min |
+| 1 - Foundation + IDE Shell | 4 | ~80 min | ~20 min |
 
 **Recent Trend:**
-- Last 3 plans: 01-01 (scaffold + types), 01-02 (CI), 01-04 (tokenizer + content)
+- Last 4 plans: 01-01 (scaffold + types), 01-02 (CI), 01-04 (tokenizer + content), 01-03 (IDE chrome)
 - Trend: steady
 
 *Updated after each plan completion*
@@ -50,10 +50,13 @@ Recent decisions affecting current work:
 - 01-04: No TOOLS export in files-data.ts — v1 has no AI tools
 - 01-04: FileEntryLang includes 'typescript' for Phase 3 compatibility
 - 01-01: skills.toml converted to skills.yaml — toml not in FileEntryLang type set
+- 01-03: No AIChat component built — v1 has no AI tools, task instructions exclude it
+- 01-03: No TOOLS folder in Sidebar — files-data.ts has no TOOLS export in v1
+- 01-03: TestAutomatorPane is a stub — plan 06 replaces it
 
 ### Pending Todos
 
-- Execute plan 01-03 (IDE chrome components: IDEShell, Sidebar, EditorArea, FileView, Terminal, StatusBar, AIChat)
+- Phase 1 IDE chrome complete — determine next plan to execute
 
 ### Blockers/Concerns
 
@@ -70,5 +73,5 @@ Items acknowledged and carried forward from previous milestone close:
 ## Session Continuity
 
 Last session: 2026-05-18
-Stopped at: Plan 01-01 Tasks 1+2 complete. Task 3 is checkpoint:human-action — requires Vercel repo link.
-Resume file: None — resume with `vercel-ready: <production-url>`
+Stopped at: Completed 01-03-PLAN.md — IDE chrome components (IDEShell + 6 children). Task 3 is checkpoint:human-verify.
+Resume file: None — human verification of IDE chrome at localhost:3000 required before continuing
