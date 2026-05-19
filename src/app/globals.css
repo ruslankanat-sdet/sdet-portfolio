@@ -1,42 +1,295 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────────────────────
+   IDE Portfolio — Ruslan Kanatbek
+   Design tokens ported verbatim from styles.css
+   ───────────────────────────────────────────────────────────── */
+
+:root,
+:root[data-theme='dark'] {
+  --bg-deepest: #06090e;
+  --bg-deep: #0b1117;
+  --bg-panel: #0f1620;
+  --bg-elevated: #141c28;
+  --bg-tab: #0b1117;
+  --bg-tab-active: #141c28;
+  --bg-hover: #1a2433;
+
+  --border: #1f2937;
+  --border-soft: #182230;
+  --border-strong: #2a3849;
+
+  --text: #e6edf3;
+  --text-muted: #8b96a8;
+  --text-faint: #5a6678;
+
+  --green: #3ddc84;
+  --green-bright: #4dff95;
+  --green-rgb: 61, 220, 132;
+  --green-glow: rgba(61, 220, 132, 0.55);
+  --green-soft: rgba(61, 220, 132, 0.12);
+  --amber: #ffb547;
+  --amber-soft: rgba(255, 181, 71, 0.13);
+  --blue: #79b8ff;
+  --blue-soft: rgba(121, 184, 255, 0.13);
+  --pink: #ff7eb6;
+  --red: #ff6b6b;
+
+  /* syntax tokens */
+  --syn-key: #79b8ff;
+  --syn-str: #c9d178;
+  --syn-num: #ffab70;
+  --syn-kw: #ff7eb6;
+  --syn-cmt: #5a6678;
+  --syn-punct: #8b96a8;
+  --syn-fn: #d2a8ff;
+  --syn-type: #ffab70;
+  --syn-dec: #f97583;
+
+  --bg-glow-a: rgba(61, 220, 132, 0.06);
+  --bg-glow-b: rgba(121, 184, 255, 0.04);
+
+  --hover: rgba(255, 255, 255, 0.04);
+  --surface: rgba(255, 255, 255, 0.025);
+  --surface-2: rgba(255, 255, 255, 0.08);
+  --glass-a: rgba(20, 28, 40, 0.85);
+  --glass-b: rgba(12, 18, 26, 0.92);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --shadow-fab: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-panel: 0 20px 60px rgba(0, 0, 0, 0.6);
+  --input-bg: rgba(0, 0, 0, 0.25);
+
+  --mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', ui-monospace, Menlo, Consolas, monospace;
+  --ui: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+
+  --radius: 6px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root[data-theme='light'] {
+  --bg-deepest: #ffffff;
+  --bg-deep: #f6f8fa;
+  --bg-panel: #f6f8fa;
+  --bg-elevated: #ffffff;
+  --bg-tab: #f6f8fa;
+  --bg-tab-active: #ffffff;
+  --bg-hover: #eef0f4;
+
+  --border: #d8dce1;
+  --border-soft: #e6e8eb;
+  --border-strong: #c7ccd1;
+
+  --text: #1f2328;
+  --text-muted: #59636e;
+  --text-faint: #8c959f;
+
+  --green: #1a7f37;
+  --green-bright: #116329;
+  --green-rgb: 26, 127, 55;
+  --green-glow: rgba(26, 127, 55, 0.28);
+  --green-soft: rgba(26, 127, 55, 0.08);
+  --amber: #9a6700;
+  --amber-soft: rgba(154, 103, 0, 0.08);
+  --blue: #0969da;
+  --blue-soft: rgba(9, 105, 218, 0.08);
+  --pink: #8250df;
+  --red: #cf222e;
+
+  --syn-key: #0550ae;
+  --syn-str: #0a3069;
+  --syn-num: #0550ae;
+  --syn-kw: #cf222e;
+  --syn-cmt: #6e7781;
+  --syn-punct: #57606a;
+  --syn-fn: #8250df;
+  --syn-type: #953800;
+  --syn-dec: #cf222e;
+
+  --bg-glow-a: rgba(26, 127, 55, 0.05);
+  --bg-glow-b: rgba(9, 105, 218, 0.04);
+
+  --hover: rgba(0, 0, 0, 0.04);
+  --surface: rgba(0, 0, 0, 0.025);
+  --surface-2: rgba(0, 0, 0, 0.06);
+  --glass-a: rgba(255, 255, 255, 0.85);
+  --glass-b: rgba(246, 248, 250, 0.92);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --shadow-fab: 0 8px 24px rgba(20, 30, 50, 0.12);
+  --shadow-panel: 0 20px 60px rgba(20, 30, 50, 0.18);
+  --input-bg: rgba(0, 0, 0, 0.03);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Global resets
+   ───────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg-deepest);
+  font-family: var(--ui);
+  font-size: 13px;
+  color: var(--text);
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+/* ─────────────────────────────────────────────────────────────
+   Root background gradient
+   ───────────────────────────────────────────────────────────── */
+#root,
+body > main {
+  background:
+    radial-gradient(ellipse 1200px 600px at 80% -20%, rgba(61, 220, 132, 0.06), transparent 60%),
+    radial-gradient(ellipse 800px 500px at -10% 110%, rgba(121, 184, 255, 0.04), transparent 60%),
+    var(--bg-deepest);
+  min-height: 100dvh;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* ─────────────────────────────────────────────────────────────
+   Syntax token classes
+   Used by the hand-rolled tokenizer — plan 04 emits <span class="tk-{cls}">
+   ───────────────────────────────────────────────────────────── */
+.tk-key {
+  color: var(--syn-key);
+}
+.tk-str {
+  color: var(--syn-str);
+}
+.tk-num {
+  color: var(--syn-num);
+}
+.tk-kw {
+  color: var(--syn-kw);
+  font-style: italic;
+}
+.tk-cmt {
+  color: var(--syn-cmt);
+  font-style: italic;
+}
+.tk-punct {
+  color: var(--syn-punct);
+}
+.tk-fn {
+  color: var(--syn-fn);
+}
+.tk-type {
+  color: var(--syn-type);
+}
+.tk-dec {
+  color: var(--syn-dec);
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+/* markdown token classes */
+.tk-md-h {
+  color: var(--green-bright);
+  font-weight: 600;
+}
+.tk-md-quote {
+  color: var(--text-muted);
+  font-style: italic;
+  border-left: 2px solid var(--green);
+  padding-left: 8px;
+  display: inline-block;
+}
+.tk-md-table {
+  color: var(--blue);
+}
+.tk-md-em {
+  color: var(--text-muted);
+  font-style: italic;
+}
+.tk-md-b {
+  color: var(--text);
+  font-weight: 600;
+}
+.tk-md-code {
+  color: var(--syn-str);
+  background: var(--surface-2);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Keyframe animations
+   ───────────────────────────────────────────────────────────── */
+@keyframes pulse-dot {
+  0%,
+  100% {
+    box-shadow:
+      0 0 8px var(--green),
+      0 0 0 0 rgba(var(--green-rgb), 0.5);
+  }
+  50% {
+    box-shadow:
+      0 0 12px var(--green),
+      0 0 0 6px rgba(var(--green-rgb), 0);
+  }
+}
+
+@keyframes log-in {
+  from {
+    opacity: 0;
+    transform: translateX(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes msg-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes btn-pulse {
+  50% {
+    box-shadow:
+      0 0 0 1px rgba(var(--green-rgb), 0.4),
+      0 0 40px -4px var(--green-glow);
+  }
+}
+
+@keyframes typ {
+  0%,
+  60%,
+  100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
   }
 }
