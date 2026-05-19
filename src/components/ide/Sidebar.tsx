@@ -23,6 +23,7 @@ interface SidebarProps {
   activeFile: string;
   setActiveFile: (name: string) => void;
   openTab: (name: string) => void;
+  sidebarOpen?: boolean;
 }
 
 const ICONS_FOR_FILE: Record<string, React.ComponentType<{ size?: number; style?: React.CSSProperties }>> = {
@@ -47,7 +48,7 @@ const OUTLINE_SYMBOLS: Record<string, Array<{ label: string; kind: 'key' | 'str'
   'contact.json':    [{ label: '"email"', kind: 'key' }, { label: '"github"', kind: 'key' }, { label: '"linkedin"', kind: 'key' }],
 };
 
-export function Sidebar({ activeFile, setActiveFile, openTab }: SidebarProps) {
+export function Sidebar({ activeFile, setActiveFile, openTab, sidebarOpen = true }: SidebarProps) {
   const [open, setOpen] = useState({ about: false });
   const [activePanel] = useState<'explorer'>('explorer');
 
@@ -75,7 +76,7 @@ export function Sidebar({ activeFile, setActiveFile, openTab }: SidebarProps) {
   const symbols = OUTLINE_SYMBOLS[activeFile] ?? [];
 
   return (
-    <aside className={styles.sidebar}>
+    <aside className={cn(styles.sidebar, { [styles.sidebarClosed]: !sidebarOpen })} aria-hidden={!sidebarOpen}>
       {/* Activity Bar */}
       <nav className={styles.activityBar} aria-label="Activity bar">
         <div className={styles.actBtnGroup}>

@@ -14,3 +14,11 @@
   min-width: 0;
   background: var(--bg-deep);
 }
+
+/* Sidebar overlay on narrow viewports (SHELL-05) */
+@media (max-width: 768px) {
+  /* Overlay the sidebar above the main content on mobile */
+  .ideBody {
+    position: relative;
+  }
+}

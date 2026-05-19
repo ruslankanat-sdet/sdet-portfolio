@@ -19,6 +19,11 @@ export function IDEShell() {
   const [logs, setLogs] = useState<LogEntry[]>(SAMPLE_LOGS.slice(0, 8));
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [lastRun, setLastRun] = useState<string>("3m ago"); // future: pass to TopBar for "last run" display
+  // On narrow viewports, sidebar starts closed (overlay mode). On wide, starts open.
+  const [sidebarOpen, setSidebarOpen] = useState<boolean>(() => {
+    if (typeof window === 'undefined') return true;
+    return window.innerWidth > 768;
+  });
   const [theme, setTheme] = useState<Theme>(() => {
     try { return (localStorage.getItem("portfolio-theme") as Theme) || "dark"; }
     catch { return "dark"; }
@@ -31,6 +36,7 @@ export function IDEShell() {
   }, [theme]);
 
   const toggleTheme = useCallback(() => setTheme(t => t === "dark" ? "light" : "dark"), []);
+  const toggleSidebar = useCallback(() => setSidebarOpen(o => !o), []);
 
   const openTab = useCallback((name: string) => {
     setTabs(t => t.includes(name) ? t : [...t, name]);
@@ -77,9 +83,9 @@ export function IDEShell() {
 
   return (
     <>
-      <TopBar onRun={runSmoke} running={running} theme={theme} toggleTheme={toggleTheme} />
+      <TopBar onRun={runSmoke} running={running} theme={theme} toggleTheme={toggleTheme} onToggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
       <div className={styles.ideBody}>
-        <Sidebar activeFile={activeFile} setActiveFile={setActiveFile} openTab={openTab} />
+        <Sidebar activeFile={activeFile} setActiveFile={setActiveFile} openTab={openTab} sidebarOpen={sidebarOpen} />
         <main className={styles.main}>
           <EditorArea tabs={tabs} activeFile={activeFile} setActiveFile={setActiveFile} closeTab={closeTab} />
           <Terminal logs={logs} running={running} height={termHeight} setHeight={setTermHeight} tab={termTab} setTab={setTermTab} />

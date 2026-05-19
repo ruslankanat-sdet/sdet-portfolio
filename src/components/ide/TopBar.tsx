@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { GitBranch, Play, Sun, Moon } from 'lucide-react';
+import { GitBranch, Play, Sun, Moon, Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { Theme } from '@/types/ide';
 import styles from './TopBar.module.css';
@@ -11,6 +11,8 @@ interface TopBarProps {
   running: boolean;
   theme: Theme;
   toggleTheme: () => void;
+  onToggleSidebar: () => void;
+  sidebarOpen: boolean;
 }
 
 interface StatusBadgeProps {
@@ -32,7 +34,7 @@ function StatusBadge({ tone, label, value, pulse, hideClass }: StatusBadgeProps)
   );
 }
 
-export function TopBar({ onRun, running, theme, toggleTheme }: TopBarProps) {
+export function TopBar({ onRun, running, theme, toggleTheme, onToggleSidebar, sidebarOpen }: TopBarProps) {
   const [time, setTime] = useState<string>(() => {
     const now = new Date();
     return now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
@@ -50,6 +52,17 @@ export function TopBar({ onRun, running, theme, toggleTheme }: TopBarProps) {
   return (
     <header className={styles.topbar}>
       <div className={styles.topbarL}>
+        {/* Hamburger — visible only on narrow viewports (SHELL-05) */}
+        <button
+          className={cn(styles.iconBtn, styles.menuBtn)}
+          onClick={onToggleSidebar}
+          aria-label={sidebarOpen ? "Close sidebar" : "Open sidebar"}
+          aria-expanded={sidebarOpen}
+          title={sidebarOpen ? "Close sidebar" : "Open sidebar"}
+        >
+          <Menu size={16} />
+        </button>
+
         <div className={styles.logo}>
           <div className={styles.logoMark}>
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none">

@@ -292,6 +292,18 @@
   border-color: var(--border-strong);
 }
 
+/* Sidebar toggle hamburger — hidden on wide screens, visible on narrow (SHELL-05) */
+.menuBtn {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .menuBtn {
+    display: grid;
+    flex-shrink: 0;
+  }
+}
+
 /* Run button */
 .runBtn {
   position: relative;

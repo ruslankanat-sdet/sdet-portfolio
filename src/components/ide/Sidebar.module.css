@@ -6,6 +6,39 @@
   flex-shrink: 0;
   background: var(--bg-deep);
   border-right: 1px solid var(--border);
+  transition: transform 0.2s ease, opacity 0.15s ease, width 0.2s ease;
+}
+
+/* Desktop closed state — collapse width (SHELL-05) */
+.sidebarClosed {
+  width: 0;
+  overflow: hidden;
+  border-right: none;
+}
+
+/* On narrow viewports (≤768px): sidebar becomes a slide-in overlay (SHELL-05) */
+@media (max-width: 768px) {
+  .sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 50;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
+    /* On mobile, sidebarOpen=true → visible */
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  /* Mobile closed state — slide off-screen */
+  .sidebarClosed {
+    width: 232px; /* restore desktop override — width is not how we hide on mobile */
+    overflow: visible;
+    border-right: 1px solid var(--border);
+    transform: translateX(-100%);
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
 /* Activity Bar */
