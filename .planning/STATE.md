@@ -9,28 +9,28 @@ See: .planning/PROJECT.md (updated 2026-05-14)
 
 ## Current Position
 
-Phase: 1 of 3 (Foundation + IDE Shell)
-Plan: 5 of TBD in current phase (01-01, 01-02, 01-03, 01-04 complete)
-Status: In progress
-Last activity: 2026-05-18 — Plans 01-01, 01-02, 01-03, 01-04 complete; IDE chrome live
+Phase: 1 of 3 (Foundation + IDE Shell) — COMPLETE
+Plan: Phase 1 complete (5 plans: 01-01, 01-02, 01-03, 01-04, 01-05 done)
+Status: Phase 1 complete — ready for Phase 2
+Last activity: 2026-05-19 — Plan 01-05 complete; SHELL-05 responsive sidebar; Phase 1 requirements all satisfied
 
-Progress: [████░░░░░░] 40%
+Progress: [████████░░] 33% (Phase 1 complete = 1/3 phases)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 4 (01-01, 01-02, 01-03, 01-04)
-- Average duration: ~20 min
-- Total execution time: ~80 min
+- Total plans completed: 5 (01-01, 01-02, 01-03, 01-04, 01-05)
+- Average duration: ~19 min
+- Total execution time: ~95 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 1 - Foundation + IDE Shell | 4 | ~80 min | ~20 min |
+| 1 - Foundation + IDE Shell | 5 | ~95 min | ~19 min |
 
 **Recent Trend:**
-- Last 4 plans: 01-01 (scaffold + types), 01-02 (CI), 01-04 (tokenizer + content), 01-03 (IDE chrome)
+- Last 5 plans: 01-01 (scaffold), 01-02 (CI), 01-04 (tokenizer + content), 01-03 (IDE chrome), 01-05 (responsive sidebar)
 - Trend: steady
 
 *Updated after each plan completion*
@@ -52,11 +52,13 @@ Recent decisions affecting current work:
 - 01-01: skills.toml converted to skills.yaml — toml not in FileEntryLang type set
 - 01-03: No AIChat component built — v1 has no AI tools, task instructions exclude it
 - 01-03: No TOOLS folder in Sidebar — files-data.ts has no TOOLS export in v1
-- 01-03: TestAutomatorPane is a stub — plan 06 replaces it
+- 01-03: TestAutomatorPane is a stub — deferred (no AI tools in v1)
+- 01-05: sidebarOpen viewport-aware init — sidebar starts closed on mobile (≤768px), open on desktop
 
 ### Pending Todos
 
-- Phase 1 IDE chrome complete — determine next plan to execute
+- Phase 2: Resume & About Layer — MDX resume, nav, footer, PDF download
+- CONT-01 through CONT-05 requirements need plans
 
 ### Blockers/Concerns
 
@@ -72,6 +74,6 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-05-18
-Stopped at: Completed 01-03-PLAN.md — IDE chrome components (IDEShell + 6 children). Task 3 is checkpoint:human-verify.
-Resume file: None — human verification of IDE chrome at localhost:3000 required before continuing
+Last session: 2026-05-19
+Stopped at: Completed 01-05-PLAN.md — SHELL-05 responsive sidebar. Phase 1 complete.
+Resume file: None — begin Phase 2 planning

@@ -10,18 +10,18 @@ Requirements for initial public launch. Each maps to a roadmap phase.
 
 ### Foundations & Deploy
 
-- [ ] **FOUND-01**: Next.js 15 App Router project initialized with TypeScript (strict), Tailwind v4 (or 3.4 fallback if shadcn v4-ready check fails), ESLint flat config, Prettier
-- [ ] **FOUND-02**: Repository deploys cleanly to Vercel on every push to `main`; preview deploys on PRs
-- [ ] **FOUND-03**: Vercel Analytics + Speed Insights installed (cookieless, no consent banner)
-- [ ] **FOUND-04**: Landing page statically rendered and deployed to a public Vercel URL; no API keys or external services required
+- [x] **FOUND-01**: Next.js 15 App Router project initialized with TypeScript (strict), Tailwind v4 (or 3.4 fallback if shadcn v4-ready check fails), ESLint flat config, Prettier
+- [x] **FOUND-02**: Repository deploys cleanly to Vercel on every push to `main`; preview deploys on PRs
+- [x] **FOUND-03**: Vercel Analytics + Speed Insights installed (cookieless, no consent banner)
+- [x] **FOUND-04**: Landing page statically rendered and deployed to a public Vercel URL; no API keys or external services required
 
 ### IDE Shell
 
-- [ ] **SHELL-01**: Dark IDE-style chrome — left sidebar file explorer, main editor pane, bottom terminal/log pane — using design tokens from the handoff
-- [ ] **SHELL-02**: Sidebar file explorer renders a list of `FileEntry` items (path, icon, language) as clickable rows
-- [ ] **SHELL-03**: Clicking a file entry loads its content into the editor pane with syntax highlighting (TypeScript via Shiki, restricted language set)
-- [ ] **SHELL-04**: Terminal/log pane renders `LogEntry` items (kind: info/warn/ok/pass/fail, text) as styled rows
-- [ ] **SHELL-05**: IDE chrome is responsive — sidebar is toggleable/collapsible on narrow viewports
+- [x] **SHELL-01**: Dark IDE-style chrome — left sidebar file explorer, main editor pane, bottom terminal/log pane — using design tokens from the handoff
+- [x] **SHELL-02**: Sidebar file explorer renders a list of `FileEntry` items (path, icon, language) as clickable rows
+- [x] **SHELL-03**: Clicking a file entry loads its content into the editor pane with syntax highlighting (TypeScript via Shiki, restricted language set)
+- [x] **SHELL-04**: Terminal/log pane renders `LogEntry` items (kind: info/warn/ok/pass/fail, text) as styled rows
+- [x] **SHELL-05**: IDE chrome is responsive — sidebar is toggleable/collapsible on narrow viewports
 
 ### Resume & Content
 
@@ -71,15 +71,15 @@ Every v1 requirement maps to exactly one phase.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FOUND-01 | Phase 1 | Pending |
-| FOUND-02 | Phase 1 | Pending |
-| FOUND-03 | Phase 1 | Pending |
-| FOUND-04 | Phase 1 | Pending |
-| SHELL-01 | Phase 1 | Pending |
-| SHELL-02 | Phase 1 | Pending |
-| SHELL-03 | Phase 1 | Pending |
-| SHELL-04 | Phase 1 | Pending |
-| SHELL-05 | Phase 1 | Pending |
+| FOUND-01 | Phase 1 | Complete |
+| FOUND-02 | Phase 1 | Complete |
+| FOUND-03 | Phase 1 | Complete |
+| FOUND-04 | Phase 1 | Complete |
+| SHELL-01 | Phase 1 | Complete |
+| SHELL-02 | Phase 1 | Complete |
+| SHELL-03 | Phase 1 | Complete |
+| SHELL-04 | Phase 1 | Complete |
+| SHELL-05 | Phase 1 | Complete |
 | CONT-01 | Phase 2 | Pending |
 | CONT-02 | Phase 2 | Pending |
 | CONT-03 | Phase 2 | Pending |
@@ -106,4 +106,4 @@ Every v1 requirement maps to exactly one phase.
 
 ---
 *Requirements defined: 2026-05-14*
-*Last updated: 2026-05-18 — pivot to IDE-style portfolio with Playwright showcase; cut all AI tool requirements*
+*Last updated: 2026-05-19 — Phase 1 complete (FOUND × 4, SHELL × 5 all satisfied)*
