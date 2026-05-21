@@ -38,6 +38,13 @@ const ICONS_FOR_FILE: Record<string, React.ComponentType<{ size?: number; style?
 // File tree structure per D-05 (no tools/ folder in v1)
 const ABOUT_FILES = ['bio.json', 'experience.yaml', 'skills.yaml'];
 const ROOT_FILES = ['README.md', 'contact.json'];
+const TEST_FILES = [
+  'tests/landing.spec.ts',
+  'tests/navigation.spec.ts',
+  'tests/about.spec.ts',
+  'tests/ide-interactions.spec.ts',
+  'tests/playwright.config.ts',
+];
 
 // Outline symbols derived from active file (decorative in Phase 1)
 const OUTLINE_SYMBOLS: Record<string, Array<{ label: string; kind: 'key' | 'str' | 'num' }>> = {
@@ -46,10 +53,15 @@ const OUTLINE_SYMBOLS: Record<string, Array<{ label: string; kind: 'key' | 'str'
   'experience.yaml': [{ label: 'Resmed', kind: 'str' }, { label: 'Gemini', kind: 'str' }, { label: 'Google', kind: 'str' }, { label: 'Citi', kind: 'str' }],
   'skills.yaml':     [{ label: 'languages', kind: 'key' }, { label: 'testing', kind: 'key' }, { label: 'ai_automation', kind: 'key' }],
   'contact.json':    [{ label: '"email"', kind: 'key' }, { label: '"github"', kind: 'key' }, { label: '"linkedin"', kind: 'key' }],
+  'tests/landing.spec.ts':          [{ label: 'has correct page title', kind: 'key' }, { label: 'has no WCAG AA violations', kind: 'key' }],
+  'tests/navigation.spec.ts':       [{ label: 'About link navigates to /about', kind: 'key' }],
+  'tests/about.spec.ts':            [{ label: 'renders work history section', kind: 'key' }, { label: 'has no WCAG AA violations', kind: 'key' }],
+  'tests/ide-interactions.spec.ts': [{ label: 'clicking bio.json loads editor', kind: 'key' }, { label: 'test files appear in sidebar', kind: 'key' }],
+  'tests/playwright.config.ts':     [{ label: 'testDir', kind: 'key' }, { label: 'projects', kind: 'key' }, { label: 'webServer', kind: 'key' }],
 };
 
 export function Sidebar({ activeFile, setActiveFile, openTab, sidebarOpen = true }: SidebarProps) {
-  const [open, setOpen] = useState({ about: false });
+  const [open, setOpen] = useState({ about: false, tests: false });
   const [activePanel] = useState<'explorer'>('explorer');
 
   const fileRow = (name: string) => {
@@ -160,6 +172,28 @@ export function Sidebar({ activeFile, setActiveFile, openTab, sidebarOpen = true
             {open.about && (
               <div className={styles.treeChildren}>
                 {ABOUT_FILES.map(name => fileRow(name))}
+              </div>
+            )}
+          </div>
+
+          {/* tests/ folder */}
+          <div className={styles.treeGroup}>
+            <div
+              className={styles.treeFolder}
+              onClick={() => setOpen(s => ({ ...s, tests: !s.tests }))}
+            >
+              <span className={styles.treeChev}>
+                <ChevronRight
+                  size={10}
+                  style={{ transform: open.tests ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.15s' }}
+                />
+              </span>
+              <Folder size={14} />
+              <span className={cn(styles.treeLabel, styles.bold)}>tests</span>
+            </div>
+            {open.tests && (
+              <div className={styles.treeChildren}>
+                {TEST_FILES.map(name => fileRow(name))}
               </div>
             )}
           </div>
