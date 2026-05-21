@@ -743,22 +743,25 @@ export async function GET(request: Request) {
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
 
 1. **Vercel canonical domain**
    - What we know: The site is deployed to Vercel; domain is likely `ruslankanat.vercel.app` or a custom domain
    - What's unclear: The exact canonical URL to use in `metadataBase` and `sitemap.xml`
    - Recommendation: Use `process.env.NEXT_PUBLIC_SITE_URL` with a fallback of `'https://ruslankanat.vercel.app'`; document that the env var must be set in Vercel project settings
+   - **RESOLVED:** Plan 02 uses `metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://ruslankanat.dev')` in layout.tsx; `NEXT_PUBLIC_SITE_URL` must be set in Vercel project settings (documented in Plan 02 acceptance criteria).
 
 2. **`GH_OWNER` and `GH_REPO` env vars**
    - What we know: The GitHub API calls need `{owner}` and `{repo}` in the path
    - What's unclear: Whether to hardcode these or read from env vars
    - Recommendation: Store as `GH_OWNER=ruslankanat-sdet` and `GH_REPO=sdet-portfolio` in Vercel env vars (alongside `GITHUB_TOKEN`); this avoids hardcoding and keeps the route handler generic
+   - **RESOLVED:** Plan 05 stores `GH_OWNER` and `GH_REPO` as Vercel env vars alongside `GITHUB_TOKEN`. The `user_setup` block in Plan 05 documents the required Vercel env var configuration.
 
 3. **Initial terminal state (D-10) sourcing**
    - What we know: D-10 says "hardcoded or build-time fetched"
    - What's unclear: Whether to fetch the last CI run at build time from GitHub API or hardcode it
    - Recommendation: Hardcode as the updated `SAMPLE_LOGS` with real Playwright-style entries; after the first real CI run completes, update `SAMPLE_LOGS` manually. Build-time fetch adds complexity and a dependency on GitHub API availability during `pnpm build`.
+   - **RESOLVED:** Plan 03 replaces `SAMPLE_LOGS` with hardcoded TypeScript Playwright-format entries (e.g., `landing.spec.ts > has correct page title`). After the first real CI run completes, `SAMPLE_LOGS` is updated manually — no build-time GitHub API fetch.
 
 ---
 
