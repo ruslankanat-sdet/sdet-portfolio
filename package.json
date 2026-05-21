@@ -28,7 +28,9 @@
     "tailwindcss": "4.3.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "4.11.3",
     "@eslint/eslintrc": "^3",
+    "@playwright/test": "1.60.0",
     "@types/mdx": "^2.0.13",
     "@types/node": "^20",
     "@types/react": "^19",
