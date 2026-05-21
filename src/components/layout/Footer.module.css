@@ -1,0 +1,103 @@
+/* ─── Footer — two variants: compact (IDE landing) and full (/about) ─── */
+
+/* ── Compact variant ── */
+.compact {
+  height: 36px;
+  background: var(--bg-deepest);
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.compactLink {
+  color: var(--text-muted);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.15s ease;
+}
+
+.compactLink:hover {
+  color: var(--text);
+}
+
+.compactLink:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.noTracking {
+  color: var(--text-faint);
+  font-size: 12px;
+}
+
+/* ── Full variant ── */
+.full {
+  padding: 48px 24px;
+  max-width: 720px;
+  margin: 0 auto;
+  border-top: 1px solid var(--border-soft);
+  width: 100%;
+}
+
+.fullGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 640px) {
+  .fullGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.fullLabel {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+  margin-bottom: 8px;
+}
+
+.fullLink {
+  display: block;
+  color: var(--text-muted);
+  font-size: 13px;
+  text-decoration: none;
+  transition: color 0.15s ease;
+  margin-bottom: 4px;
+}
+
+.fullLink:hover {
+  color: var(--text);
+}
+
+.fullLink:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.privacyNote {
+  font-size: 12px;
+  color: var(--text-faint);
+  line-height: 1.5;
+}
+
+.copyright {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-faint);
+  padding-top: 24px;
+  border-top: 1px solid var(--border-soft);
+}
