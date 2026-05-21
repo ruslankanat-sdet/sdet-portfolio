@@ -129,16 +129,37 @@
   padding: 0;
 }
 
-html,
+html {
+  height: 100%;
+}
+
 body {
   height: 100%;
-  overflow: hidden;
+  /* overflow: hidden removed — controlled per layout via .site-body */
   background: var(--bg-deepest);
   font-family: var(--ui);
   font-size: 13px;
   color: var(--text);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Layout utilities — applied via root layout.tsx
+   .site-body: flex column, full viewport height, contains scroll
+   .site-main: fills remaining space between header and footer
+   ───────────────────────────────────────────────────────────── */
+.site-body {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  overflow: hidden; /* prevents outer body scroll; IDE landing stays fully contained */
+}
+
+.site-main {
+  flex: 1;
+  min-height: 0; /* critical: allows flex child to shrink below content size */
+  overflow: hidden; /* IDE landing: scroll is managed inside IDEShell; /about overrides with scrollContainer */
 }
 
 /* ─────────────────────────────────────────────────────────────
