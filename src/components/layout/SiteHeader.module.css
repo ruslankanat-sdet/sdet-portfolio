@@ -1,0 +1,70 @@
+/* ─── SiteHeader — thin dark nav strip, 44px fixed ─── */
+
+.header {
+  height: 44px;
+  background: var(--bg-deep);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  flex-shrink: 0; /* never shrink inside .site-body flex column */
+  z-index: 10;
+}
+
+.identity {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.name {
+  font-family: var(--font-inter), var(--ui);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1;
+}
+
+.separator {
+  color: var(--text-faint);
+  margin: 0 6px;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.title {
+  font-family: var(--font-inter), var(--ui);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-muted);
+  line-height: 1;
+}
+
+.navLink {
+  font-family: var(--font-inter), var(--ui);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--green);
+  text-decoration: none;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.navLink:hover {
+  color: var(--green-bright);
+  text-decoration: underline;
+}
+
+.navLink:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Mobile: hide subtitle to save space */
+@media (max-width: 480px) {
+  .separator,
+  .title {
+    display: none;
+  }
+}
