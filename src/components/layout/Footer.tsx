@@ -1,4 +1,4 @@
-import { Mail, Github, Linkedin } from 'lucide-react';
+import { Mail, ExternalLink } from 'lucide-react';
 import styles from './Footer.module.css';
 
 interface FooterProps {
@@ -24,8 +24,8 @@ export function Footer({ variant }: FooterProps) {
           rel="noopener noreferrer"
           aria-label="GitHub profile (opens in new tab)"
         >
-          <Github size={14} aria-hidden="true" />
-          <span className="sr-only"> (opens in new tab)</span>
+          <ExternalLink size={14} aria-hidden="true" />
+          GitHub
         </a>
         <a
           href="https://linkedin.com/in/ruslankanat"
@@ -34,8 +34,8 @@ export function Footer({ variant }: FooterProps) {
           rel="noopener noreferrer"
           aria-label="LinkedIn profile (opens in new tab)"
         >
-          <Linkedin size={14} aria-hidden="true" />
-          <span className="sr-only"> (opens in new tab)</span>
+          <ExternalLink size={14} aria-hidden="true" />
+          LinkedIn
         </a>
         <span className={styles.noTracking}>No cookies. No tracking.</span>
       </footer>
