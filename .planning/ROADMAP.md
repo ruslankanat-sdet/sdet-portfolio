@@ -12,7 +12,7 @@ A dark IDE-style portfolio site for a senior SDET / QA automation engineer. The 
 - Decimal phases (e.g., 1.1, 2.1): Urgent insertions added later (none initially)
 
 - [x] **Phase 1: Foundation + IDE Shell** - Scaffold + dark IDE chrome live on a public Vercel URL
-- [ ] **Phase 2: Resume & About Layer** - MDX resume, nav, footer, PDF — recruiter path complete in one click
+- [x] **Phase 2: Resume & About Layer** - MDX resume, nav, footer, PDF — recruiter path complete in one click (completed 2026-05-21)
 - [ ] **Phase 3: Playwright Showcase + Hardening** - Real E2E tests displayed in IDE shell; CI; a11y; OG cards; launch-ready
 
 ## Phase Details
@@ -74,5 +74,5 @@ Phases execute in numeric order: 1 → 2 → 3
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation + IDE Shell | 5/5 | Complete | 2026-05-19 |
-| 2. Resume & About Layer | 1/3 | In Progress|  |
+| 2. Resume & About Layer | 3/3 | Complete    | 2026-05-21 |
 | 3. Playwright Showcase + Hardening | 0/TBD | Not started | - |
