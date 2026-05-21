@@ -144,21 +144,195 @@ infra:
   "open_to": ["full-time", "contract-to-hire"]
 }`,
   },
+
+  'tests/landing.spec.ts': {
+    lang: 'typescript',
+    path: '~/portfolio/e2e/landing.spec.ts',
+    icon: 'ts',
+    content: `import { test, expect } from '@playwright/test';
+import AxeBuilder from '@axe-core/playwright';
+
+test.describe('Landing page', () => {
+  test('has correct page title', async ({ page }) => {
+    await page.goto('/');
+    await expect(page).toHaveTitle(/Ruslan Kanatbek/);
+  });
+
+  test('shows IDE chrome on load', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.getByRole('main')).toBeVisible();
+    await expect(page.getByRole('button', { name: /README\\.md/ })).toBeVisible();
+  });
+
+  test('sidebar README.md row loads README content into editor', async ({ page }) => {
+    await page.goto('/');
+    await page.getByRole('button', { name: /README\\.md/ }).click();
+    await expect(page.locator('pre code')).toContainText("Hi, I'm Ruslan");
+  });
+
+  test('robots.txt is accessible', async ({ page }) => {
+    const r = await page.request.get('/robots.txt');
+    expect(r.status()).toBe(200);
+    expect(await r.text()).toContain('User-agent');
+  });
+
+  test('sitemap.xml is accessible', async ({ page }) => {
+    const r = await page.request.get('/sitemap.xml');
+    expect(r.status()).toBe(200);
+    expect(await r.text()).toContain('<urlset');
+  });
+
+  test('OG meta tag is present', async ({ page }) => {
+    await page.goto('/');
+    const og = await page.locator('meta[property="og:image"]').getAttribute('content');
+    expect(og).toBeTruthy();
+    expect(og).toContain('/og');
+  });
+
+  test('has no WCAG AA violations', async ({ page }) => {
+    await page.goto('/');
+    const results = await new AxeBuilder({ page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+      .analyze();
+    expect(results.violations).toEqual([]);
+  });
+});`,
+  },
+
+  'tests/navigation.spec.ts': {
+    lang: 'typescript',
+    path: '~/portfolio/e2e/navigation.spec.ts',
+    icon: 'ts',
+    content: `import { test, expect } from '@playwright/test';
+
+test.describe('Navigation', () => {
+  test('About link navigates to /about', async ({ page }) => {
+    await page.goto('/');
+    await page.getByRole('link', { name: /About/i }).first().click();
+    await expect(page).toHaveURL(/\\/about$/);
+    await expect(page.getByRole('main')).toBeVisible();
+  });
+
+  test('back link returns to /', async ({ page }) => {
+    await page.goto('/about');
+    // On /about the nav link shows "← Back" linking back to /
+    await page.getByRole('link', { name: /Back/i }).first().click();
+    await expect(page).toHaveURL('http://localhost:3000/');
+  });
+});`,
+  },
+
+  'tests/about.spec.ts': {
+    lang: 'typescript',
+    path: '~/portfolio/e2e/about.spec.ts',
+    icon: 'ts',
+    content: `import { test, expect } from '@playwright/test';
+import AxeBuilder from '@axe-core/playwright';
+
+test.describe('About page', () => {
+  test('renders work history section', async ({ page }) => {
+    await page.goto('/about');
+    await expect(page.getByRole('main')).toBeVisible();
+    await expect(page.getByRole('heading').first()).toBeVisible();
+  });
+
+  test('PDF download link is present', async ({ page }) => {
+    await page.goto('/about');
+    const link = page.getByRole('link', { name: /Download PDF Resume/i });
+    await expect(link).toBeVisible();
+    await expect(link).toHaveAttribute('download');
+    await expect(link).toHaveAttribute('href', /resume\\.pdf$/);
+  });
+
+  test('has no WCAG AA violations', async ({ page }) => {
+    await page.goto('/about');
+    const results = await new AxeBuilder({ page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+      .analyze();
+    expect(results.violations).toEqual([]);
+  });
+});`,
+  },
+
+  'tests/ide-interactions.spec.ts': {
+    lang: 'typescript',
+    path: '~/portfolio/e2e/ide-interactions.spec.ts',
+    icon: 'ts',
+    content: `import { test, expect } from '@playwright/test';
+
+test.describe('IDE interactions', () => {
+  test('clicking bio.json loads editor with bio content', async ({ page }) => {
+    await page.goto('/');
+    // The about/ folder header is a div (no role=button), use getByText to expand it
+    await page.getByText('about', { exact: true }).first().click();
+    await page.getByRole('button', { name: /bio\\.json/ }).click();
+    await expect(page.locator('pre code')).toContainText('Ruslan Kanatbek');
+  });
+
+  test('test files appear in sidebar under tests/ folder', async ({ page }) => {
+    // Covers SHOW-02: sidebar displays Playwright spec files under tests/ folder
+    await page.goto('/');
+    await expect(page.getByText('tests', { exact: true }).first()).toBeVisible();
+    await page.getByText('tests', { exact: true }).first().click();
+    await expect(page.getByRole('button', { name: /landing\\.spec\\.ts/ })).toBeVisible();
+  });
+
+  test('clicking landing.spec.ts loads its TypeScript source in editor', async ({ page }) => {
+    // Covers SHOW-02: editor renders the spec file content with TypeScript source.
+    await page.goto('/');
+    await page.getByText('tests', { exact: true }).first().click();
+    await page.getByRole('button', { name: /landing\\.spec\\.ts/ }).click();
+    await expect(page.locator('pre code')).toContainText("'@playwright/test'");
+  });
+});`,
+  },
+
+  'tests/playwright.config.ts': {
+    lang: 'typescript',
+    path: '~/portfolio/playwright.config.ts',
+    icon: 'ts',
+    content: `import { defineConfig, devices } from '@playwright/test';
+
+export default defineConfig({
+  testDir: './e2e',
+  fullyParallel: true,
+  forbidOnly: !!process.env.CI,
+  retries: process.env.CI ? 1 : 0,
+  workers: process.env.CI ? 1 : undefined,
+  reporter: process.env.CI ? 'github' : [['html'], ['line']],
+  use: {
+    baseURL: process.env.PLAYWRIGHT_TEST_BASE_URL ?? 'http://localhost:3000',
+    trace: 'on-first-retry',
+  },
+  projects: [
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
+    },
+  ],
+  webServer: {
+    command: 'pnpm build && pnpm start',
+    url: 'http://localhost:3000',
+    reuseExistingServer: !process.env.CI,
+    timeout: 120_000,
+  },
+});`,
+  },
 };
 
 export const SAMPLE_LOGS: LogEntry[] = [
-  { kind: 'info', text: '$ npx playwright test --grep smoke --reporter=line' },
-  { kind: 'info', text: 'Running 12 tests using 6 workers' },
-  { kind: 'pass', test: 'test_resmed_sdet.py::test_device_monitoring_flow', detail: '142ms' },
-  { kind: 'pass', test: 'test_resmed_sdet.py::test_data_integrity_pipeline', detail: '318ms' },
-  { kind: 'pass', test: 'test_playwright_expertise.py::test_cross_browser_e2e', detail: '412ms' },
-  { kind: 'pass', test: 'test_playwright_expertise.py::test_visual_regression', detail: '624ms' },
-  { kind: 'pass', test: 'test_api_coverage.py::test_health_endpoints_200', detail: '41ms' },
-  { kind: 'pass', test: 'test_ai_toolkit.py::test_automator_streaming', detail: '891ms' },
-  { kind: 'warn', text: '⚠ Self-healing selector rewrote `#submit` → `[data-testid=submit]` (auto-PR #4821)' },
-  { kind: 'pass', test: 'test_ai_toolkit.py::test_rate_limiting_429_returned', detail: '156ms' },
-  { kind: 'pass', test: 'test_perf.py::test_lcp_under_2s', detail: '742ms  budget 800ms' },
-  { kind: 'pass', test: 'test_a11y.py::test_wcag_aa_contrast', detail: '0 violations' },
-  { kind: 'info', text: '─────────────────────────────────────────────────────────────' },
-  { kind: 'ok',   text: '✓ 10 passed (6.2s)  ·  0 failed  ·  0 flaky' },
+  { kind: 'info', text: '$ pnpm exec playwright test --project=chromium --reporter=line' },
+  { kind: 'info', text: 'Running 12 tests using 4 workers' },
+  { kind: 'pass', test: 'landing.spec.ts > has correct page title', detail: '312ms' },
+  { kind: 'pass', test: 'landing.spec.ts > shows IDE chrome on load', detail: '188ms' },
+  { kind: 'pass', test: 'landing.spec.ts > sidebar README.md row loads README content into editor', detail: '412ms' },
+  { kind: 'pass', test: 'navigation.spec.ts > About link navigates to /about', detail: '241ms' },
+  { kind: 'pass', test: 'navigation.spec.ts > logo/home link returns to /', detail: '198ms' },
+  { kind: 'pass', test: 'about.spec.ts > renders work history section', detail: '156ms' },
+  { kind: 'pass', test: 'about.spec.ts > PDF download link is present', detail: '124ms' },
+  { kind: 'pass', test: 'ide-interactions.spec.ts > clicking bio.json loads editor', detail: '298ms' },
+  { kind: 'pass', test: 'landing.spec.ts > has no WCAG AA violations', detail: '892ms' },
+  { kind: 'pass', test: 'about.spec.ts > has no WCAG AA violations', detail: '743ms' },
+  { kind: 'info', text: '───────────────────────────────────────────────────────' },
+  { kind: 'ok',   text: '✓ 12 passed (4.2s)  ·  0 failed  ·  0 flaky' },
 ];
