@@ -64,8 +64,8 @@ A dark IDE-style portfolio site for a senior SDET / QA automation engineer. The 
   5. `robots.txt` + `sitemap.xml` are live; the candidate has walked every page and link from a clean browser.
 
 **Plans**: 6 plans
-- [ ] 03-01-PLAN.md — Install Playwright + write E2E test suite (landing, navigation, about, ide-interactions with axe-core WCAG AA scans)
-- [ ] 03-02-PLAN.md — OG meta + robots.txt + sitemap.xml (next/og ImageResponse route + static SEO files)
+- [x] 03-01-PLAN.md — Install Playwright + write E2E test suite (landing, navigation, about, ide-interactions with axe-core WCAG AA scans)
+- [x] 03-02-PLAN.md — OG meta + robots.txt + sitemap.xml (next/og ImageResponse route + static SEO files)
 - [ ] 03-03-PLAN.md — IDE sidebar shows test files under tests/ folder; SAMPLE_LOGS replaced with Playwright-format entries
 - [ ] 03-04-PLAN.md — CI playwright-tests job (chromium install + Playwright suite on push to main)
 - [ ] 03-05-PLAN.md — Run Smoke Test button triggers real GitHub Actions workflow_dispatch with terminal pane polling
@@ -81,4 +81,4 @@ Phases execute in numeric order: 1 → 2 → 3
 |-------|----------------|--------|-----------|
 | 1. Foundation + IDE Shell | 5/5 | Complete | 2026-05-19 |
 | 2. Resume & About Layer | 3/3 | Complete    | 2026-05-21 |
-| 3. Playwright Showcase + Hardening | 0/6 | Not started | - |
+| 3. Playwright Showcase + Hardening | 2/6 | In progress | - |
