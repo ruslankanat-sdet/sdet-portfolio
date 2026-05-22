@@ -13,7 +13,7 @@ A dark IDE-style portfolio site for a senior SDET / QA automation engineer. The 
 
 - [x] **Phase 1: Foundation + IDE Shell** - Scaffold + dark IDE chrome live on a public Vercel URL
 - [x] **Phase 2: Resume & About Layer** - MDX resume, nav, footer, PDF — recruiter path complete in one click (completed 2026-05-21)
-- [ ] **Phase 3: Playwright Showcase + Hardening** - Real E2E tests displayed in IDE shell; CI; a11y; OG cards; launch-ready
+- [x] **Phase 3: Playwright Showcase + Hardening** - Real E2E tests displayed in IDE shell; CI; a11y; OG cards; launch-ready (completed 2026-05-22)
 
 ## Phase Details
 
@@ -69,8 +69,8 @@ A dark IDE-style portfolio site for a senior SDET / QA automation engineer. The 
 - [x] 03-02-PLAN.md — OG meta + robots.txt + sitemap.xml (next/og ImageResponse route + static SEO files)
 - [x] 03-03-PLAN.md — IDE sidebar shows test files under tests/ folder; SAMPLE_LOGS replaced with Playwright-format entries
 - [x] 03-04-PLAN.md — CI playwright-tests job (chromium install + Playwright suite on push to main)
-- [ ] 03-05-PLAN.md — Run Smoke Test button triggers real GitHub Actions workflow_dispatch with terminal pane polling
-- [ ] 03-06-PLAN.md — A11y fix pass (axe violations + focus indicators) + launch verification walkthrough
+- [x] 03-05-PLAN.md — Run Smoke Test button triggers real GitHub Actions workflow_dispatch with terminal pane polling
+- [x] 03-06-PLAN.md — A11y fix pass (axe violations + focus indicators) + launch verification walkthrough
 
 **UI hint**: yes
 
@@ -83,4 +83,4 @@ Phases execute in numeric order: 1 → 2 → 3
 |-------|----------------|--------|-----------|
 | 1. Foundation + IDE Shell | 5/5 | Complete | 2026-05-19 |
 | 2. Resume & About Layer | 3/3 | Complete    | 2026-05-21 |
-| 3. Playwright Showcase + Hardening | 4/6 | In Progress|  |
+| 3. Playwright Showcase + Hardening | 6/6 | Complete   | 2026-05-22 |
