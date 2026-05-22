@@ -55,7 +55,7 @@ export function EditorArea({ tabs, activeFile, setActiveFile, closeTab }: Editor
   return (
     <div className={styles.editorWrap}>
       {/* Tab bar */}
-      <div className={styles.tabbar} role="tablist">
+      <div className={styles.tabbar} aria-label="Open editor tabs">
         {tabs.map(name => {
           const f = FILES[name];
           const isActive = name === activeFile;
@@ -65,21 +65,22 @@ export function EditorArea({ tabs, activeFile, setActiveFile, closeTab }: Editor
           return (
             <div
               key={name}
-              className={cn(styles.tab, { [styles.active]: isActive })}
-              onClick={() => setActiveFile(name)}
-              role="tab"
-              aria-selected={isActive}
-              tabIndex={0}
-              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setActiveFile(name); }}
+              className={cn(styles.tabWrapper, { [styles.active]: isActive })}
             >
-              <span className={styles.tabIcon}><FileIcon size={12} /></span>
-              <span className={styles.tabName}>{name}</span>
+              <button
+                className={styles.tab}
+                onClick={() => setActiveFile(name)}
+                aria-current={isActive ? 'true' : undefined}
+              >
+                <span className={styles.tabIcon} aria-hidden="true"><FileIcon size={12} /></span>
+                <span className={styles.tabName}>{name}</span>
+              </button>
               <button
                 className={styles.tabClose}
-                onClick={(e) => { e.stopPropagation(); closeTab(name); }}
+                onClick={() => closeTab(name)}
                 aria-label={`Close ${name}`}
               >
-                <X size={10} />
+                <X size={10} aria-hidden="true" />
               </button>
             </div>
           );

@@ -159,6 +159,11 @@ export function Sidebar({ activeFile, setActiveFile, openTab, sidebarOpen = true
             <div
               className={styles.treeFolder}
               onClick={() => setOpen(s => ({ ...s, about: !s.about }))}
+              role="button"
+              tabIndex={0}
+              aria-expanded={open.about}
+              aria-label="Toggle about folder"
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setOpen(s => ({ ...s, about: !s.about })); } }}
             >
               <span className={styles.treeChev}>
                 <ChevronRight
@@ -181,6 +186,11 @@ export function Sidebar({ activeFile, setActiveFile, openTab, sidebarOpen = true
             <div
               className={styles.treeFolder}
               onClick={() => setOpen(s => ({ ...s, tests: !s.tests }))}
+              role="button"
+              tabIndex={0}
+              aria-expanded={open.tests}
+              aria-label="Toggle tests folder"
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setOpen(s => ({ ...s, tests: !s.tests })); } }}
             >
               <span className={styles.treeChev}>
                 <ChevronRight

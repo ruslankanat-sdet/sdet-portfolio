@@ -33,7 +33,7 @@
 }
 
 .noTracking {
-  color: var(--text-faint);
+  color: var(--text-muted);
   font-size: 12px;
 }
 

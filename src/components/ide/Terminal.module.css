@@ -55,6 +55,12 @@
   color: var(--text-muted);
 }
 
+.termTab:focus-visible {
+  outline: 2px solid #79b8ff;
+  outline-offset: -2px;
+  border-radius: 2px;
+}
+
 .termTab.active {
   color: var(--text);
   border-bottom-color: var(--green);

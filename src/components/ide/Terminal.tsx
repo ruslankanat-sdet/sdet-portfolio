@@ -83,6 +83,10 @@ export function Terminal({ logs, running, height, setHeight, tab, setTab }: Term
             key={t}
             className={cn(styles.termTab, { [styles.active]: tab === t })}
             onClick={() => setTab(t)}
+            role="button"
+            tabIndex={0}
+            aria-pressed={tab === t}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setTab(t); } }}
           >
             {t}
             {t === 'PROBLEMS' && <span className={styles.termTabBadge}>0</span>}

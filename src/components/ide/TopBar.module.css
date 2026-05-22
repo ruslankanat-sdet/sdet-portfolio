@@ -292,6 +292,12 @@
   border-color: var(--border-strong);
 }
 
+.iconBtn:focus-visible {
+  outline: 2px solid #79b8ff;
+  outline-offset: 2px;
+  border-radius: 7px;
+}
+
 /* Sidebar toggle hamburger — hidden on wide screens, visible on narrow (SHELL-05) */
 .menuBtn {
   display: none;
@@ -336,6 +342,12 @@
 
 .runBtn:disabled {
   cursor: wait;
+}
+
+.runBtn:focus-visible {
+  outline: 2px solid #3ddc84;
+  outline-offset: 2px;
+  border-radius: 7px;
 }
 
 .runGlow {

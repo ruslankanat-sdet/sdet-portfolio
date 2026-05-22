@@ -86,10 +86,10 @@ export function IDEShell() {
       <TopBar onRun={runSmoke} running={running} theme={theme} toggleTheme={toggleTheme} onToggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
       <div className={styles.ideBody}>
         <Sidebar activeFile={activeFile} setActiveFile={setActiveFile} openTab={openTab} sidebarOpen={sidebarOpen} />
-        <main className={styles.main}>
+        <div className={styles.main} role="region" aria-label="Editor and terminal">
           <EditorArea tabs={tabs} activeFile={activeFile} setActiveFile={setActiveFile} closeTab={closeTab} />
           <Terminal logs={logs} running={running} height={termHeight} setHeight={setTermHeight} tab={termTab} setTab={setTermTab} />
-        </main>
+        </div>
       </div>
       <StatusBar activeFile={activeFile} running={running} />
     </>

@@ -10,12 +10,14 @@ test.describe('Landing page', () => {
   test('shows IDE chrome on load', async ({ page }) => {
     await page.goto('/');
     await expect(page.getByRole('main')).toBeVisible();
-    await expect(page.getByRole('button', { name: /README\.md/ })).toBeVisible();
+    // The sidebar file row uses role="button"; target the first match (sidebar row)
+    await expect(page.getByRole('button', { name: /README\.md/ }).first()).toBeVisible();
   });
 
   test('sidebar README.md row loads README content into editor', async ({ page }) => {
     await page.goto('/');
-    await page.getByRole('button', { name: /README\.md/ }).click();
+    // Click the sidebar file row specifically (first button with this name, inside the sidebar)
+    await page.locator('aside').getByRole('button', { name: /README\.md/ }).click();
     await expect(page.locator('pre code')).toContainText("Hi, I'm Ruslan");
   });
 
