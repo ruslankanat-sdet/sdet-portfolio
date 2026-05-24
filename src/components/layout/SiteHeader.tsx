@@ -7,7 +7,7 @@ export function SiteHeader() {
       <div className={styles.identity}>
         <span className={styles.name}>Ruslan Kanatbek</span>
         <span className={styles.separator} aria-hidden="true">·</span>
-        <span className={styles.title}>Senior SDET</span>
+        <span className={styles.title}>Senior SDET / QA Automation Engineer</span>
       </div>
       <nav aria-label="Main navigation">
         <NavLink />
