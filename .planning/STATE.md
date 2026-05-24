@@ -1,58 +1,50 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: MVP
-status: complete
-stopped_at: Milestone v1.0 complete — all 3 phases shipped
+milestone: v1.1
+milestone_name: Content, Quality & Accessibility Pass
+status: planning
+stopped_at: Milestone v1.1 started — defining requirements
 last_updated: "2026-05-23T00:00:00.000Z"
 last_activity: 2026-05-23
 progress:
-  total_phases: 3
-  completed_phases: 3
-  total_plans: 14
-  completed_plans: 14
-  percent: 100
+  total_phases: 0
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
+  percent: 0
 ---
 
 # Project State
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-05-23 after v1.0 milestone)
+See: .planning/PROJECT.md (updated 2026-05-23 for v1.1)
 
 **Core value:** A recruiter opens the page and immediately sees working code — real Playwright tests, real TypeScript — and thinks "I need to interview this person."
-**Current focus:** Planning next milestone (v1.1 — content polish + tech debt)
+**Current focus:** v1.1 — Content, Quality & Accessibility Pass
 
 ## Current Position
 
-Phase: v1.0 complete
-Status: Milestone shipped
-Last activity: 2026-05-23
-
-Progress: [██████████] 100% — all 3 phases complete
+Phase: Not started (defining requirements)
+Plan: —
+Status: Defining requirements
+Last activity: 2026-05-23 — Milestone v1.1 started
 
 ## Performance Metrics
 
-**Velocity:**
+**Velocity (v1.0):**
 - Total plans completed: 14
 - Timeline: 9 days (2026-05-14 → 2026-05-23)
 
-**By Phase:**
-
-| Phase | Plans | Status | Completed |
-|-------|-------|--------|-----------|
-| 1 - Foundation + IDE Shell | 5 | Complete | 2026-05-19 |
-| 2 - Resume & About Layer | 3 | Complete | 2026-05-21 |
-| 3 - Playwright Showcase + Hardening | 6 | Complete | 2026-05-22 |
-| Post-milestone quick fixes | 2 | Complete | 2026-05-23 |
+**v1.1 — not started**
 
 ## Accumulated Context
 
 ### Decisions
 
-All decisions logged in PROJECT.md Key Decisions table.
+All v1.0 decisions logged in PROJECT.md Key Decisions table.
 
-Key decisions from v1.0:
+Key decisions carried forward:
 - 2026-05-18 pivot: IDE-style portfolio with Playwright showcase (no AI APIs in v1)
 - Hand-rolled TypeScript tokenizer (client-bundled files-data.ts)
 - Two-variant Footer — introduced/fixed double-footer bug
@@ -64,9 +56,8 @@ Key decisions from v1.0:
 - Copyright year: © 2024 → © 2026
 - TopBar CI badge: hardcoded green → real state
 - IDE sidebar content drift vs. actual e2e/ files
-- LCP < 2s: verify in Vercel Speed Insights
-- 0/3 phases have VERIFICATION.md
 - TestAutomatorPane is dead code in bundle
+- 0/3 phases have VERIFICATION.md (gsd-verify-work skipped in v1.0)
 
 ### Quick Tasks Completed
 
@@ -79,10 +70,12 @@ Key decisions from v1.0:
 
 | Category | Item | Status | Deferred At |
 |----------|------|--------|-------------|
-| *(none)* | | | |
+| Brand assets | Headshot, logo, custom color palette | Deferred to v1.2+ | v1.1 milestone start |
+| Custom domain | DNS wiring | Deferred until candidate ready | v1.1 milestone start |
+| Additional GitHub repos | v2 showcase phase | Deferred to v2 | v1.1 milestone start |
 
 ## Session Continuity
 
 Last session: 2026-05-23
-Stopped at: Milestone v1.0 complete — archived to .planning/milestones/
-Resume file: None — run `/gsd-new-milestone` to start v1.1
+Stopped at: Milestone v1.1 started — requirements being defined
+Resume file: None — run `/gsd-discuss-phase 4` or `/gsd-plan-phase 4` after roadmap is created

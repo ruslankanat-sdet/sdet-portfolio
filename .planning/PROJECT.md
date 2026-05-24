@@ -12,6 +12,19 @@ The original plan was an AI-powered SDET tool suite. On 2026-05-18 this was pivo
 
 The site itself is the demo. The tools showcase the candidate.
 
+## Current Milestone: v1.1 Content, Quality & Accessibility Pass
+
+**Goal:** Clear v1.0 tech debt, make the site fully mobile-friendly, improve UX for non-technical visitors, add Vitest coverage, link the portfolio GitHub repo, and polish the content layer — ready before v1.5 AI tools.
+
+**Target features:**
+- Tech debt sweep (SiteHeader title, copyright year, live CI badge, sidebar content sync, dead code removal)
+- Mobile responsiveness — full usability on small screens
+- Non-technical UX — improve clarity for non-engineer visitors (approach decided during planning)
+- Vitest unit tests for tokenizer, file-data shape, sidebar rendering
+- GitHub repo link — portfolio repo visible from About or IDE sidebar
+- Bio / About content — updated copy from candidate (no headshot yet)
+- LCP verification — confirm < 2s in Vercel Speed Insights
+
 ## Requirements
 
 ### Validated
@@ -147,4 +160,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-05-23 after v1.0 milestone*
+*Last updated: 2026-05-23 — v1.1 milestone started*
