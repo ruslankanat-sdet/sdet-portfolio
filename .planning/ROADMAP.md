@@ -20,7 +20,7 @@ Full archive: [milestones/v1.0-ROADMAP.md](milestones/v1.0-ROADMAP.md)
 
 ### v1.1 — Content, Quality & Accessibility Pass
 
-- [ ] **Phase 4: Tech Debt Sweep** - Fix hardcoded/stale content: full title, copyright year, live CI badge, sidebar file sync
+- [x] **Phase 4: Tech Debt Sweep** - Fix hardcoded/stale content: full title, copyright year, live CI badge, sidebar file sync
 - [ ] **Phase 5: Mobile Responsiveness & UX Labels** - Full usability on small screens; IDE pane labels for non-technical visitors
 - [ ] **Phase 6: Vitest Unit Tests** - Test coverage for tokenizer logic, file-data shape, and sidebar rendering behavior
 
@@ -37,8 +37,8 @@ Full archive: [milestones/v1.0-ROADMAP.md](milestones/v1.0-ROADMAP.md)
   4. IDE sidebar file entries match the actual files present in the e2e/ directory in the repository
 **Plans**: 2 plans
 Plans:
-- [ ] 04-01-PLAN.md — Content corrections: SiteHeader full title (DEBT-01), Footer copyright verify (DEBT-02), sidebar files-data.ts resync against e2e/ (DEBT-04)
-- [ ] 04-02-PLAN.md — Live CI badge: new /api/ci-status route with ISR caching + TopBar wire-up with green fallback and red tone (DEBT-03)
+- [x] 04-01-PLAN.md — Content corrections: SiteHeader full title (DEBT-01), Footer copyright verify (DEBT-02), sidebar files-data.ts resync against e2e/ (DEBT-04)
+- [x] 04-02-PLAN.md — Live CI badge: new /api/ci-status route with ISR caching + TopBar wire-up with green fallback and red tone (DEBT-03)
 **UI hint**: yes
 
 ### Phase 5: Mobile Responsiveness & UX Labels
@@ -73,6 +73,6 @@ Plans:
 | 1. Foundation + IDE Shell | v1.0 | 5/5 | Complete | 2026-05-19 |
 | 2. Resume & About Layer | v1.0 | 3/3 | Complete | 2026-05-21 |
 | 3. Playwright Showcase + Hardening | v1.0 | 6/6 | Complete | 2026-05-22 |
-| 4. Tech Debt Sweep | v1.1 | 0/2 | Planned | - |
+| 4. Tech Debt Sweep | v1.1 | 2/2 | Complete | 2026-05-24 |
 | 5. Mobile Responsiveness & UX Labels | v1.1 | 0/? | Not started | - |
 | 6. Vitest Unit Tests | v1.1 | 0/? | Not started | - |
