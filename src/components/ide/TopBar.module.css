@@ -183,6 +183,26 @@
   color: var(--blue);
 }
 
+/* Tone: red */
+.toneRed {
+  border-color: rgba(255, 107, 107, 0.3);
+  background: linear-gradient(180deg, rgba(255, 107, 107, 0.08), rgba(255, 107, 107, 0.04));
+  box-shadow: 0 0 0 1px rgba(255, 107, 107, 0.04), 0 0 18px -8px rgba(255, 107, 107, 0.4);
+}
+
+.toneRed .badgeDot {
+  background: var(--red);
+  box-shadow: 0 0 8px var(--red), 0 0 14px rgba(255, 107, 107, 0.4);
+}
+
+.toneRed .badgeValue {
+  color: var(--red);
+}
+
+.toneRed .badgeLabel {
+  color: rgba(255, 107, 107, 0.75);
+}
+
 /* Badge responsive hiding */
 .badgeRail3 {
   /* hidden at <=1380px */

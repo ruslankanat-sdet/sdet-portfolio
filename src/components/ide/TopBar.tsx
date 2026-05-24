@@ -16,7 +16,7 @@ interface TopBarProps {
 }
 
 interface StatusBadgeProps {
-  tone: 'green' | 'blue';
+  tone: 'green' | 'blue' | 'red';
   label: string;
   value: string;
   pulse?: boolean;
@@ -48,6 +48,20 @@ export function TopBar({ onRun, running, theme, toggleTheme, onToggleSidebar, si
     const id = setInterval(tick, 30000);
     return () => clearInterval(id);
   }, []);
+
+  // Fallback: keep "Passing" / green as the loading and error state (D-02)
+  const [ciPassing, setCiPassing] = useState<boolean>(true);
+
+  useEffect(() => {
+    fetch('/api/ci-status')
+      .then((r) => r.json())
+      .then((data: { passing: boolean }) => {
+        setCiPassing(data.passing);
+      })
+      .catch(() => {
+        // silently keep the green fallback (D-02)
+      });
+  }, []); // fire once on mount, no polling (D-01)
 
   return (
     <header className={styles.topbar}>
@@ -86,7 +100,13 @@ export function TopBar({ onRun, running, theme, toggleTheme, onToggleSidebar, si
       </div>
 
       <div className={cn(styles.statusRail)} role="status">
-        <StatusBadge tone="green" label="CI" value="Passing" pulse hideClass="badgeRail1" />
+        <StatusBadge
+          tone={ciPassing ? 'green' : 'red'}
+          label="CI"
+          value={ciPassing ? 'Passing' : 'Failing'}
+          pulse={ciPassing}
+          hideClass="badgeRail1"
+        />
         <StatusBadge tone="green" label="Coverage" value="98%" hideClass="badgeRail2" />
         <StatusBadge tone="blue" label="Tests" value="312" hideClass="badgeRail3" />
       </div>
