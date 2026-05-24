@@ -2,12 +2,12 @@
 gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Content, Quality & Accessibility Pass
-status: planning
-stopped_at: Milestone v1.1 started — defining requirements
+status: roadmap_ready
+stopped_at: Roadmap created — ready to plan Phase 4
 last_updated: "2026-05-23T00:00:00.000Z"
 last_activity: 2026-05-23
 progress:
-  total_phases: 0
+  total_phases: 3
   completed_phases: 0
   total_plans: 0
   completed_plans: 0
@@ -25,10 +25,16 @@ See: .planning/PROJECT.md (updated 2026-05-23 for v1.1)
 
 ## Current Position
 
-Phase: Not started (defining requirements)
+Phase: 4 (Tech Debt Sweep) — not started
 Plan: —
-Status: Defining requirements
-Last activity: 2026-05-23 — Milestone v1.1 started
+Status: Roadmap created; ready to begin Phase 4 planning
+Last activity: 2026-05-23 — v1.1 roadmap created (Phases 4-6)
+
+```
+[Phase 4] [Phase 5] [Phase 6]
+[ ] ────── [ ] ────── [ ]
+0/3 phases complete
+```
 
 ## Performance Metrics
 
@@ -36,7 +42,7 @@ Last activity: 2026-05-23 — Milestone v1.1 started
 - Total plans completed: 14
 - Timeline: 9 days (2026-05-14 → 2026-05-23)
 
-**v1.1 — not started**
+**v1.1 — not started (0/3 phases, 0/? plans)**
 
 ## Accumulated Context
 
@@ -56,7 +62,7 @@ Key decisions carried forward:
 - Copyright year: © 2024 → © 2026
 - TopBar CI badge: hardcoded green → real state
 - IDE sidebar content drift vs. actual e2e/ files
-- TestAutomatorPane is dead code in bundle
+- TestAutomatorPane is dead code in bundle (deferred to v1.2)
 - 0/3 phases have VERIFICATION.md (gsd-verify-work skipped in v1.0)
 
 ### Quick Tasks Completed
@@ -73,9 +79,10 @@ Key decisions carried forward:
 | Brand assets | Headshot, logo, custom color palette | Deferred to v1.2+ | v1.1 milestone start |
 | Custom domain | DNS wiring | Deferred until candidate ready | v1.1 milestone start |
 | Additional GitHub repos | v2 showcase phase | Deferred to v2 | v1.1 milestone start |
+| Dead code removal | TestAutomatorPane | Deferred to v1.2 (DEBT-05) | v1.1 roadmap |
 
 ## Session Continuity
 
 Last session: 2026-05-23
-Stopped at: Milestone v1.1 started — requirements being defined
-Resume file: None — run `/gsd-discuss-phase 4` or `/gsd-plan-phase 4` after roadmap is created
+Stopped at: v1.1 roadmap created — Phases 4, 5, 6 defined
+Resume file: None — run `/gsd:plan-phase 4` to begin Phase 4 planning

@@ -61,29 +61,27 @@ Acknowledged but deferred from this milestone.
 
 ## Traceability
 
-To be populated by roadmapper.
-
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| DEBT-01 | — | Pending |
-| DEBT-02 | — | Pending |
-| DEBT-03 | — | Pending |
-| DEBT-04 | — | Pending |
-| MOB-01 | — | Pending |
-| MOB-02 | — | Pending |
-| MOB-03 | — | Pending |
-| MOB-04 | — | Pending |
-| MOB-05 | — | Pending |
-| UX-01 | — | Pending |
-| TEST-01 | — | Pending |
-| TEST-02 | — | Pending |
-| TEST-03 | — | Pending |
+| DEBT-01 | Phase 4 | Pending |
+| DEBT-02 | Phase 4 | Pending |
+| DEBT-03 | Phase 4 | Pending |
+| DEBT-04 | Phase 4 | Pending |
+| MOB-01 | Phase 5 | Pending |
+| MOB-02 | Phase 5 | Pending |
+| MOB-03 | Phase 5 | Pending |
+| MOB-04 | Phase 5 | Pending |
+| MOB-05 | Phase 5 | Pending |
+| UX-01 | Phase 5 | Pending |
+| TEST-01 | Phase 6 | Pending |
+| TEST-02 | Phase 6 | Pending |
+| TEST-03 | Phase 6 | Pending |
 
 **Coverage:**
 - v1.1 requirements: 13 total
-- Mapped to phases: 0 (roadmap not yet created)
-- Unmapped: 13 ⚠️
+- Mapped to phases: 13 (100%)
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-05-23*
-*Last updated: 2026-05-23 — initial definition for v1.1*
+*Last updated: 2026-05-23 — traceability populated by roadmapper*
