@@ -81,7 +81,7 @@ export function Footer({ variant }: FooterProps) {
           </p>
         </div>
       </div>
-      <p className={styles.copyright}>© 2024 Ruslan Kanatbek</p>
+      <p className={styles.copyright}>© 2026 Ruslan Kanatbek</p>
     </footer>
   );
 }
