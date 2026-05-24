@@ -88,6 +88,7 @@ None.
 | # | Description | Date | Commit | Directory |
 |---|-------------|------|--------|-----------|
 | 260523-q01 | Fix SHOW-03: add workflow_dispatch to ci.yml + fix /api/run-tests res.json() on 204 | 2026-05-23 | 31bffb4 | [260523-q01-fix-show-03-ci-dispatch](./quick/260523-q01-fix-show-03-ci-dispatch/) |
+| 260523-q02 | Fix CONT-05: remove double footer on /about | 2026-05-23 | 8918ef9 | [260523-q02-fix-cont-05-double-footer](./quick/260523-q02-fix-cont-05-double-footer/) |
 
 ## Deferred Items
 
