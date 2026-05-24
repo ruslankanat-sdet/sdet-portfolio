@@ -122,7 +122,7 @@ export function IDEShell() {
 
     try {
       const dispatchRes = await fetch('/api/run-tests', { method: 'POST' });
-      const dispatchData: { runId?: number; url?: string; error?: string } = await dispatchRes.json();
+      const dispatchData: { runId?: number | null; url?: string | null; error?: string } = await dispatchRes.json();
 
       if (!dispatchRes.ok || dispatchData.error) {
         if (dispatchRes.status === 503) {
@@ -141,6 +141,12 @@ export function IDEShell() {
       }
 
       const { runId, url } = dispatchData;
+
+      if (!runId) {
+        setLogs([{ kind: 'warn', text: 'Run dispatched — check GitHub Actions tab for status' }]);
+        setRunning(false);
+        return;
+      }
 
       setLogs([
         { kind: 'info', text: `Run dispatched - GitHub Actions run ${runId} queued` },
