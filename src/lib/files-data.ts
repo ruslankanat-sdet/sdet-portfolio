@@ -161,12 +161,14 @@ test.describe('Landing page', () => {
   test('shows IDE chrome on load', async ({ page }) => {
     await page.goto('/');
     await expect(page.getByRole('main')).toBeVisible();
-    await expect(page.getByRole('button', { name: /README\\.md/ })).toBeVisible();
+    // The sidebar file row uses role="button"; target the first match (sidebar row)
+    await expect(page.getByRole('button', { name: /README\\.md/ }).first()).toBeVisible();
   });
 
   test('sidebar README.md row loads README content into editor', async ({ page }) => {
     await page.goto('/');
-    await page.getByRole('button', { name: /README\\.md/ }).click();
+    // Click the sidebar file row specifically (first button with this name, inside the sidebar)
+    await page.locator('aside').getByRole('button', { name: /README\\.md/ }).click();
     await expect(page.locator('pre code')).toContainText("Hi, I'm Ruslan");
   });
 
@@ -271,6 +273,8 @@ test.describe('IDE interactions', () => {
 
   test('test files appear in sidebar under tests/ folder', async ({ page }) => {
     // Covers SHOW-02: sidebar displays Playwright spec files under tests/ folder
+    // This test will FAIL until plan 03 ships the tests/ folder entries in files-data.ts —
+    // that failure is the correct gating signal proving plan 03 has not yet landed.
     await page.goto('/');
     await expect(page.getByText('tests', { exact: true }).first()).toBeVisible();
     await page.getByText('tests', { exact: true }).first().click();
@@ -279,6 +283,8 @@ test.describe('IDE interactions', () => {
 
   test('clicking landing.spec.ts loads its TypeScript source in editor', async ({ page }) => {
     // Covers SHOW-02: editor renders the spec file content with TypeScript source.
+    // This test will FAIL until plan 03 ships the tests/ folder entries in files-data.ts —
+    // that failure is the correct gating signal proving plan 03 has not yet landed.
     await page.goto('/');
     await page.getByText('tests', { exact: true }).first().click();
     await page.getByRole('button', { name: /landing\\.spec\\.ts/ }).click();
