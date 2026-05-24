@@ -1,87 +1,72 @@
 ---
 gsd_state_version: 1.0
 milestone: v1.0
-milestone_name: milestone
-status: executing
-stopped_at: Starting Phase 3 — Playwright Showcase + Hardening
-last_updated: "2026-05-21T08:00:00.000Z"
-last_activity: 2026-05-21
+milestone_name: MVP
+status: complete
+stopped_at: Milestone v1.0 complete — all 3 phases shipped
+last_updated: "2026-05-23T00:00:00.000Z"
+last_activity: 2026-05-23
 progress:
   total_phases: 3
-  completed_phases: 1
-  total_plans: 9
-  completed_plans: 8
-  percent: 33
+  completed_phases: 3
+  total_plans: 14
+  completed_plans: 14
+  percent: 100
 ---
 
 # Project State
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-05-14)
+See: .planning/PROJECT.md (updated 2026-05-23 after v1.0 milestone)
 
 **Core value:** A recruiter opens the page and immediately sees working code — real Playwright tests, real TypeScript — and thinks "I need to interview this person."
-**Current focus:** Phase 1 — Foundation + IDE Shell
+**Current focus:** Planning next milestone (v1.1 — content polish + tech debt)
 
 ## Current Position
 
-Phase: 3 of 3 (playwright showcase + hardening)
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-05-21
+Phase: v1.0 complete
+Status: Milestone shipped
+Last activity: 2026-05-23
 
-Progress: [████████░░] 33% (Phase 1 complete = 1/3 phases)
+Progress: [██████████] 100% — all 3 phases complete
 
 ## Performance Metrics
 
 **Velocity:**
-
-- Total plans completed: 8 (01-01, 01-02, 01-03, 01-04, 01-05)
-- Average duration: ~19 min
-- Total execution time: ~95 min
+- Total plans completed: 14
+- Timeline: 9 days (2026-05-14 → 2026-05-23)
 
 **By Phase:**
 
-| Phase | Plans | Total | Avg/Plan |
-|-------|-------|-------|----------|
-| 1 - Foundation + IDE Shell | 5 | ~95 min | ~19 min |
-| 2 | 3 | - | - |
-
-**Recent Trend:**
-
-- Last 5 plans: 01-01 (scaffold), 01-02 (CI), 01-04 (tokenizer + content), 01-03 (IDE chrome), 01-05 (responsive sidebar)
-- Trend: steady
-
-*Updated after each plan completion*
+| Phase | Plans | Status | Completed |
+|-------|-------|--------|-----------|
+| 1 - Foundation + IDE Shell | 5 | Complete | 2026-05-19 |
+| 2 - Resume & About Layer | 3 | Complete | 2026-05-21 |
+| 3 - Playwright Showcase + Hardening | 6 | Complete | 2026-05-22 |
+| Post-milestone quick fixes | 2 | Complete | 2026-05-23 |
 
 ## Accumulated Context
 
 ### Decisions
 
-Decisions are logged in PROJECT.md Key Decisions table.
-Recent decisions affecting current work:
+All decisions logged in PROJECT.md Key Decisions table.
 
-- Project: Pivot to IDE-style portfolio with Playwright showcase (2026-05-18) — confirmed
-- Project: No AI tools in v1 — no API keys, no LLM, no Upstash Redis
-- Project: v1 = Foundation + IDE Shell → Resume/About → Playwright Showcase + Hardening (3 phases)
-- Project: Site is stateless and fully static-hostable on Vercel Hobby tier
-- 01-04: TypeScript tokenizer added (not in design handoff) — required for Phase 3 Playwright .ts files
-- 01-04: No TOOLS export in files-data.ts — v1 has no AI tools
-- 01-04: FileEntryLang includes 'typescript' for Phase 3 compatibility
-- 01-01: skills.toml converted to skills.yaml — toml not in FileEntryLang type set
-- 01-03: No AIChat component built — v1 has no AI tools, task instructions exclude it
-- 01-03: No TOOLS folder in Sidebar — files-data.ts has no TOOLS export in v1
-- 01-03: TestAutomatorPane is a stub — deferred (no AI tools in v1)
-- 01-05: sidebarOpen viewport-aware init — sidebar starts closed on mobile (≤768px), open on desktop
+Key decisions from v1.0:
+- 2026-05-18 pivot: IDE-style portfolio with Playwright showcase (no AI APIs in v1)
+- Hand-rolled TypeScript tokenizer (client-bundled files-data.ts)
+- Two-variant Footer — introduced/fixed double-footer bug
+- workflow_dispatch + GET /runs for Run Smoke Test (204 No Content has no body)
 
-### Pending Todos
+### Known Tech Debt Entering v1.1
 
-- Phase 2: Resume & About Layer — MDX resume, nav, footer, PDF download
-- CONT-01 through CONT-05 requirements need plans
-
-### Blockers/Concerns
-
-None.
+- SiteHeader title: "Senior SDET" → "Senior SDET / QA Automation Engineer"
+- Copyright year: © 2024 → © 2026
+- TopBar CI badge: hardcoded green → real state
+- IDE sidebar content drift vs. actual e2e/ files
+- LCP < 2s: verify in Vercel Speed Insights
+- 0/3 phases have VERIFICATION.md
+- TestAutomatorPane is dead code in bundle
 
 ### Quick Tasks Completed
 
@@ -92,14 +77,12 @@ None.
 
 ## Deferred Items
 
-Items acknowledged and carried forward from previous milestone close:
-
 | Category | Item | Status | Deferred At |
 |----------|------|--------|-------------|
 | *(none)* | | | |
 
 ## Session Continuity
 
-Last session: 2026-05-19
-Stopped at: Completed 01-05-PLAN.md — SHELL-05 responsive sidebar. Phase 1 complete.
-Resume file: None — begin Phase 2 planning
+Last session: 2026-05-23
+Stopped at: Milestone v1.0 complete — archived to .planning/milestones/
+Resume file: None — run `/gsd-new-milestone` to start v1.1
