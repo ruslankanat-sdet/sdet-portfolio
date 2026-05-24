@@ -83,6 +83,12 @@ Recent decisions affecting current work:
 
 None.
 
+### Quick Tasks Completed
+
+| # | Description | Date | Commit | Directory |
+|---|-------------|------|--------|-----------|
+| 260523-q01 | Fix SHOW-03: add workflow_dispatch to ci.yml + fix /api/run-tests res.json() on 204 | 2026-05-23 | 31bffb4 | [260523-q01-fix-show-03-ci-dispatch](./quick/260523-q01-fix-show-03-ci-dispatch/) |
+
 ## Deferred Items
 
 Items acknowledged and carried forward from previous milestone close:
