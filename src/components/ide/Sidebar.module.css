@@ -39,6 +39,11 @@
     opacity: 0;
     pointer-events: none;
   }
+
+  .treeRow,
+  .treeFolder {
+    min-height: 44px;
+  }
 }
 
 /* Activity Bar */
