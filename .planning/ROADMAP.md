@@ -64,7 +64,7 @@ Plans:
 Plans:
 
 - [x] 05-01-PLAN.md — Pure CSS mobile fixes: minimap hide, terminal log wrap + resizer hide + max-height, sidebar touch targets, TopBar button touch targets + ≤480px hides, SiteHeader title ellipsis + nav touch target, About page table scroll + narrow padding (MOB-02, MOB-03, MOB-04, MOB-05)
-- [ ] 05-02-PLAN.md — UX-01 pane labels (EXPLORER · File browser, Editor · Code viewer, TERMINAL · Test output) + Sidebar onSelect prop infrastructure (UX-01, MOB-01 partial)
+- [x] 05-02-PLAN.md — UX-01 pane labels (EXPLORER · File browser, Editor · Code viewer, TERMINAL · Test output) + Sidebar onSelect prop infrastructure (UX-01, MOB-01 partial)
 - [ ] 05-03-PLAN.md — IDEShell mobile state: isMobile snapshot, mobile-aware termHeight (120px), conditional onSelect={toggleSidebar}, backdrop overlay with rgba(0,0,0,0.5) + z-index 49 (MOB-01)
 
 **UI hint**: yes
@@ -91,5 +91,5 @@ Plans:
 | 2. Resume & About Layer | v1.0 | 3/3 | Complete | 2026-05-21 |
 | 3. Playwright Showcase + Hardening | v1.0 | 6/6 | Complete | 2026-05-22 |
 | 4. Tech Debt Sweep | v1.1 | 2/2 | Complete | 2026-05-24 |
-| 5. Mobile Responsiveness & UX Labels | v1.1 | 1/3 | In Progress|  |
+| 5. Mobile Responsiveness & UX Labels | v1.1 | 2/3 | In Progress|  |
 | 6. Vitest Unit Tests | v1.1 | 0/? | Not started | - |
