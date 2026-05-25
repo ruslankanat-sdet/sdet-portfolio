@@ -97,3 +97,9 @@
   background: var(--syn-str);
   opacity: 0.35;
 }
+
+@media (max-width: 768px) {
+  .minimap {
+    display: none;
+  }
+}

@@ -220,3 +220,16 @@
     visibility: hidden;
   }
 }
+
+@media (max-width: 768px) {
+  .log {
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .termResizer {
+    display: none;
+  }
+  .terminal {
+    max-height: 180px;
+  }
+}

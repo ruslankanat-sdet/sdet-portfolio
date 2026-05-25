@@ -134,3 +134,18 @@
   outline-offset: 2px;
   border-radius: 2px;
 }
+
+@media (max-width: 768px) {
+  .pageWrapper table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 480px) {
+  .pageWrapper {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
