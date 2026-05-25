@@ -21,7 +21,7 @@ Full archive: [milestones/v1.0-ROADMAP.md](milestones/v1.0-ROADMAP.md)
 ### v1.1 — Content, Quality & Accessibility Pass
 
 - [x] **Phase 4: Tech Debt Sweep** - Fix hardcoded/stale content: full title, copyright year, live CI badge, sidebar file sync
-- [ ] **Phase 5: Mobile Responsiveness & UX Labels** - Full usability on small screens; IDE pane labels for non-technical visitors
+- [x] **Phase 5: Mobile Responsiveness & UX Labels** - Full usability on small screens; IDE pane labels for non-technical visitors (completed 2026-05-25)
 - [ ] **Phase 6: Vitest Unit Tests** - Test coverage for tokenizer logic, file-data shape, and sidebar rendering behavior
 
 ## Phase Details
@@ -65,7 +65,7 @@ Plans:
 
 - [x] 05-01-PLAN.md — Pure CSS mobile fixes: minimap hide, terminal log wrap + resizer hide + max-height, sidebar touch targets, TopBar button touch targets + ≤480px hides, SiteHeader title ellipsis + nav touch target, About page table scroll + narrow padding (MOB-02, MOB-03, MOB-04, MOB-05)
 - [x] 05-02-PLAN.md — UX-01 pane labels (EXPLORER · File browser, Editor · Code viewer, TERMINAL · Test output) + Sidebar onSelect prop infrastructure (UX-01, MOB-01 partial)
-- [ ] 05-03-PLAN.md — IDEShell mobile state: isMobile snapshot, mobile-aware termHeight (120px), conditional onSelect={toggleSidebar}, backdrop overlay with rgba(0,0,0,0.5) + z-index 49 (MOB-01)
+- [x] 05-03-PLAN.md — IDEShell mobile state: isMobile snapshot, mobile-aware termHeight (120px), conditional onSelect={toggleSidebar}, backdrop overlay with rgba(0,0,0,0.5) + z-index 49 (MOB-01)
 
 **UI hint**: yes
 
@@ -91,5 +91,5 @@ Plans:
 | 2. Resume & About Layer | v1.0 | 3/3 | Complete | 2026-05-21 |
 | 3. Playwright Showcase + Hardening | v1.0 | 6/6 | Complete | 2026-05-22 |
 | 4. Tech Debt Sweep | v1.1 | 2/2 | Complete | 2026-05-24 |
-| 5. Mobile Responsiveness & UX Labels | v1.1 | 2/3 | In Progress|  |
+| 5. Mobile Responsiveness & UX Labels | v1.1 | 3/3 | Complete   | 2026-05-25 |
 | 6. Vitest Unit Tests | v1.1 | 0/? | Not started | - |
