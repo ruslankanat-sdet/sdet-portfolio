@@ -3,7 +3,7 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Content, Quality & Accessibility Pass
 status: planned
-stopped_at: Phase 5 context gathered — ready for plan-phase
+stopped_at: Phase 5 UI-SPEC approved — ready for plan-phase
 last_updated: "2026-05-24T00:00:00.000Z"
 last_activity: 2026-05-24
 progress:
@@ -25,10 +25,10 @@ See: .planning/PROJECT.md (updated 2026-05-23 for v1.1)
 
 ## Current Position
 
-Phase: 4 (Tech Debt Sweep) — planned, ready to execute
-Plan: 2 plans (04-01: content corrections; 04-02: live CI badge)
-Status: Ready to execute
-Last activity: 2026-05-24 — Phase 4 planned (2 plans, 1 wave)
+Phase: 5 (Mobile Responsiveness & UX Labels) — UI-SPEC approved, ready for plan-phase
+Plan: TBD
+Status: UI-SPEC complete — awaiting plan-phase
+Last activity: 2026-05-24 — Phase 5 UI-SPEC generated and approved (6/6 dimensions)
 
 ```
 [Phase 4] [Phase 5] [Phase 6]
@@ -84,5 +84,5 @@ Key decisions carried forward:
 ## Session Continuity
 
 Last session: 2026-05-24
-Stopped at: Phase 4 planned — execute when ready
-Resume file: .planning/phases/04-tech-debt-sweep/04-01-PLAN.md
+Stopped at: Phase 5 UI-SPEC approved — run /gsd:plan-phase 5
+Resume file: .planning/phases/05-mobile-responsiveness-ux-labels/05-UI-SPEC.md
