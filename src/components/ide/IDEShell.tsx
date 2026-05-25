@@ -77,7 +77,10 @@ function buildLogEntries(data: GitHubJobsPayload): LogEntry[] {
 export function IDEShell() {
   const [activeFile, setActiveFile] = useState<string>("README.md");
   const [tabs, setTabs] = useState<string[]>(["README.md"]);
-  const [termHeight, setTermHeight] = useState<number>(220);
+  const [termHeight, setTermHeight] = useState<number>(() => {
+    if (typeof window === 'undefined') return 220;
+    return window.innerWidth <= 768 ? 120 : 220;
+  });
   const [termTab, setTermTab] = useState<TerminalTab>("TERMINAL");
   const [running, setRunning] = useState<boolean>(false);
   const [logs, setLogs] = useState<LogEntry[]>(SAMPLE_LOGS.slice(0, 8));
@@ -87,6 +90,11 @@ export function IDEShell() {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(() => {
     if (typeof window === 'undefined') return true;
     return window.innerWidth > 768;
+  });
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [isMobile, setIsMobile] = useState<boolean>(() => {
+    if (typeof window === 'undefined') return false;
+    return window.innerWidth <= 768;
   });
   const [theme, setTheme] = useState<Theme>(() => {
     try { return (localStorage.getItem("portfolio-theme") as Theme) || "dark"; }
@@ -202,7 +210,20 @@ export function IDEShell() {
     <>
       <TopBar onRun={runSmoke} running={running} theme={theme} toggleTheme={toggleTheme} onToggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
       <div className={styles.ideBody}>
-        <Sidebar activeFile={activeFile} setActiveFile={setActiveFile} openTab={openTab} sidebarOpen={sidebarOpen} />
+        <Sidebar
+          activeFile={activeFile}
+          setActiveFile={setActiveFile}
+          openTab={openTab}
+          sidebarOpen={sidebarOpen}
+          onSelect={isMobile ? toggleSidebar : undefined}
+        />
+        {sidebarOpen && isMobile && (
+          <div
+            className={styles.backdrop}
+            onClick={toggleSidebar}
+            aria-hidden="true"
+          />
+        )}
         <div className={styles.main} role="region" aria-label="Editor and terminal">
           <EditorArea tabs={tabs} activeFile={activeFile} setActiveFile={setActiveFile} closeTab={closeTab} />
           <Terminal logs={logs} running={running} height={termHeight} setHeight={setTermHeight} tab={termTab} setTab={setTermTab} />
