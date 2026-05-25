@@ -9,7 +9,7 @@ export function SiteHeader() {
         <span className={styles.separator} aria-hidden="true">·</span>
         <span className={styles.title}>Senior SDET / QA Automation Engineer</span>
       </div>
-      <nav aria-label="Main navigation">
+      <nav className={styles.mainNav} aria-label="Main navigation">
         <NavLink />
       </nav>
     </header>
