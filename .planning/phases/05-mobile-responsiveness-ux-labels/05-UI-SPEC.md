@@ -70,11 +70,12 @@ Exceptions: 44px minimum touch target height (WCAG AA); 120px terminal height on
 |------|------|--------|-------------|------|-------|
 | Body (code) | 13px | 400 | 1.65 | `var(--mono)` | Code area, existing — do not change |
 | Body (prose) | 15px | 400 | 1.7 | `var(--ui)` | About page prose, existing |
-| Label (pane header) | 10.5px | 600 | 1 | `var(--ui)` | Existing explorer header, terminal tab strip |
-| Pane subtitle (new) | 11px | 400 | 1 | `var(--ui)` | New `.paneSubtitle` inline suffix — D-11 |
-| UI micro | 10–10.5px | 400 | 1 | `var(--mono)` | explorerMeta, termMeta, badge labels — existing |
+| Label / subtitle (pane) | 10.5px | 600 (header) / 400 (subtitle) | 1 | `var(--ui)` | Existing pane header labels (EXPLORER, TERMINAL) at weight 600 + color `var(--text-muted)`; new `.paneSubtitle` inline suffix (D-11) at weight 400 + color `var(--text-faint)` |
+| UI micro | 10.5px | 400 | 1 | `var(--mono)` | explorerMeta, termMeta, badge labels — existing |
 
-**Pane subtitle specifics (D-11):** `font-size: 11px`, `font-weight: 400`, `color: var(--text-faint)`, same visual register as `.explorerMeta`. Do not use `var(--mono)` for the subtitle — use `var(--ui)` to signal human-facing copy vs. code metadata.
+**Four distinct sizes in use: 10.5px, 13px, 15px.** The label/subtitle tier and the UI micro tier share 10.5px and are differentiated by font-family (`var(--ui)` vs `var(--mono)`), weight (600/400), and color token (`var(--text-muted)` vs `var(--text-faint)`). A separate size step at 10px or 11px is not needed and is not declared.
+
+**Pane subtitle specifics (D-11):** `font-size: 10.5px`, `font-weight: 400`, `color: var(--text-faint)`, `font-family: var(--ui)`. Do not use `var(--mono)` for the subtitle — `var(--ui)` signals human-facing copy vs. code metadata.
 
 ---
 
@@ -121,7 +122,7 @@ The backdrop must sit between the sidebar (50) and the main content. This makes 
 - Element: `<div>` rendered inside `.ideBody`, between `<Sidebar>` and `<div className={styles.main}>`
 - Visibility: only when `sidebarOpen === true && isMobile === true`
 - CSS: `position: fixed; inset: 0; z-index: 49; background: rgba(0, 0, 0, 0.5);`
-- Use `position: fixed` (not `absolute`) so the backdrop covers the entire viewport including SiteHeader area if needed; alternatively `position: absolute` scoped to `.ideBody` with `position: relative` already present on that element at `@media (max-width: 768px)` — use absolute for parity with existing SHELL-05 scaffolding.
+- Use `position: fixed` so the backdrop covers the entire viewport regardless of scroll position and stacking context of `.ideBody`.
 - Animation: `opacity` transition 0.2s ease to match sidebar slide transition.
 - Click/tap: calls `toggleSidebar()` to close sidebar.
 - Pointer events: only active when rendered (conditional render, not CSS visibility).
@@ -211,12 +212,12 @@ This wraps any table inside the prose container with horizontal scroll rather th
 **New CSS class (D-11):**
 ```css
 .paneSubtitle {
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 400;
   color: var(--text-faint);
   letter-spacing: 0.02em;
   font-family: var(--ui);
-  margin-left: 6px;  /* gap after the primary header label */
+  margin-left: 4px;  /* xs token — gap after the separator character */
 }
 ```
 Add to each relevant module CSS file, or create a shared utility class if the project's CSS Modules setup allows. Preferred: add directly to each module file to keep colocation.
@@ -310,7 +311,7 @@ No external component registries are used in this phase. All changes are pure CS
 | File | Change Type | What Changes |
 |------|-------------|--------------|
 | `src/components/ide/IDEShell.tsx` | Logic + JSX | `termHeight` initializer (120 mobile); `isMobile` state; backdrop div; `onSelect` conditional prop to Sidebar |
-| `src/components/ide/IDEShell.module.css` | CSS | `.backdrop` class (fixed/absolute, z-49, rgba black, opacity transition) |
+| `src/components/ide/IDEShell.module.css` | CSS | `.backdrop` class (`position: fixed; inset: 0; z-index: 49; background: rgba(0,0,0,0.5); opacity transition 0.2s ease`) |
 | `src/components/ide/Sidebar.tsx` | Props + JSX | `onSelect?: () => void` prop; call in `fileRow`; pane subtitle JSX in `.explorerHeader` |
 | `src/components/ide/Sidebar.module.css` | CSS | `min-height: 44px` for `.treeRow`, `.treeFolder` at ≤768px; `.paneSubtitle` class |
 | `src/components/ide/Terminal.tsx` | JSX | Terminal pane subtitle in TERMINAL tab when active |
