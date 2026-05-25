@@ -96,6 +96,8 @@ export function EditorArea({ tabs, activeFile, setActiveFile, closeTab }: Editor
             {i < arr.length - 1 && <span className={styles.crumbSep}> › </span>}
           </span>
         ))}
+        <span aria-hidden="true" className={styles.crumbSubtitleSep}> · </span>
+        <span className={styles.paneSubtitle}>Code viewer</span>
       </div>
 
       {/* Content area */}

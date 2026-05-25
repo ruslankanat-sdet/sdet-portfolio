@@ -89,6 +89,12 @@ export function Terminal({ logs, running, height, setHeight, tab, setTab }: Term
             onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setTab(t); } }}
           >
             {t}
+            {t === 'TERMINAL' && (
+              <>
+                <span aria-hidden="true"> · </span>
+                <span className={styles.paneSubtitle}>Test output</span>
+              </>
+            )}
             {t === 'PROBLEMS' && <span className={styles.termTabBadge}>0</span>}
             {t === 'DEBUG CONSOLE' && running && <span className={styles.termTabDot} />}
           </div>

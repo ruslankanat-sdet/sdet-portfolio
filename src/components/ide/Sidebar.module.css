@@ -16,6 +16,15 @@
   border-right: none;
 }
 
+.paneSubtitle {
+  font-size: 10.5px;
+  font-weight: 400;
+  color: var(--text-faint);
+  letter-spacing: 0.02em;
+  font-family: var(--ui);
+  margin-left: 4px;
+}
+
 /* On narrow viewports (≤768px): sidebar becomes a slide-in overlay (SHELL-05) */
 @media (max-width: 768px) {
   .sidebar {
