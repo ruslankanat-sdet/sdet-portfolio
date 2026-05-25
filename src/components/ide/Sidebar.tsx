@@ -24,6 +24,7 @@ interface SidebarProps {
   setActiveFile: (name: string) => void;
   openTab: (name: string) => void;
   sidebarOpen?: boolean;
+  onSelect?: () => void;
 }
 
 const ICONS_FOR_FILE: Record<string, React.ComponentType<{ size?: number; style?: React.CSSProperties }>> = {
@@ -60,7 +61,7 @@ const OUTLINE_SYMBOLS: Record<string, Array<{ label: string; kind: 'key' | 'str'
   'tests/playwright.config.ts':     [{ label: 'testDir', kind: 'key' }, { label: 'projects', kind: 'key' }, { label: 'webServer', kind: 'key' }],
 };
 
-export function Sidebar({ activeFile, setActiveFile, openTab, sidebarOpen = true }: SidebarProps) {
+export function Sidebar({ activeFile, setActiveFile, openTab, sidebarOpen = true, onSelect }: SidebarProps) {
   const [open, setOpen] = useState({ about: false, tests: false });
   const [activePanel] = useState<'explorer'>('explorer');
 
@@ -73,10 +74,10 @@ export function Sidebar({ activeFile, setActiveFile, openTab, sidebarOpen = true
       <div
         key={name}
         className={cn(styles.treeRow, { [styles.active]: isActive })}
-        onClick={() => { setActiveFile(name); openTab(name); }}
+        onClick={() => { setActiveFile(name); openTab(name); onSelect?.(); }}
         role="button"
         tabIndex={0}
-        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { setActiveFile(name); openTab(name); } }}
+        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { setActiveFile(name); openTab(name); onSelect?.(); } }}
       >
         <span className={styles.treeIndent} />
         <FileIcon size={14} />
@@ -149,7 +150,11 @@ export function Sidebar({ activeFile, setActiveFile, openTab, sidebarOpen = true
       {/* Explorer Panel */}
       <div className={styles.explorer}>
         <div className={styles.explorerHeader}>
-          <span>EXPLORER</span>
+          <span>
+            EXPLORER
+            <span aria-hidden="true"> · </span>
+            <span className={styles.paneSubtitle}>File browser</span>
+          </span>
           <span className={styles.explorerMeta}>ruslankanat/portfolio</span>
         </div>
 
