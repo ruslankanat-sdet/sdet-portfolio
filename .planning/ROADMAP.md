@@ -52,7 +52,11 @@ Plans:
   4. Header nav links (landing and about) are reachable and tappable on mobile without overlap or clipping
   5. The About/resume page is fully readable and scrollable on a phone; all sections, contact info, and the PDF download link are accessible
   6. Each IDE pane (sidebar, editor, terminal) has a visible label or indicator that explains its purpose in plain language, so a non-technical visitor understands the layout without guessing
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 05-01-PLAN.md — Pure CSS mobile fixes: minimap hide, terminal log wrap + resizer hide + max-height, sidebar touch targets, TopBar button touch targets + ≤480px hides, SiteHeader title ellipsis + nav touch target, About page table scroll + narrow padding (MOB-02, MOB-03, MOB-04, MOB-05)
+- [ ] 05-02-PLAN.md — UX-01 pane labels (EXPLORER · File browser, Editor · Code viewer, TERMINAL · Test output) + Sidebar onSelect prop infrastructure (UX-01, MOB-01 partial)
+- [ ] 05-03-PLAN.md — IDEShell mobile state: isMobile snapshot, mobile-aware termHeight (120px), conditional onSelect={toggleSidebar}, backdrop overlay with rgba(0,0,0,0.5) + z-index 49 (MOB-01)
 **UI hint**: yes
 
 ### Phase 6: Vitest Unit Tests
