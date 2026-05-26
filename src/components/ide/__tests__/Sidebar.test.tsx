@@ -80,6 +80,7 @@ describe('Sidebar — interactions', () => {
   it('does not throw when onSelect is not provided', async () => {
     const user = userEvent.setup();
     render(<Sidebar {...defaultProps} />);
-    await expect(user.click(screen.getByRole('button', { name: /README\.md/ }))).resolves.not.toThrow();
+    // If the click throws or rejects, Vitest will fail the test automatically.
+    await user.click(screen.getByRole('button', { name: /README\.md/ }));
   });
 });
