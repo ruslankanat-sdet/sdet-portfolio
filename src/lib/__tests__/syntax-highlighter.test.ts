@@ -1,3 +1,4 @@
+/// <reference types="vitest/globals" />
 import { isValidElement, ReactNode } from 'react';
 import { tokenize } from '../syntax-highlighter';
 
@@ -107,5 +108,27 @@ describe('tokenize — TypeScript', () => {
 
     const puncts = findTokens(tokens, 'punct');
     expect(puncts.length).toBeGreaterThanOrEqual(1);
+  });
+});
+
+describe('tokenize — dispatcher', () => {
+  it('returns the source as a plain string for unknown languages', () => {
+    const result = tokenize('hello world', 'plaintext');
+    expect(result).toHaveLength(1);
+    expect(isValidElement(result[0])).toBe(false);
+    expect(result[0]).toBe('hello world');
+  });
+
+  it('routes json lang to the JSON tokenizer (produces tk-key tokens)', () => {
+    const result = tokenize('{"key": "value"}', 'json');
+    const keys = findTokens(result, 'key');
+    expect(keys.length).toBeGreaterThanOrEqual(1);
+  });
+
+  it('routes python lang to the Python tokenizer (produces tk-kw token for def)', () => {
+    const result = tokenize('def foo():', 'python');
+    const kws = findTokens(result, 'kw');
+    const kwTexts = kws.map(tokenText);
+    expect(kwTexts).toContain('def');
   });
 });
