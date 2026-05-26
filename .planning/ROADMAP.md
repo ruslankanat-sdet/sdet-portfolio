@@ -22,7 +22,7 @@ Full archive: [milestones/v1.0-ROADMAP.md](milestones/v1.0-ROADMAP.md)
 
 - [x] **Phase 4: Tech Debt Sweep** - Fix hardcoded/stale content: full title, copyright year, live CI badge, sidebar file sync
 - [x] **Phase 5: Mobile Responsiveness & UX Labels** - Full usability on small screens; IDE pane labels for non-technical visitors (completed 2026-05-25)
-- [ ] **Phase 6: Vitest Unit Tests** - Test coverage for tokenizer logic, file-data shape, and sidebar rendering behavior
+- [x] **Phase 6: Vitest Unit Tests** - Test coverage for tokenizer logic, file-data shape, and sidebar rendering behavior (completed 2026-05-26)
 
 ## Phase Details
 
@@ -87,9 +87,9 @@ Plans:
 Wave 1:
 - [x] 06-01-PLAN.md — Vitest infrastructure: install deps, vitest.config.ts, jsdom + React setup, `pnpm test` script, CI step (completed 2026-05-26)
 
-Wave 2 *(blocked on Wave 1 completion)*:
-- [ ] 06-02-PLAN.md — Tokenizer tests: keyword, comment, string, number, decorator, type, fn-call token assertions for TypeScript (TEST-01)
-- [ ] 06-03-PLAN.md — File-data shape tests (TEST-02) + Sidebar rendering + click-callback interaction tests (TEST-03)
+Wave 2 *(completed 2026-05-26)*:
+- [x] 06-02-PLAN.md — Tokenizer tests: keyword, comment, string, number, decorator, type, fn-call token assertions for TypeScript (TEST-01)
+- [x] 06-03-PLAN.md — File-data shape tests (TEST-02) + Sidebar rendering + click-callback interaction tests (TEST-03)
 
 ## Progress
 
@@ -100,4 +100,4 @@ Wave 2 *(blocked on Wave 1 completion)*:
 | 3. Playwright Showcase + Hardening | v1.0 | 6/6 | Complete | 2026-05-22 |
 | 4. Tech Debt Sweep | v1.1 | 2/2 | Complete | 2026-05-24 |
 | 5. Mobile Responsiveness & UX Labels | v1.1 | 3/3 | Complete   | 2026-05-25 |
-| 6. Vitest Unit Tests | v1.1 | 1/3 | In Progress | - |
+| 6. Vitest Unit Tests | v1.1 | 3/3 | Complete | 2026-05-26 |
