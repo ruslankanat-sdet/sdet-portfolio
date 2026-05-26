@@ -85,7 +85,7 @@ Plans:
 **Plans**: 3 plans
 
 Wave 1:
-- [ ] 06-01-PLAN.md — Vitest infrastructure: install deps, vitest.config.ts, jsdom + React setup, `pnpm test` script, CI step
+- [x] 06-01-PLAN.md — Vitest infrastructure: install deps, vitest.config.ts, jsdom + React setup, `pnpm test` script, CI step (completed 2026-05-26)
 
 Wave 2 *(blocked on Wave 1 completion)*:
 - [ ] 06-02-PLAN.md — Tokenizer tests: keyword, comment, string, number, decorator, type, fn-call token assertions for TypeScript (TEST-01)
@@ -100,4 +100,4 @@ Wave 2 *(blocked on Wave 1 completion)*:
 | 3. Playwright Showcase + Hardening | v1.0 | 6/6 | Complete | 2026-05-22 |
 | 4. Tech Debt Sweep | v1.1 | 2/2 | Complete | 2026-05-24 |
 | 5. Mobile Responsiveness & UX Labels | v1.1 | 3/3 | Complete   | 2026-05-25 |
-| 6. Vitest Unit Tests | v1.1 | 0/? | Not started | - |
+| 6. Vitest Unit Tests | v1.1 | 1/3 | In Progress | - |
