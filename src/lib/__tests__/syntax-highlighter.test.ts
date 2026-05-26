@@ -132,3 +132,29 @@ describe('tokenize — dispatcher', () => {
     expect(kwTexts).toContain('def');
   });
 });
+
+describe('tokenize — markdown', () => {
+  it('classifies a heading line as tk-md-h', () => {
+    const tokens = tokenize('# Hello World', 'markdown');
+    const headings = findTokens(tokens, 'md-h');
+    expect(headings).toHaveLength(1);
+    expect(tokenText(headings[0])).toBe('# Hello World');
+  });
+});
+
+describe('tokenize — yaml', () => {
+  it('classifies a key-value pair key as tk-key', () => {
+    const tokens = tokenize('name: Ruslan', 'yaml');
+    const keys = findTokens(tokens, 'key');
+    expect(keys.length).toBeGreaterThanOrEqual(1);
+    expect(tokenText(keys[0])).toBe('name');
+  });
+});
+
+describe('tokenize — toml', () => {
+  it('classifies a section header as tk-type', () => {
+    const tokens = tokenize('[package]', 'toml');
+    const types = findTokens(tokens, 'type');
+    expect(types).toHaveLength(1);
+  });
+});
