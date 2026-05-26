@@ -157,9 +157,11 @@ body {
 }
 
 .site-main {
+  display: flex;
+  flex-direction: column;
   flex: 1;
   min-height: 0; /* critical: allows flex child to shrink below content size */
-  overflow: hidden; /* IDE landing: scroll is managed inside IDEShell; /about overrides with scrollContainer */
+  overflow: hidden; /* IDE landing: scroll managed inside IDEShell; /about scrolls via .scrollContainer child */
 }
 
 /* ─────────────────────────────────────────────────────────────

@@ -160,12 +160,18 @@
   color: var(--text-faint);
   letter-spacing: 0.02em;
   font-family: var(--ui);
-  margin-left: 4px;
 }
 
 .crumbSubtitleSep {
   color: var(--text-faint);
+}
+
+.crumbRight {
+  display: flex;
+  align-items: center;
+  gap: 4px;
   margin-left: auto;
+  flex-shrink: 0;
 }
 
 /* Content area */
