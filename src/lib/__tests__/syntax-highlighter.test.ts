@@ -71,4 +71,41 @@ describe('tokenize — TypeScript', () => {
     expect(nums).toHaveLength(1);
     expect(tokenText(nums[0])).toBe('-1');
   });
+
+  it('classifies a decorator as tk-dec', () => {
+    const tokens = tokenize('@Component', 'typescript');
+    const decs = findTokens(tokens, 'dec');
+    expect(decs).toHaveLength(1);
+    expect(tokenText(decs[0])).toBe('@Component');
+  });
+
+  it('classifies a PascalCase name as tk-type', () => {
+    const tokens = tokenize('MyClass', 'typescript');
+    const types = findTokens(tokens, 'type');
+    expect(types.length).toBeGreaterThanOrEqual(1);
+    const typeTexts = types.map(tokenText);
+    expect(typeTexts).toContain('MyClass');
+  });
+
+  it('classifies a function call identifier as tk-fn (without the open paren)', () => {
+    const tokens = tokenize('describe(', 'typescript');
+    const fns = findTokens(tokens, 'fn');
+    expect(fns.length).toBeGreaterThanOrEqual(1);
+    expect(tokenText(fns[0])).toBe('describe');
+  });
+
+  it('correctly tokenizes a real TS import line with multiple token types', () => {
+    const src = "import { test, expect } from '@playwright/test';";
+    const tokens = tokenize(src, 'typescript');
+
+    const kwTexts = findTokens(tokens, 'kw').map(tokenText);
+    expect(kwTexts).toContain('import');
+    expect(kwTexts).toContain('from');
+
+    const strTexts = findTokens(tokens, 'str').map(tokenText);
+    expect(strTexts).toContain("'@playwright/test'");
+
+    const puncts = findTokens(tokens, 'punct');
+    expect(puncts.length).toBeGreaterThanOrEqual(1);
+  });
 });
