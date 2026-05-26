@@ -41,3 +41,45 @@ describe('Sidebar — root file rendering', () => {
     expect(screen.getByRole('complementary', { hidden: true })).toHaveAttribute('aria-hidden', 'true');
   });
 });
+
+describe('Sidebar — interactions', () => {
+  it('expands about folder and shows bio.json', async () => {
+    const user = userEvent.setup();
+    render(<Sidebar {...defaultProps} />);
+    await user.click(screen.getByRole('button', { name: /toggle about folder/i }));
+    expect(screen.getByRole('button', { name: /bio\.json/ })).toBeInTheDocument();
+  });
+
+  it('expands tests folder and shows landing.spec.ts', async () => {
+    const user = userEvent.setup();
+    render(<Sidebar {...defaultProps} />);
+    await user.click(screen.getByRole('button', { name: /toggle tests folder/i }));
+    expect(screen.getByRole('button', { name: /landing\.spec\.ts/ })).toBeInTheDocument();
+  });
+
+  it('clicking README.md calls setActiveFile and openTab with the filename', async () => {
+    const user = userEvent.setup();
+    const setActiveFile = vi.fn();
+    const openTab = vi.fn();
+    render(<Sidebar {...defaultProps} setActiveFile={setActiveFile} openTab={openTab} />);
+    await user.click(screen.getByRole('button', { name: /README\.md/ }));
+    expect(setActiveFile).toHaveBeenCalledOnce();
+    expect(setActiveFile).toHaveBeenCalledWith('README.md');
+    expect(openTab).toHaveBeenCalledOnce();
+    expect(openTab).toHaveBeenCalledWith('README.md');
+  });
+
+  it('clicking a file row calls onSelect when provided', async () => {
+    const user = userEvent.setup();
+    const onSelect = vi.fn();
+    render(<Sidebar {...defaultProps} onSelect={onSelect} />);
+    await user.click(screen.getByRole('button', { name: /README\.md/ }));
+    expect(onSelect).toHaveBeenCalledOnce();
+  });
+
+  it('does not throw when onSelect is not provided', async () => {
+    const user = userEvent.setup();
+    render(<Sidebar {...defaultProps} />);
+    await expect(user.click(screen.getByRole('button', { name: /README\.md/ }))).resolves.not.toThrow();
+  });
+});
