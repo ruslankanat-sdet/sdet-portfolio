@@ -82,7 +82,14 @@ Plans:
   3. File-data tests assert every entry has required fields (id, name, language, tokens) and that tokens are well-formed arrays
   4. Sidebar rendering tests assert that all file entries appear in the rendered output and that clicking an entry triggers the correct editor update
 
-**Plans**: TBD
+**Plans**: 3 plans
+
+Wave 1:
+- [ ] 06-01-PLAN.md — Vitest infrastructure: install deps, vitest.config.ts, jsdom + React setup, `pnpm test` script, CI step
+
+Wave 2 *(blocked on Wave 1 completion)*:
+- [ ] 06-02-PLAN.md — Tokenizer tests: keyword, comment, string, number, decorator, type, fn-call token assertions for TypeScript (TEST-01)
+- [ ] 06-03-PLAN.md — File-data shape tests (TEST-02) + Sidebar rendering + click-callback interaction tests (TEST-03)
 
 ## Progress
 
