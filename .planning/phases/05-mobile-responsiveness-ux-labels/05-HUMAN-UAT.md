@@ -1,5 +1,5 @@
 ---
-status: diagnosed
+status: resolved
 phase: 05-mobile-responsiveness-ux-labels
 source: [05-VERIFICATION.md]
 started: 2026-05-25T00:00:00Z
@@ -60,7 +60,7 @@ blocked: 0
 ## Gaps
 
 - truth: "Terminal starts at ~120px height at 375px (vs ~220px on desktop). Difference is visible. Terminal visible on desktop too."
-  status: failed
+  status: resolved
   reason: "User clarified: terminal not visible on desktop/laptop at all. On mobile it IS visible but height varies per file tab open — should be consistent."
   severity: major
   test: 4
@@ -75,7 +75,7 @@ blocked: 0
   debug_session: ""
 
 - truth: "EXPLORER · File browser, · Code viewer, TERMINAL · Test output labels all visible"
-  status: failed
+  status: resolved
   reason: "User reported: i see them, maybe rendering bit incorrect but it looks good"
   severity: cosmetic
   test: 8
