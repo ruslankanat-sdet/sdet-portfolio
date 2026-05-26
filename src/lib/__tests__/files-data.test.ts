@@ -1,3 +1,4 @@
+/// <reference types="vitest/globals" />
 import { FILES, SAMPLE_LOGS } from '../files-data';
 import type { FileEntry, LogEntry } from '@/types/ide';
 
