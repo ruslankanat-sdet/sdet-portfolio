@@ -2,7 +2,8 @@
 
 .scrollContainer {
   overflow-y: auto;
-  height: 100%; /* fills .site-main which is flex: 1; min-height: 0 */
+  flex: 1; /* fills .site-main flex container; height:100% resolves against content-height (0) in flex, so flex:1 is correct */
+  min-height: 0; /* allows flex item to shrink below content size */
   background: var(--bg-deep);
 }
 
