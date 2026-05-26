@@ -91,7 +91,6 @@ export function IDEShell() {
     if (typeof window === 'undefined') return true;
     return window.innerWidth > 768;
   });
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isMobile, setIsMobile] = useState<boolean>(() => {
     if (typeof window === 'undefined') return false;
     return window.innerWidth <= 768;
@@ -106,6 +105,15 @@ export function IDEShell() {
     document.documentElement.setAttribute("data-theme", theme);
     try { localStorage.setItem("portfolio-theme", theme); } catch {}
   }, [theme]);
+
+  // Keep isMobile in sync with viewport changes (matchMedia fires only on breakpoint crossing)
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 768px)');
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener('change', handler);
+    setIsMobile(mq.matches); // correct any stale mount-time snapshot
+    return () => mq.removeEventListener('change', handler);
+  }, []);
 
   const toggleTheme = useCallback(() => setTheme(t => t === "dark" ? "light" : "dark"), []);
   const toggleSidebar = useCallback(() => setSidebarOpen(o => !o), []);
