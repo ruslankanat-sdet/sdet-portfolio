@@ -12,18 +12,16 @@ The original plan was an AI-powered SDET tool suite. On 2026-05-18 this was pivo
 
 The site itself is the demo. The tools showcase the candidate.
 
-## Current Milestone: v1.1 Content, Quality & Accessibility Pass
+## Current Milestone: v1.2 Recruiter View & Dual-Audience Landing
 
-**Goal:** Clear v1.0 tech debt, make the site fully mobile-friendly, improve UX for non-technical visitors, add Vitest coverage, link the portfolio GitHub repo, and polish the content layer — ready before v1.5 AI tools.
+**Goal:** Add a split-screen "door" landing and an editorial cream/serif recruiter resume view, so non-technical visitors get a polished, readable resume experience while engineers still land in the IDE.
 
 **Target features:**
-- Tech debt sweep (SiteHeader title, copyright year, live CI badge, sidebar content sync, dead code removal)
-- Mobile responsiveness — full usability on small screens
-- Non-technical UX — improve clarity for non-engineer visitors (approach decided during planning)
-- Vitest unit tests for tokenizer, file-data shape, sidebar rendering
-- GitHub repo link — portfolio repo visible from About or IDE sidebar
-- Bio / About content — updated copy from candidate (no headshot yet)
-- LCP verification — confirm < 2s in Vercel Speed Insights
+- The Door — full-viewport split-screen at `/`, left (recruiter/cream) + right (IDE/dark), mode persisted in `localStorage`
+- Recruiter View — editorial single-column resume: hero, metrics, experience, stack, availability, contact, print PDF
+- Route restructure — move IDE + `/about` into a route group; root layout has no `SiteHeader`
+- Mode switching — door ↔ recruiter ↔ IDE, `?reset` query param, skip-door on return visits
+- Content — replace prototype "Alex Morgan" copy with Ruslan Kanatbek's actual bio, jobs, stack, availability
 
 ## Requirements
 
@@ -71,6 +69,21 @@ The site itself is the demo. The tools showcase the candidate.
 - [ ] GitHub showcase repos linked from IDE sidebar or About page
 - [ ] Custom domain DNS wired
 - [ ] Vitest unit tests for tokenizer, file-data shape, sidebar rendering
+
+**v1.2 — Recruiter view & dual-audience landing:**
+- [ ] **DOOR-01**: Split-screen door landing at `/` — cream left half + dark IDE right half, click to choose, localStorage persistence
+- [ ] **DOOR-02**: Return visitors skip the door — mode stored, re-read on next visit; `?reset` clears and re-shows door
+- [ ] **REC-01**: Recruiter masthead — wordmark + "résumé" label + "Engineer view ↗" pill (switches to IDE)
+- [ ] **REC-02**: Hero — availability pulse pill, headline, pitch paragraph, Download PDF + email CTAs
+- [ ] **REC-03**: §01 By the numbers — 4-up metrics grid (years, flake rate, coverage, bugs caught)
+- [ ] **REC-04**: §02 What I'm doing now — current-role lede paragraph with drop cap
+- [ ] **REC-05**: §03 Experience timeline — 3 jobs, date span column + role/company/scope/stack pills
+- [ ] **REC-06**: §04 Stack — 4 skill groups (Automation, AI/ML, Infra, Languages) with pill items
+- [ ] **REC-07**: §05 What I'm looking for — availability spec-sheet card (Status, Location, Level, Best fit, Comp, Visa)
+- [ ] **REC-08**: Contact section + footer with "Prefer engineer view?" switch
+- [ ] **REC-09**: Print stylesheet — recruiter view prints as clean 1-page PDF via `window.print()`
+- [ ] **ARCH-01**: Route group restructure — IDE + `/about` under `(ide)/` group with scoped SiteHeader; root layout header-free
+- [ ] **CONT-RK-01**: Real content — Ruslan Kanatbek's actual jobs, stack, availability, contact details replace prototype copy
 
 **v1.5 — AI tools (original plan, deferred):**
 - [ ] **Test Automator** — input: URL or user story; output: working Playwright (TypeScript) test code
@@ -160,4 +173,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-05-23 — v1.1 milestone started*
+*Last updated: 2026-05-26 — v1.2 milestone started*

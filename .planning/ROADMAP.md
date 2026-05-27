@@ -3,7 +3,8 @@
 ## Milestones
 
 - ✅ **v1.0 MVP** — Phases 1-3 (shipped 2026-05-23)
-- **v1.1 Content, Quality & Accessibility Pass** — Phases 4-6 (in progress)
+- ✅ **v1.1 Content, Quality & Accessibility Pass** — Phases 4-6 (shipped 2026-05-26)
+- **v1.2 Recruiter View & Dual-Audience Landing** — Phases 7-10 (in progress)
 
 ## Phases
 
@@ -18,11 +19,21 @@ Full archive: [milestones/v1.0-ROADMAP.md](milestones/v1.0-ROADMAP.md)
 
 </details>
 
-### v1.1 — Content, Quality & Accessibility Pass
+<details>
+<summary>✅ v1.1 Content, Quality & Accessibility Pass (Phases 4-6) — SHIPPED 2026-05-26</summary>
 
 - [x] **Phase 4: Tech Debt Sweep** - Fix hardcoded/stale content: full title, copyright year, live CI badge, sidebar file sync
 - [x] **Phase 5: Mobile Responsiveness & UX Labels** - Full usability on small screens; IDE pane labels for non-technical visitors (completed 2026-05-25)
 - [x] **Phase 6: Vitest Unit Tests** - Test coverage for tokenizer logic, file-data shape, and sidebar rendering behavior (completed 2026-05-26)
+
+</details>
+
+### v1.2 — Recruiter View & Dual-Audience Landing
+
+- [ ] **Phase 7: Foundation — Route Restructure & Font Setup** - IDE and About pages scoped under route group; root layout header-free; serif font available
+- [ ] **Phase 8: Landing Door** - Full-viewport split-screen door with hover animation, localStorage routing, and ?reset support
+- [ ] **Phase 9: Recruiter View** - Complete editorial resume: masthead, hero, all five content sections, contact footer, and mobile responsiveness
+- [ ] **Phase 10: Content, Print & Polish** - Real Ruslan Kanatbek content replaces all prototype copy; print stylesheet produces clean PDF
 
 ## Phase Details
 
@@ -91,6 +102,66 @@ Wave 2 *(completed 2026-05-26)*:
 - [x] 06-02-PLAN.md — Tokenizer tests: keyword, comment, string, number, decorator, type, fn-call token assertions for TypeScript (TEST-01)
 - [x] 06-03-PLAN.md — File-data shape tests (TEST-02) + Sidebar rendering + click-callback interaction tests (TEST-03)
 
+### Phase 7: Foundation — Route Restructure & Font Setup
+
+**Goal**: The IDE and About pages live in a scoped route group so the root layout owns no header, and the newsreader serif font is available for recruiter styles
+**Depends on**: Phase 6 (stable codebase after v1.1 completion)
+**Requirements**: ARCH-01, ARCH-02, ARCH-03
+**Success Criteria** (what must be TRUE):
+
+  1. Navigating to `/` loads a root page with no SiteHeader rendered — the IDE header only appears inside the `(ide)` route group
+  2. Navigating to the IDE or `/about` from within the `(ide)` group still shows the SiteHeader as before
+  3. A `ResumeGate` component at the root reads `localStorage["resume-mode"]` on mount and renders the correct view branch (Door, Recruiter, or IDE)
+  4. Newsreader serif is loaded via `next/font/google` and available as a CSS variable for recruiter page styles
+
+**Plans**: TBD
+**UI hint**: yes
+
+### Phase 8: Landing Door
+
+**Goal**: First-time visitors see a full-viewport split-screen choice, their selection is persisted, return visitors skip straight to their chosen view, and `?reset` restores the door
+**Depends on**: Phase 7 (ResumeGate and root layout restructure must exist before Door can render)
+**Requirements**: DOOR-01, DOOR-02, DOOR-03, DOOR-04
+**Success Criteria** (what must be TRUE):
+
+  1. A first-time visitor at `/` sees two halves — cream left (recruiter) and dark IDE right — each expanding on hover and clickable to choose a view
+  2. Clicking a door half immediately renders the corresponding view without a full page navigation, and refreshing the page does not show the door again
+  3. A return visitor whose localStorage holds a mode lands directly in that view — the door is never shown on subsequent visits
+  4. Appending `?reset` to the URL clears the stored mode and displays the door again, regardless of previous selection
+
+**Plans**: TBD
+**UI hint**: yes
+
+### Phase 9: Recruiter View
+
+**Goal**: A recruiter arriving via the door sees a complete, polished editorial resume — sticky masthead, availability hero, five content sections, contact footer — fully usable on mobile
+**Depends on**: Phase 7 (fonts and root layout), Phase 8 (door routes to recruiter view)
+**Requirements**: REC-01, REC-02, REC-03, REC-04, REC-05, REC-06, REC-07, REC-08, REC-10
+**Success Criteria** (what must be TRUE):
+
+  1. The sticky masthead shows the wordmark and an "Engineer view ↗" pill that switches the visitor back to the IDE view when clicked
+  2. The hero section shows a pulsing availability pill, editorial headline, pitch paragraph, and two actionable CTAs (Download PDF and email link)
+  3. All five content sections are present and readable: By the Numbers (4 stat tiles), What I'm Doing Now (drop-cap lede), Experience (3-job timeline), Stack (4 skill groups), and What I'm Looking For (6-row spec card)
+  4. The contact section includes the large email link and a three-column social grid; the footer contains an "Open the IDE" switch back to engineer view
+  5. On a 375px screen, metrics wrap to 2 columns, the experience timeline stacks to a single column, the availability card stacks vertically, and all text remains legible without horizontal scrolling
+
+**Plans**: TBD
+**UI hint**: yes
+
+### Phase 10: Content, Print & Polish
+
+**Goal**: The live site shows only Ruslan Kanatbek's real information with no prototype placeholder copy, and the Download PDF action produces a clean, print-ready document
+**Depends on**: Phase 9 (recruiter view structure must exist before content can be swapped in and print styles applied)
+**Requirements**: REC-09, CONT-RK-01
+**Success Criteria** (what must be TRUE):
+
+  1. No instance of "Alex Morgan" or any other placeholder name, job, or company appears anywhere on the live site
+  2. The experience timeline, stack groups, availability card, metrics, and contact section all reflect Ruslan Kanatbek's actual data
+  3. Triggering `window.print()` (via the Download PDF CTA) produces a layout where the masthead switch pill, CTAs, and footer are hidden, and the remaining content fits on one A4/Letter page without overflow or orphaned sections
+
+**Plans**: TBD
+**UI hint**: yes
+
 ## Progress
 
 | Phase | Milestone | Plans Complete | Status | Completed |
@@ -99,5 +170,9 @@ Wave 2 *(completed 2026-05-26)*:
 | 2. Resume & About Layer | v1.0 | 3/3 | Complete | 2026-05-21 |
 | 3. Playwright Showcase + Hardening | v1.0 | 6/6 | Complete | 2026-05-22 |
 | 4. Tech Debt Sweep | v1.1 | 2/2 | Complete | 2026-05-24 |
-| 5. Mobile Responsiveness & UX Labels | v1.1 | 3/3 | Complete   | 2026-05-25 |
+| 5. Mobile Responsiveness & UX Labels | v1.1 | 4/4 | Complete | 2026-05-25 |
 | 6. Vitest Unit Tests | v1.1 | 3/3 | Complete | 2026-05-26 |
+| 7. Foundation — Route Restructure & Font Setup | v1.2 | 0/TBD | Not started | - |
+| 8. Landing Door | v1.2 | 0/TBD | Not started | - |
+| 9. Recruiter View | v1.2 | 0/TBD | Not started | - |
+| 10. Content, Print & Polish | v1.2 | 0/TBD | Not started | - |
