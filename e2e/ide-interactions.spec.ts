@@ -1,6 +1,12 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('IDE interactions', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.addInitScript(() => {
+      localStorage.setItem('resume-mode', 'ide');
+    });
+  });
+
   test('clicking bio.json loads editor with bio content', async ({ page }) => {
     await page.goto('/');
     // The about/ folder header is a div (no role=button), use getByText to expand it

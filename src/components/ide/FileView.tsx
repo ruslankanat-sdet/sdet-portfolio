@@ -30,7 +30,8 @@ export function FileView({ file }: FileViewProps) {
       </div>
 
       {/* Code area — tokenize() returns ReactNode[], safe (no dangerouslySetInnerHTML) */}
-      <pre className={cn(styles.code, styles[`lang-${file.lang}`])}>
+      {/* tabIndex={0} makes the scrollable region keyboard-accessible (WCAG 2.1.1) */}
+      <pre className={cn(styles.code, styles[`lang-${file.lang}`])} tabIndex={0}>
         <code>{tokens}</code>
       </pre>
 
