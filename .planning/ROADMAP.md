@@ -96,9 +96,11 @@ Plans:
 **Plans**: 3 plans
 
 Wave 1:
+
 - [x] 06-01-PLAN.md — Vitest infrastructure: install deps, vitest.config.ts, jsdom + React setup, `pnpm test` script, CI step (completed 2026-05-26)
 
 Wave 2 *(completed 2026-05-26)*:
+
 - [x] 06-02-PLAN.md — Tokenizer tests: keyword, comment, string, number, decorator, type, fn-call token assertions for TypeScript (TEST-01)
 - [x] 06-03-PLAN.md — File-data shape tests (TEST-02) + Sidebar rendering + click-callback interaction tests (TEST-03)
 
@@ -117,9 +119,11 @@ Wave 2 *(completed 2026-05-26)*:
 **Plans**: 2 plans
 
 Wave 1:
+
 - [x] 07-01-PLAN.md — Route group restructure: create `(ide)/layout.tsx` with SiteHeader, move `/about` into group, strip SiteHeader + main wrapper from root layout (ARCH-01) — completed 2026-05-27
 
 Wave 2:
+
 - [x] 07-02-PLAN.md — ResumeGate + Newsreader font: Newsreader via `next/font/google` as `--font-newsreader`, replace root `page.tsx` with `"use client"` ResumeGate with localStorage routing and `?reset` support (ARCH-02, ARCH-03) — completed 2026-05-27
 
 **UI hint**: yes
@@ -139,9 +143,11 @@ Wave 2:
 **Plans**: 2 plans
 
 Wave 1:
-- [ ] 08-01-PLAN.md — Cream/forest tokens + .door-* classes in globals.css, LogoMark + DoorScreen components (+ unit tests), Newsreader weight expansion, and wire DoorScreen into ResumeGateInner (DOOR-01, DOOR-02)
+
+- [x] 08-01-PLAN.md — Cream/forest tokens + .door-* classes in globals.css, LogoMark + DoorScreen components (+ unit tests), Newsreader weight expansion, and wire DoorScreen into ResumeGateInner (DOOR-01, DOOR-02)
 
 Wave 2:
+
 - [ ] 08-02-PLAN.md — E2E: pre-seed IDE mode in 3 existing spec files (12 tests) + new Landing door describe block with 4 tests (DOOR-01 E2E, DOOR-03, DOOR-04)
 
 **UI hint**: yes
@@ -187,6 +193,6 @@ Wave 2:
 | 5. Mobile Responsiveness & UX Labels | v1.1 | 4/4 | Complete | 2026-05-25 |
 | 6. Vitest Unit Tests | v1.1 | 3/3 | Complete | 2026-05-26 |
 | 7. Foundation — Route Restructure & Font Setup | v1.2 | 2/2 | Complete | 2026-05-27 |
-| 8. Landing Door | v1.2 | 0/TBD | Not started | - |
+| 8. Landing Door | v1.2 | 1/2 | In Progress|  |
 | 9. Recruiter View | v1.2 | 0/TBD | Not started | - |
 | 10. Content, Print & Polish | v1.2 | 0/TBD | Not started | - |

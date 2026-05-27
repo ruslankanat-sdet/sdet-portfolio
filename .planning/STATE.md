@@ -1,17 +1,17 @@
 ---
 gsd_state_version: 1.0
 milestone: v1.2
-milestone_name: Recruiter View & Dual-Audience Landing
-status: ready
-stopped_at: "phase-08 / planned"
-last_updated: "2026-05-27"
-last_activity: 2026-05-27 -- Phase 8 plans created (2 plans: DoorScreen component + E2E tests)
+milestone_name: — Recruiter View & Dual-Audience Landing
+status: executing
+stopped_at: Phase 07 complete — Phase 8 Landing Door is next
+last_updated: "2026-05-27T21:09:25.676Z"
+last_activity: 2026-05-27 -- Phase 8 execution started
 progress:
-  total_phases: 4
-  completed_phases: 1
-  total_plans: 4
-  completed_plans: 2
-  percent: 50
+  total_phases: 7
+  completed_phases: 4
+  total_plans: 13
+  completed_plans: 11
+  percent: 57
 ---
 
 # Project State
@@ -21,22 +21,24 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-26 for v1.2)
 
 **Core value:** A recruiter opens the page and immediately sees working code — real Playwright tests, real TypeScript — and thinks "I need to interview this person."
-**Current focus:** Defining requirements and roadmap for v1.2
+**Current focus:** Phase 8 — landing-door
 
 ## Current Position
 
-Phase: 08-landing-door
-Plan: ready to execute — 2 plans in 2 waves
-Status: Planned
-Last activity: 2026-05-27 — Phase 8 planned: DoorScreen component (Wave 1) + E2E test updates (Wave 2)
+Phase: 8 (landing-door) — EXECUTING
+Plan: 1 of 2
+Status: Executing Phase 8
+Last activity: 2026-05-27 -- Phase 8 execution started
 
 ## Performance Metrics
 
 **Velocity (v1.0):**
+
 - Total plans completed: 14
 - Timeline: 9 days (2026-05-14 → 2026-05-23)
 
 **Velocity (v1.1):**
+
 - Total plans completed: 10
 - Phases: 3 (phases 4–6)
 
@@ -49,12 +51,14 @@ Last activity: 2026-05-27 — Phase 8 planned: DoorScreen component (Wave 1) + E
 All v1.0 and v1.1 decisions logged in PROJECT.md Key Decisions table.
 
 Key decisions carried forward:
+
 - IDE-style portfolio with Playwright showcase (no AI APIs in v1)
 - Hand-rolled TypeScript tokenizer (client-bundled files-data.ts)
 - Two-variant Footer fixed (each page renders its own)
 - Next.js App Router on Vercel
 
 v1.2 decisions:
+
 - Route group `(ide)` owns SiteHeader + site-main; root layout is header-free for door/recruiter views
 - `/about` page migrated to `src/app/(ide)/about/` — URL unchanged, layout inheritance via route group
 - ResumeGate at root reads localStorage['resume-mode'] and branches to ide/recruiter/door stubs; ?reset clears stored mode
@@ -63,6 +67,7 @@ v1.2 decisions:
 ### Design Handoff
 
 High-fidelity design prototype available at `.planning/design/design_handoff_resume_v1/`:
+
 - `README.md` — full spec, tokens, interactions
 - `recruiter.jsx` — all copy (JOBS, SKILL_GROUPS, availability rows) + component structure
 - `resume-app.jsx` — Door + routing logic
