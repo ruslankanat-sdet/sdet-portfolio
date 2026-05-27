@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Recruiter View & Dual-Audience Landing
 status: ready
-stopped_at: "phase-07 / 07-02-PLAN.md"
+stopped_at: "phase-07 / complete"
 last_updated: "2026-05-27"
-last_activity: 2026-05-27 -- Plan 07-01 complete (route group restructure, /about migrated, root layout stripped)
+last_activity: 2026-05-27 -- Plan 07-02 complete (ResumeGate + Newsreader font; all smoke tests pass)
 progress:
   total_phases: 4
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 2
-  completed_plans: 1
-  percent: 50
+  completed_plans: 2
+  percent: 100
 ---
 
 # Project State
@@ -26,9 +26,9 @@ See: .planning/PROJECT.md (updated 2026-05-26 for v1.2)
 ## Current Position
 
 Phase: 07-foundation-route-restructure-font-setup
-Plan: 07-01 complete, 07-02 next
-Status: In progress
-Last activity: 2026-05-27 — 07-01 complete: (ide) route group created, /about migrated, root layout stripped
+Plan: 07-02 complete — Phase 7 fully complete
+Status: Complete
+Last activity: 2026-05-27 — 07-02 complete: ResumeGate replaces root page.tsx, Newsreader font added, all smoke tests pass
 
 ## Performance Metrics
 
@@ -57,6 +57,8 @@ Key decisions carried forward:
 v1.2 decisions:
 - Route group `(ide)` owns SiteHeader + site-main; root layout is header-free for door/recruiter views
 - `/about` page migrated to `src/app/(ide)/about/` — URL unchanged, layout inheritance via route group
+- ResumeGate at root reads localStorage['resume-mode'] and branches to ide/recruiter/door stubs; ?reset clears stored mode
+- Newsreader serif loaded via next/font as --font-newsreader on <html>; available to all descendants
 
 ### Design Handoff
 
@@ -90,5 +92,5 @@ High-fidelity design prototype available at `.planning/design/design_handoff_res
 ## Session Continuity
 
 Last session: 2026-05-27
-Stopped at: Plan 07-01 complete — resume at 07-02-PLAN.md
-Resume file: .planning/phases/07-foundation-route-restructure-font-setup/07-02-PLAN.md
+Stopped at: Phase 07 complete — Phase 8 Landing Door is next
+Resume file: .planning/phases/08-landing-door/ (TBD)

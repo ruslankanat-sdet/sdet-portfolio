@@ -30,7 +30,7 @@ Full archive: [milestones/v1.0-ROADMAP.md](milestones/v1.0-ROADMAP.md)
 
 ### v1.2 — Recruiter View & Dual-Audience Landing
 
-- [ ] **Phase 7: Foundation — Route Restructure & Font Setup** - IDE and About pages scoped under route group; root layout header-free; serif font available
+- [x] **Phase 7: Foundation — Route Restructure & Font Setup** - IDE and About pages scoped under route group; root layout header-free; serif font available — completed 2026-05-27
 - [ ] **Phase 8: Landing Door** - Full-viewport split-screen door with hover animation, localStorage routing, and ?reset support
 - [ ] **Phase 9: Recruiter View** - Complete editorial resume: masthead, hero, all five content sections, contact footer, and mobile responsiveness
 - [ ] **Phase 10: Content, Print & Polish** - Real Ruslan Kanatbek content replaces all prototype copy; print stylesheet produces clean PDF
@@ -120,7 +120,7 @@ Wave 1:
 - [x] 07-01-PLAN.md — Route group restructure: create `(ide)/layout.tsx` with SiteHeader, move `/about` into group, strip SiteHeader + main wrapper from root layout (ARCH-01) — completed 2026-05-27
 
 Wave 2:
-- [ ] 07-02-PLAN.md — ResumeGate + Newsreader font: Newsreader via `next/font/google` as `--font-newsreader`, replace root `page.tsx` with `"use client"` ResumeGate with localStorage routing and `?reset` support (ARCH-02, ARCH-03)
+- [x] 07-02-PLAN.md — ResumeGate + Newsreader font: Newsreader via `next/font/google` as `--font-newsreader`, replace root `page.tsx` with `"use client"` ResumeGate with localStorage routing and `?reset` support (ARCH-02, ARCH-03) — completed 2026-05-27
 
 **UI hint**: yes
 
@@ -179,7 +179,7 @@ Wave 2:
 | 4. Tech Debt Sweep | v1.1 | 2/2 | Complete | 2026-05-24 |
 | 5. Mobile Responsiveness & UX Labels | v1.1 | 4/4 | Complete | 2026-05-25 |
 | 6. Vitest Unit Tests | v1.1 | 3/3 | Complete | 2026-05-26 |
-| 7. Foundation — Route Restructure & Font Setup | v1.2 | 1/2 | In progress | - |
+| 7. Foundation — Route Restructure & Font Setup | v1.2 | 2/2 | Complete | 2026-05-27 |
 | 8. Landing Door | v1.2 | 0/TBD | Not started | - |
 | 9. Recruiter View | v1.2 | 0/TBD | Not started | - |
 | 10. Content, Print & Polish | v1.2 | 0/TBD | Not started | - |
