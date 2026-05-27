@@ -12,6 +12,10 @@ The original plan was an AI-powered SDET tool suite. On 2026-05-18 this was pivo
 
 The site itself is the demo. The tools showcase the candidate.
 
+## Current State
+
+Phase 7 complete (2026-05-27) — Route group restructure done, ResumeGate live, Newsreader font available. Phase 8 (Landing Door) is next.
+
 ## Current Milestone: v1.2 Recruiter View & Dual-Audience Landing
 
 **Goal:** Add a split-screen "door" landing and an editorial cream/serif recruiter resume view, so non-technical visitors get a polished, readable resume experience while engineers still land in the IDE.
@@ -82,7 +86,7 @@ The site itself is the demo. The tools showcase the candidate.
 - [ ] **REC-07**: §05 What I'm looking for — availability spec-sheet card (Status, Location, Level, Best fit, Comp, Visa)
 - [ ] **REC-08**: Contact section + footer with "Prefer engineer view?" switch
 - [ ] **REC-09**: Print stylesheet — recruiter view prints as clean 1-page PDF via `window.print()`
-- [ ] **ARCH-01**: Route group restructure — IDE + `/about` under `(ide)/` group with scoped SiteHeader; root layout header-free
+- [x] **ARCH-01**: Route group restructure — IDE + `/about` under `(ide)/` group with scoped SiteHeader; root layout header-free *(Validated in Phase 7)*
 - [ ] **CONT-RK-01**: Real content — Ruslan Kanatbek's actual jobs, stack, availability, contact details replace prototype copy
 
 **v1.5 — AI tools (original plan, deferred):**
@@ -155,6 +159,9 @@ The site itself is the demo. The tools showcase the candidate.
 | Defer AI tools to v1.5 | Eliminates API key ops, rate limiting, cost ceiling concerns for v1 | ✓ Good — correct sequencing |
 | Test Case Manager dropped | Implies persistence + accounts + multi-tenancy; scope-explosion | ✓ Good |
 | No CMS / authoring UI | Single-author site; markdown/code edits acceptable | ✓ Good |
+| Route group `(ide)` owns SiteHeader + site-main; root layout header-free (Phase 7) | Door and recruiter views need full viewport ownership; route group gives scoped layout without URL segments | ✓ Good — clean separation |
+| ResumeGate at root page.tsx with localStorage routing (Phase 7) | localStorage avoids server state and supports offline/CDN-cached landing; useSearchParams `?reset` handled in Suspense per Next.js App Router requirement | ✓ Good — hydration-safe with mounted guard |
+| Newsreader on `<html>` element, Inter+JetBrains on `<body>` (Phase 7) | Serif scoped to html so recruiter descendants inherit it; body scopes sans/mono to avoid polluting future pages | ✓ Good — idiomatic next/font pattern |
 
 ## Evolution
 
