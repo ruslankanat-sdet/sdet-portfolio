@@ -1,6 +1,12 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Navigation', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.addInitScript(() => {
+      localStorage.setItem('resume-mode', 'ide');
+    });
+  });
+
   test('About link navigates to /about', async ({ page }) => {
     await page.goto('/');
     await page.getByRole('link', { name: /About/i }).first().click();

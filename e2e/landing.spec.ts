@@ -2,6 +2,12 @@ import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
 test.describe('Landing page', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.addInitScript(() => {
+      localStorage.setItem('resume-mode', 'ide');
+    });
+  });
+
   test('has correct page title', async ({ page }) => {
     await page.goto('/');
     await expect(page).toHaveTitle(/Ruslan Kanatbek/);
@@ -46,5 +52,40 @@ test.describe('Landing page', () => {
       .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
       .analyze();
     expect(results.violations).toEqual([]);
+  });
+});
+
+test.describe('Landing door', () => {
+  test('DOOR-01: shows door at / with no stored mode', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.getByRole('button', { name: /Enter the résumé/i })).toBeVisible();
+    await expect(page.getByRole('button', { name: /\$ \.\/open-ide/i })).toBeVisible();
+  });
+
+  test('DOOR-03 same-session: clicking recruiter half re-renders without navigation', async ({ page }) => {
+    await page.goto('/');
+    const url = page.url();
+    await page.getByRole('button', { name: /Enter the résumé/i }).click();
+    await expect(page.getByText(/Recruiter view — coming in Phase 9/i)).toBeVisible();
+    await expect(page.getByRole('button', { name: /Enter the résumé/i })).not.toBeVisible();
+    expect(page.url()).toBe(url);
+  });
+
+  test('DOOR-03 return-visit: pre-seeded ide mode skips the door', async ({ page }) => {
+    await page.addInitScript(() => {
+      localStorage.setItem('resume-mode', 'ide');
+    });
+    await page.goto('/');
+    await expect(page.getByRole('button', { name: /Enter the résumé/i })).not.toBeVisible();
+    await expect(page.getByRole('button', { name: /README\.md/ }).first()).toBeVisible();
+  });
+
+  test('DOOR-04: ?reset clears stored mode and re-shows the door', async ({ page }) => {
+    await page.addInitScript(() => {
+      localStorage.setItem('resume-mode', 'ide');
+    });
+    await page.goto('/?reset');
+    await expect(page.getByRole('button', { name: /Enter the résumé/i })).toBeVisible();
+    await expect(page.getByRole('button', { name: /\$ \.\/open-ide/i })).toBeVisible();
   });
 });

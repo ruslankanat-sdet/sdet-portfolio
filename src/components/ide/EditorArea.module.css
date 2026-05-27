@@ -157,7 +157,7 @@
 .paneSubtitle {
   font-size: 10.5px;
   font-weight: 400;
-  color: var(--text-faint);
+  color: var(--text-muted);
   letter-spacing: 0.02em;
   font-family: var(--ui);
 }
