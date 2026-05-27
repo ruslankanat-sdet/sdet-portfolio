@@ -4,6 +4,7 @@ import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { IDEShell } from '@/components/ide/IDEShell';
 import { SiteHeader } from '@/components/layout/SiteHeader';
+import { DoorScreen } from '@/components/door/DoorScreen';
 
 const MODE_KEY = 'resume-mode';
 type Mode = 'recruiter' | 'ide' | null;
@@ -73,22 +74,17 @@ function ResumeGateInner() {
     );
   }
 
-  // mode === null: Phase 8 will replace this stub with the full Door component
   return (
-    <div
-      style={{
-        background: '#06090e',
-        height: '100dvh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        fontFamily: 'var(--font-mono, monospace)',
-        fontSize: '0.9rem',
-        color: '#3ddc84',
+    <DoorScreen
+      onChooseRecruiter={() => {
+        try { localStorage.setItem(MODE_KEY, 'recruiter'); } catch {}
+        setMode('recruiter');
       }}
-    >
-      Landing door — coming in Phase 8
-    </div>
+      onChooseIDE={() => {
+        try { localStorage.setItem(MODE_KEY, 'ide'); } catch {}
+        setMode('ide');
+      }}
+    />
   );
 }
 
