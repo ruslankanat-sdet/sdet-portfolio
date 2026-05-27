@@ -1,5 +1,101 @@
-import { IDEShell } from '@/components/ide/IDEShell';
+'use client';
 
-export default function Home() {
-  return <IDEShell />;
+import { useEffect, useState, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { IDEShell } from '@/components/ide/IDEShell';
+import { SiteHeader } from '@/components/layout/SiteHeader';
+
+const MODE_KEY = 'resume-mode';
+type Mode = 'recruiter' | 'ide' | null;
+
+function readStoredMode(): Mode {
+  try {
+    const val = localStorage.getItem(MODE_KEY);
+    if (val === 'recruiter' || val === 'ide') return val;
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+function clearStoredMode(): void {
+  try { localStorage.removeItem(MODE_KEY); } catch {}
+}
+
+function ResumeGateInner() {
+  const searchParams = useSearchParams();
+  const [mode, setMode] = useState<Mode>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    if (searchParams.get('reset') !== null) {
+      clearStoredMode();
+      setMode(null);
+    } else {
+      setMode(readStoredMode());
+    }
+    setMounted(true);
+  }, [searchParams]);
+
+  // Prevent flash of wrong content during SSR / hydration
+  if (!mounted) {
+    return <div style={{ background: '#06090e', height: '100dvh' }} />;
+  }
+
+  if (mode === 'ide') {
+    return (
+      <>
+        <SiteHeader />
+        <main className="site-main">
+          <IDEShell />
+        </main>
+      </>
+    );
+  }
+
+  if (mode === 'recruiter') {
+    // Phase 9 will replace this stub with the full RecruiterView component
+    return (
+      <div
+        style={{
+          background: '#f4ecdc',
+          height: '100dvh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontFamily: 'var(--font-newsreader, serif)',
+          fontSize: '1.5rem',
+          color: '#1a1f1c',
+        }}
+      >
+        Recruiter view — coming in Phase 9
+      </div>
+    );
+  }
+
+  // mode === null: Phase 8 will replace this stub with the full Door component
+  return (
+    <div
+      style={{
+        background: '#06090e',
+        height: '100dvh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontFamily: 'var(--font-mono, monospace)',
+        fontSize: '0.9rem',
+        color: '#3ddc84',
+      }}
+    >
+      Landing door — coming in Phase 8
+    </div>
+  );
+}
+
+export default function ResumeGate() {
+  return (
+    <Suspense fallback={<div style={{ background: '#06090e', height: '100dvh' }} />}>
+      <ResumeGateInner />
+    </Suspense>
+  );
 }
