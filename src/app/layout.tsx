@@ -14,7 +14,7 @@ const newsreader = Newsreader({
   variable: '--font-newsreader',
   display: 'swap',
   style: ['normal', 'italic'],
-  weight: ['400', '500'],
+  weight: ['300', '400', '500', '600', '700'],
 });
 
 export const metadata: Metadata = {
