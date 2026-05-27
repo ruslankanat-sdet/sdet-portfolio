@@ -1,5 +1,5 @@
 import type { MDXComponents } from 'mdx/types';
-import styles from './src/app/about/about.module.css';
+import styles from './src/app/(ide)/about/about.module.css';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
