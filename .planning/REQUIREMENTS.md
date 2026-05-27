@@ -8,9 +8,9 @@
 
 ### Architecture (ARCH)
 
-- [ ] **ARCH-01**: IDE and `/about` pages live under an `(ide)` route group so the root layout carries no `SiteHeader` — door and recruiter views own their full viewport
-- [ ] **ARCH-02**: Root `page.tsx` is a `"use client"` `ResumeGate` component that reads `localStorage["resume-mode"]` on mount and renders Door, Recruiter, or IDE view accordingly
-- [ ] **ARCH-03**: Newsreader serif font (display + body) and JetBrains Mono (already loaded) are available for recruiter styles via `next/font/google`
+- [x] **ARCH-01**: IDE and `/about` pages live under an `(ide)` route group so the root layout carries no `SiteHeader` — door and recruiter views own their full viewport *(Validated in Phase 7)*
+- [x] **ARCH-02**: Root `page.tsx` is a `"use client"` `ResumeGate` component that reads `localStorage["resume-mode"]` on mount and renders Door, Recruiter, or IDE view accordingly *(Validated in Phase 7)*
+- [x] **ARCH-03**: Newsreader serif font (display + body) and JetBrains Mono (already loaded) are available for recruiter styles via `next/font/google` *(Validated in Phase 7)*
 
 ### Landing Door (DOOR)
 
