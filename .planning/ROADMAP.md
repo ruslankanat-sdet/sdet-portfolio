@@ -31,7 +31,7 @@ Full archive: [milestones/v1.0-ROADMAP.md](milestones/v1.0-ROADMAP.md)
 ### v1.2 — Recruiter View & Dual-Audience Landing
 
 - [x] **Phase 7: Foundation — Route Restructure & Font Setup** - IDE and About pages scoped under route group; root layout header-free; serif font available — completed 2026-05-27
-- [ ] **Phase 8: Landing Door** - Full-viewport split-screen door with hover animation, localStorage routing, and ?reset support
+- [x] **Phase 8: Landing Door** - Full-viewport split-screen door with hover animation, localStorage routing, and ?reset support (completed 2026-05-27)
 - [ ] **Phase 9: Recruiter View** - Complete editorial resume: masthead, hero, all five content sections, contact footer, and mobile responsiveness
 - [ ] **Phase 10: Content, Print & Polish** - Real Ruslan Kanatbek content replaces all prototype copy; print stylesheet produces clean PDF
 
@@ -148,7 +148,7 @@ Wave 1:
 
 Wave 2:
 
-- [ ] 08-02-PLAN.md — E2E: pre-seed IDE mode in 3 existing spec files (12 tests) + new Landing door describe block with 4 tests (DOOR-01 E2E, DOOR-03, DOOR-04)
+- [x] 08-02-PLAN.md — E2E: pre-seed IDE mode in 3 existing spec files (12 tests) + new Landing door describe block with 4 tests (DOOR-01 E2E, DOOR-03, DOOR-04)
 
 **UI hint**: yes
 
@@ -193,6 +193,6 @@ Wave 2:
 | 5. Mobile Responsiveness & UX Labels | v1.1 | 4/4 | Complete | 2026-05-25 |
 | 6. Vitest Unit Tests | v1.1 | 3/3 | Complete | 2026-05-26 |
 | 7. Foundation — Route Restructure & Font Setup | v1.2 | 2/2 | Complete | 2026-05-27 |
-| 8. Landing Door | v1.2 | 1/2 | In Progress|  |
+| 8. Landing Door | v1.2 | 2/2 | Complete   | 2026-05-27 |
 | 9. Recruiter View | v1.2 | 0/TBD | Not started | - |
 | 10. Content, Print & Polish | v1.2 | 0/TBD | Not started | - |
