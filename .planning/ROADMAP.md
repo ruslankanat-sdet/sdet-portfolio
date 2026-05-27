@@ -136,7 +136,14 @@ Wave 2:
   3. A return visitor whose localStorage holds a mode lands directly in that view — the door is never shown on subsequent visits
   4. Appending `?reset` to the URL clears the stored mode and displays the door again, regardless of previous selection
 
-**Plans**: TBD
+**Plans**: 2 plans
+
+Wave 1:
+- [ ] 08-01-PLAN.md — Cream/forest tokens + .door-* classes in globals.css, LogoMark + DoorScreen components (+ unit tests), Newsreader weight expansion, and wire DoorScreen into ResumeGateInner (DOOR-01, DOOR-02)
+
+Wave 2:
+- [ ] 08-02-PLAN.md — E2E: pre-seed IDE mode in 3 existing spec files (12 tests) + new Landing door describe block with 4 tests (DOOR-01 E2E, DOOR-03, DOOR-04)
+
 **UI hint**: yes
 
 ### Phase 9: Recruiter View

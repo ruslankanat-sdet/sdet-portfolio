@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Recruiter View & Dual-Audience Landing
 status: ready
-stopped_at: "phase-07 / complete"
+stopped_at: "phase-08 / planned"
 last_updated: "2026-05-27"
-last_activity: 2026-05-27 -- Plan 07-02 complete (ResumeGate + Newsreader font; all smoke tests pass)
+last_activity: 2026-05-27 -- Phase 8 plans created (2 plans: DoorScreen component + E2E tests)
 progress:
   total_phases: 4
   completed_phases: 1
-  total_plans: 2
+  total_plans: 4
   completed_plans: 2
-  percent: 100
+  percent: 50
 ---
 
 # Project State
@@ -25,10 +25,10 @@ See: .planning/PROJECT.md (updated 2026-05-26 for v1.2)
 
 ## Current Position
 
-Phase: 07-foundation-route-restructure-font-setup
-Plan: 07-02 complete — Phase 7 fully complete
-Status: Complete
-Last activity: 2026-05-27 — 07-02 complete: ResumeGate replaces root page.tsx, Newsreader font added, all smoke tests pass
+Phase: 08-landing-door
+Plan: ready to execute — 2 plans in 2 waves
+Status: Planned
+Last activity: 2026-05-27 — Phase 8 planned: DoorScreen component (Wave 1) + E2E test updates (Wave 2)
 
 ## Performance Metrics
 
