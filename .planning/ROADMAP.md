@@ -114,7 +114,14 @@ Wave 2 *(completed 2026-05-26)*:
   3. A `ResumeGate` component at the root reads `localStorage["resume-mode"]` on mount and renders the correct view branch (Door, Recruiter, or IDE)
   4. Newsreader serif is loaded via `next/font/google` and available as a CSS variable for recruiter page styles
 
-**Plans**: TBD
+**Plans**: 2 plans
+
+Wave 1:
+- [x] 07-01-PLAN.md — Route group restructure: create `(ide)/layout.tsx` with SiteHeader, move `/about` into group, strip SiteHeader + main wrapper from root layout (ARCH-01) — completed 2026-05-27
+
+Wave 2:
+- [ ] 07-02-PLAN.md — ResumeGate + Newsreader font: Newsreader via `next/font/google` as `--font-newsreader`, replace root `page.tsx` with `"use client"` ResumeGate with localStorage routing and `?reset` support (ARCH-02, ARCH-03)
+
 **UI hint**: yes
 
 ### Phase 8: Landing Door
@@ -172,7 +179,7 @@ Wave 2 *(completed 2026-05-26)*:
 | 4. Tech Debt Sweep | v1.1 | 2/2 | Complete | 2026-05-24 |
 | 5. Mobile Responsiveness & UX Labels | v1.1 | 4/4 | Complete | 2026-05-25 |
 | 6. Vitest Unit Tests | v1.1 | 3/3 | Complete | 2026-05-26 |
-| 7. Foundation — Route Restructure & Font Setup | v1.2 | 0/TBD | Not started | - |
+| 7. Foundation — Route Restructure & Font Setup | v1.2 | 1/2 | In progress | - |
 | 8. Landing Door | v1.2 | 0/TBD | Not started | - |
 | 9. Recruiter View | v1.2 | 0/TBD | Not started | - |
 | 10. Content, Print & Polish | v1.2 | 0/TBD | Not started | - |

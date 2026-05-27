@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Recruiter View & Dual-Audience Landing
-status: planning
-stopped_at: ""
-last_updated: "2026-05-26"
-last_activity: 2026-05-26 -- Milestone v1.2 started
+status: ready
+stopped_at: "phase-07 / 07-02-PLAN.md"
+last_updated: "2026-05-27"
+last_activity: 2026-05-27 -- Plan 07-01 complete (route group restructure, /about migrated, root layout stripped)
 progress:
-  total_phases: 0
+  total_phases: 4
   completed_phases: 0
-  total_plans: 0
-  completed_plans: 0
-  percent: 0
+  total_plans: 2
+  completed_plans: 1
+  percent: 50
 ---
 
 # Project State
@@ -25,10 +25,10 @@ See: .planning/PROJECT.md (updated 2026-05-26 for v1.2)
 
 ## Current Position
 
-Phase: Not started (defining requirements)
-Plan: —
-Status: Defining requirements
-Last activity: 2026-05-26 — Milestone v1.2 started
+Phase: 07-foundation-route-restructure-font-setup
+Plan: 07-01 complete, 07-02 next
+Status: In progress
+Last activity: 2026-05-27 — 07-01 complete: (ide) route group created, /about migrated, root layout stripped
 
 ## Performance Metrics
 
@@ -53,6 +53,10 @@ Key decisions carried forward:
 - Hand-rolled TypeScript tokenizer (client-bundled files-data.ts)
 - Two-variant Footer fixed (each page renders its own)
 - Next.js App Router on Vercel
+
+v1.2 decisions:
+- Route group `(ide)` owns SiteHeader + site-main; root layout is header-free for door/recruiter views
+- `/about` page migrated to `src/app/(ide)/about/` — URL unchanged, layout inheritance via route group
 
 ### Design Handoff
 
@@ -85,6 +89,6 @@ High-fidelity design prototype available at `.planning/design/design_handoff_res
 
 ## Session Continuity
 
-Last session: 2026-05-26
-Stopped at: Milestone v1.2 initialized — roadmap pending
-Resume file: .planning/ROADMAP.md
+Last session: 2026-05-27
+Stopped at: Plan 07-01 complete — resume at 07-02-PLAN.md
+Resume file: .planning/phases/07-foundation-route-restructure-font-setup/07-02-PLAN.md
