@@ -14,7 +14,7 @@ The site itself is the demo. The tools showcase the candidate.
 
 ## Current State
 
-Phase 7 complete (2026-05-27) — Route group restructure done, ResumeGate live, Newsreader font available. Phase 8 (Landing Door) is next.
+Phase 8 complete (2026-05-28) — Landing Door live: split-screen `/` with cream recruiter half + dark IDE half, DoorScreen component, CSS tokens, Newsreader 300–700, localStorage persistence, `?reset` param, e2e coverage (DOOR-01/03/04). Phase 9 (Recruiter View) is next.
 
 ## Current Milestone: v1.2 Recruiter View & Dual-Audience Landing
 
