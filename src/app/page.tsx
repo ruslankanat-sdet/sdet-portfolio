@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, Suspense } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { IDEShell } from '@/components/ide/IDEShell';
 import { SiteHeader } from '@/components/layout/SiteHeader';
 import { DoorScreen } from '@/components/door/DoorScreen';
@@ -25,6 +25,7 @@ function clearStoredMode(): void {
 
 function ResumeGateInner() {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const [mode, setMode] = useState<Mode>(null);
   const [mounted, setMounted] = useState(false);
 
@@ -32,11 +33,13 @@ function ResumeGateInner() {
     if (searchParams.get('reset') !== null) {
       clearStoredMode();
       setMode(null);
+      // Remove ?reset from the address bar so a page refresh doesn't re-clear
+      router.replace('/');
     } else {
       setMode(readStoredMode());
     }
     setMounted(true);
-  }, [searchParams]);
+  }, [searchParams, router]);
 
   // Prevent flash of wrong content during SSR / hydration
   if (!mounted) {
