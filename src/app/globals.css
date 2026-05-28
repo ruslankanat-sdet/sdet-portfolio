@@ -59,8 +59,8 @@
   --shadow-panel: 0 20px 60px rgba(0, 0, 0, 0.6);
   --input-bg: rgba(0, 0, 0, 0.25);
 
-  --mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', ui-monospace, Menlo, Consolas, monospace;
-  --ui: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --mono: var(--font-mono), 'JetBrains Mono', 'Fira Code', 'SF Mono', ui-monospace, Menlo, Consolas, monospace;
+  --ui:   var(--font-inter), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   /* Recruiter / editorial layer — Newsreader serif */
   /* --font-newsreader is injected by next/font at the html element */
   --serif: var(--font-newsreader);
