@@ -165,7 +165,16 @@ Wave 2:
   4. The contact section includes the large email link and a three-column social grid; the footer contains an "Open the IDE" switch back to engineer view
   5. On a 375px screen, metrics wrap to 2 columns, the experience timeline stacks to a single column, the availability card stacks vertically, and all text remains legible without horizontal scrolling
 
-**Plans**: TBD
+**Plans**: 2 plans
+
+Wave 1:
+
+- [ ] 09-01-PLAN.md — Foundation: recruiter.module.css (scroll container + sticky + avail-pulse + print scaffold), RecruiterView shell + Masthead + Hero, wire into ResumeGateInner, unit tests + E2E spec scaffold (REC-01, REC-02)
+
+Wave 2 (depends on 09-01):
+
+- [ ] 09-02-PLAN.md — Content sections (Metrics §01, Now lede §02, Timeline §03, Skills §04, AvailabilityCard §05, ContactSection, RecruiterFooter), full mobile breakpoints (600px + 540px), expanded unit + E2E tests, DOOR-03 landing assertion fix (REC-03, REC-04, REC-05, REC-06, REC-07, REC-08, REC-10)
+
 **UI hint**: yes
 
 ### Phase 10: Content, Print & Polish
