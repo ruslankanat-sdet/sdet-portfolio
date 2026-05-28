@@ -8,6 +8,8 @@ interface DoorScreenProps {
 }
 
 export function DoorScreen({ onChooseRecruiter, onChooseIDE }: DoorScreenProps) {
+  // A single visually-hidden <h1> satisfies WCAG 1.3.1; the two door-name
+  // elements are styled <p> tags (presentational headings, not structure).
   const handleRecruiterKey = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Enter') {
       onChooseRecruiter();
@@ -28,6 +30,7 @@ export function DoorScreen({ onChooseRecruiter, onChooseIDE }: DoorScreenProps) 
 
   return (
     <div className="door">
+      <h1 className="sr-only">Ruslan Kanatbek — SDET Portfolio</h1>
       <div
         className="door-half door-half-recruiter"
         role="button"
@@ -47,9 +50,9 @@ export function DoorScreen({ onChooseRecruiter, onChooseIDE }: DoorScreenProps) 
           <span>For recruiters &amp; hiring partners</span>
         </div>
         <div className="door-body">
-          <h1 className="door-name">
+          <p className="door-name">
             Ruslan <em>Kanatbek</em>
-          </h1>
+          </p>
           <div className="door-tagline">
             A readable, single-column résumé. The career, the numbers, how to reach me.
           </div>
@@ -81,9 +84,9 @@ export function DoorScreen({ onChooseRecruiter, onChooseIDE }: DoorScreenProps) 
           <span>For engineering leads &amp; technical interviewers</span>
         </div>
         <div className="door-body">
-          <h1 className="door-name">
+          <p className="door-name">
             ruslan<span className="accent">.</span>kanatbek
-          </h1>
+          </p>
           <div className="door-tagline">
             Open the files, run the smoke test, ask the agent.
           </div>
