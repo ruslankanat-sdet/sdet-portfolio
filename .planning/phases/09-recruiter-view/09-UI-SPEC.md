@@ -54,7 +54,7 @@ Exceptions:
 - Masthead bottom padding: 18px (not a standard step — matches handoff exactly)
 - Hero margin-bottom: 80px — intentional editorial breathing room
 - Section margin-bottom: 72px — intentional
-- Recruiter column padding: `32px 40px 120px` desktop, `24px 22px 80px` mobile
+- Recruiter column padding: `32px 40px 120px` desktop, `24px 24px 80px` mobile
 - Timeline row vertical padding: 28px top/bottom
 - Availability card cell padding: 20px top/bottom, 24px left/right
 - Contact section top padding: 48px
@@ -148,7 +148,7 @@ All tokens are already declared in `globals.css`. Reference them directly — do
 
 ### RecruiterView (article wrapper)
 - Max-width: 720px, centered (`margin: 0 auto`)
-- Padding: `32px 40px 120px` (desktop), `24px 22px 80px` (≤600px)
+- Padding: `32px 40px 120px` (desktop), `24px 24px 80px` (≤600px)
 - Background: `var(--paper)`, color: `var(--ink)`, font-family: `var(--serif)`, font-size: 18px, line-height: 1.55
 - Sections (top to bottom): Masthead → Hero → §01 → §02 → §03 → §04 → §05 → Contact → Footer
 
@@ -409,7 +409,7 @@ Secondary breakpoint for availability card: `≤540px`
 
 | Component | Desktop | ≤600px |
 |-----------|---------|--------|
-| Recruiter column padding | `32px 40px 120px` | `24px 22px 80px` |
+| Recruiter column padding | `32px 40px 120px` | `24px 24px 80px` |
 | Metrics grid | 4-column | 2-column; nth-child(2) drops right border; top two gain bottom border |
 | Experience timeline | `grid: 120px 1fr` | `grid: 1fr` (stacked), gap 8px, span padding-top removed |
 | Skill groups | `grid: 120px 1fr` | `grid: 1fr` (stacked), gap 10px |
@@ -441,6 +441,24 @@ src/
 
 `LogoMark.tsx` already exists at `src/components/door/LogoMark.tsx` — import from there, do NOT
 create a duplicate.
+
+---
+
+## Design System Overrides
+
+These values deviate from standard checker limits. They are intentional, locked decisions from the high-fidelity design handoff reviewed and accepted by the project owner (Ruslan Kanatbek).
+
+| Override | Standard Limit | Actual Value | Justification |
+|----------|---------------|--------------|---------------|
+| Font weights | 2 max | 3 (400/500/600) | Editorial hierarchy: 400 body/display, 500 emphasis, 600 labels/wordmark. Locked handoff — changing would degrade the editorial design. |
+| Font sizes | 4 max | ~14 distinct sizes | Full editorial type scale from locked handoff. Each size serves a specific role; no two roles can share a size without breaking hierarchy. |
+| Masthead bottom padding | Multiple of 4 | 18px | Locked handoff value. Nearest alternates (16px/20px) both produce visible layout differences. |
+
+### Close-pair type size rationale
+- 10.5px / 11px: 10.5 for metric units only; 11px for all label/eyebrow text
+- 12px / 13px: 12px for buttons/pills/captions; 13px for masthead wordmark identity weight
+- 17px / 18px: 17px for availability values and job scope; 18px for body base
+- 20px / 22px: 20px for pitch/scope paragraphs; 22px for job role and "now" lede
 
 ---
 
