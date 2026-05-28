@@ -71,6 +71,14 @@ test.describe('Landing door', () => {
     await expect(page.getByRole('button', { name: /\$ \.\/open-ide/i })).toBeVisible();
   });
 
+  test('DOOR-02: clicking IDE half stores mode and renders IDE shell', async ({ page }) => {
+    await page.goto('/');
+    await page.getByRole('button', { name: /\$ \.\/open-ide/i }).click();
+    await expect(page.getByRole('button', { name: /README\.md/ }).first()).toBeVisible();
+    const stored = await page.evaluate(() => localStorage.getItem('resume-mode'));
+    expect(stored).toBe('ide');
+  });
+
   test('DOOR-03 same-session: clicking recruiter half re-renders without navigation', async ({ page }) => {
     await page.goto('/');
     const url = page.url();
