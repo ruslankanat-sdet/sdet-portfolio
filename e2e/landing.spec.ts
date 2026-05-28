@@ -56,6 +56,15 @@ test.describe('Landing page', () => {
 });
 
 test.describe('Landing door', () => {
+  test('DOOR-A11Y: DoorScreen has no WCAG AA violations', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.getByRole('button', { name: /Enter the résumé/i })).toBeVisible();
+    const results = await new AxeBuilder({ page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+      .analyze();
+    expect(results.violations).toEqual([]);
+  });
+
   test('DOOR-01: shows door at / with no stored mode', async ({ page }) => {
     await page.goto('/');
     await expect(page.getByRole('button', { name: /Enter the résumé/i })).toBeVisible();
