@@ -193,6 +193,6 @@ Wave 2:
 | 5. Mobile Responsiveness & UX Labels | v1.1 | 4/4 | Complete | 2026-05-25 |
 | 6. Vitest Unit Tests | v1.1 | 3/3 | Complete | 2026-05-26 |
 | 7. Foundation — Route Restructure & Font Setup | v1.2 | 2/2 | Complete | 2026-05-27 |
-| 8. Landing Door | v1.2 | 2/2 | Complete   | 2026-05-27 |
+| 8. Landing Door | v1.2 | 2/2 | Complete    | 2026-05-28 |
 | 9. Recruiter View | v1.2 | 0/TBD | Not started | - |
 | 10. Content, Print & Polish | v1.2 | 0/TBD | Not started | - |

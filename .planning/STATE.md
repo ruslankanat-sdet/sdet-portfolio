@@ -4,14 +4,14 @@ milestone: v1.2
 milestone_name: — Recruiter View & Dual-Audience Landing
 status: executing
 stopped_at: Phase 07 complete — Phase 8 Landing Door is next
-last_updated: "2026-05-27T21:09:25.676Z"
-last_activity: 2026-05-27 -- Phase 8 execution started
+last_updated: "2026-05-28T18:20:58.526Z"
+last_activity: 2026-05-28
 progress:
   total_phases: 7
-  completed_phases: 4
+  completed_phases: 5
   total_plans: 13
-  completed_plans: 11
-  percent: 57
+  completed_plans: 13
+  percent: 71
 ---
 
 # Project State
@@ -25,16 +25,16 @@ See: .planning/PROJECT.md (updated 2026-05-26 for v1.2)
 
 ## Current Position
 
-Phase: 8 (landing-door) — EXECUTING
-Plan: 1 of 2
+Phase: 9
+Plan: Not started
 Status: Executing Phase 8
-Last activity: 2026-05-27 -- Phase 8 execution started
+Last activity: 2026-05-28
 
 ## Performance Metrics
 
 **Velocity (v1.0):**
 
-- Total plans completed: 14
+- Total plans completed: 16
 - Timeline: 9 days (2026-05-14 → 2026-05-23)
 
 **Velocity (v1.1):**

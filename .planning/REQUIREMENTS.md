@@ -14,10 +14,10 @@
 
 ### Landing Door (DOOR)
 
-- [ ] **DOOR-01**: First-time visitor sees a full-viewport split-screen door — left cream half (recruiter) and right dark IDE half — both clickable with hover expansion animation
-- [ ] **DOOR-02**: Clicking a door half sets `localStorage["resume-mode"]` to `"recruiter"` or `"ide"` and renders the appropriate view without a page navigation
-- [ ] **DOOR-03**: Return visitor is routed directly to their previously chosen view — the door is not shown again on re-visit
-- [ ] **DOOR-04**: Visitor who appends `?reset` to any URL sees the door again — stored mode is cleared
+- [x] **DOOR-01**: First-time visitor sees a full-viewport split-screen door — left cream half (recruiter) and right dark IDE half — both clickable with hover expansion animation
+- [x] **DOOR-02**: Clicking a door half sets `localStorage["resume-mode"]` to `"recruiter"` or `"ide"` and renders the appropriate view without a page navigation
+- [x] **DOOR-03**: Return visitor is routed directly to their previously chosen view — the door is not shown again on re-visit
+- [x] **DOOR-04**: Visitor who appends `?reset` to any URL sees the door again — stored mode is cleared
 
 ### Recruiter View (REC)
 
@@ -77,10 +77,10 @@ Acknowledged but deferred from this milestone.
 | ARCH-01 | Phase 7 | Pending |
 | ARCH-02 | Phase 7 | Pending |
 | ARCH-03 | Phase 7 | Pending |
-| DOOR-01 | Phase 8 | Pending |
-| DOOR-02 | Phase 8 | Pending |
-| DOOR-03 | Phase 8 | Pending |
-| DOOR-04 | Phase 8 | Pending |
+| DOOR-01 | Phase 8 | Complete |
+| DOOR-02 | Phase 8 | Complete |
+| DOOR-03 | Phase 8 | Complete |
+| DOOR-04 | Phase 8 | Complete |
 | REC-01 | Phase 9 | Pending |
 | REC-02 | Phase 9 | Pending |
 | REC-03 | Phase 9 | Pending |
@@ -94,6 +94,7 @@ Acknowledged but deferred from this milestone.
 | CONT-RK-01 | Phase 10 | Pending |
 
 **Coverage:**
+
 - v1.2 requirements: 18 total
 - Mapped to phases: 18 (100%)
 - Unmapped: 0
