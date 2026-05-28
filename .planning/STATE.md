@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: — Recruiter View & Dual-Audience Landing
-status: executing
-stopped_at: Phase 07 complete — Phase 8 Landing Door is next
-last_updated: "2026-05-28T18:20:58.526Z"
+status: planned
+stopped_at: Phase 09 planned — 2 plans ready to execute
+last_updated: "2026-05-28T00:00:00.000Z"
 last_activity: 2026-05-28
 progress:
   total_phases: 7
   completed_phases: 5
-  total_plans: 13
+  total_plans: 15
   completed_plans: 13
   percent: 71
 ---
@@ -21,13 +21,13 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-26 for v1.2)
 
 **Core value:** A recruiter opens the page and immediately sees working code — real Playwright tests, real TypeScript — and thinks "I need to interview this person."
-**Current focus:** Phase 8 — landing-door
+**Current focus:** Phase 9 — recruiter-view
 
 ## Current Position
 
 Phase: 9
-Plan: Not started
-Status: Executing Phase 8
+Plan: Ready to execute (2 plans, 2 waves)
+Status: Planned
 Last activity: 2026-05-28
 
 ## Performance Metrics
