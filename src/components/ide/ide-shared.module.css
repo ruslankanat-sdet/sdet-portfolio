@@ -1,0 +1,10 @@
+/* ─── Shared IDE pane utilities ─── */
+/* Composed into individual module .paneSubtitle rules via CSS Modules composes */
+
+.paneSubtitleBase {
+  font-size: 10.5px;
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+  font-family: var(--ui);
+}
