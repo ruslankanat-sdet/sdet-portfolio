@@ -10,7 +10,11 @@ const defaultProps = {
 
 beforeEach(() => {
   vi.clearAllMocks();
-  Object.defineProperty(window, 'print', { value: vi.fn(), writable: true });
+  Object.defineProperty(window, 'print', {
+    value: vi.fn(),
+    writable: true,
+    configurable: true,
+  });
 });
 
 describe('RecruiterView — rendering', () => {
