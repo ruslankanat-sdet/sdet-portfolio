@@ -544,3 +544,11 @@ body > main {
     visibility: hidden;
   }
 }
+
+/* ── Print reset for recruiter view (body-level rules; component rules in recruiter.module.css) ── */
+@media print {
+  body {
+    background: white;
+    font-size: 11pt;
+  }
+}

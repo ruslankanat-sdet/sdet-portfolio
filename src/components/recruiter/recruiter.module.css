@@ -5,7 +5,7 @@
    ───────────────────────────────────────────────────────────── */
 
 /* ── Scroll root ── fills site-body flex child, provides cream surface ── */
-.recruiter-scroll-root {
+.recruiterScrollRoot {
   height: 100%;
   overflow-y: auto;
   background: var(--paper);
@@ -41,14 +41,14 @@
   align-items: center;
 }
 
-.masthead-l {
+.mastheadL {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   font-family: var(--mono);
 }
 
-.masthead-logo {
+.mastheadLogo {
   width: 26px;
   height: 26px;
   display: grid;
@@ -59,19 +59,19 @@
   border: 1px solid var(--forest-line);
 }
 
-.masthead-wordmark {
+.mastheadWordmark {
   font-size: 13px;
   font-weight: 600;
   letter-spacing: -0.005em;
   color: var(--ink);
 }
 
-.masthead-sep {
+.mastheadSep {
   font-size: 13px;
   color: var(--ink-muted);
 }
 
-.masthead-section {
+.mastheadSection {
   font-size: 11px;
   font-weight: 400;
   letter-spacing: 0.12em;
@@ -80,7 +80,7 @@
 }
 
 /* ── Engineer view pill button ── */
-.masthead-switch {
+.mastheadSwitch {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -96,13 +96,13 @@
   transition: border-color 0.15s, color 0.15s, background 0.15s;
 }
 
-.masthead-switch:hover {
+.mastheadSwitch:hover {
   border-color: var(--forest);
   color: var(--forest);
   background: var(--forest-soft);
 }
 
-.masthead-switch:hover .arrow {
+.mastheadSwitch:hover .arrow {
   transform: translate(2px, -2px);
 }
 
@@ -137,12 +137,12 @@
   font-family: var(--mono);
 }
 
-.avail-dot {
+.availDot {
   position: relative;
   display: inline-block;
 }
 
-.avail-dot::before {
+.availDot::before {
   content: '';
   display: inline-block;
   width: 7px;
@@ -161,12 +161,12 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .avail-dot::before {
+  .availDot::before {
     animation: avail-pulse 1.8s ease-in-out infinite;
   }
 }
 
-.avail-label {
+.availLabel {
   font-size: 10.5px;
   font-weight: 400;
   letter-spacing: 0.10em;
@@ -174,11 +174,11 @@
   color: var(--ink-muted);
 }
 
-.avail-sep {
+.availSep {
   color: var(--ink-muted);
 }
 
-.avail-value {
+.availValue {
   font-size: 17px;
   font-weight: 500;
   color: var(--forest);
@@ -231,7 +231,7 @@
 }
 
 /* Primary button — forest background */
-.btn-primary {
+.btnPrimary {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -250,13 +250,13 @@
   transition: background 0.15s, transform 0.15s;
 }
 
-.btn-primary:hover {
+.btnPrimary:hover {
   background: var(--forest-deep);
   transform: translateY(-1px);
 }
 
 /* Secondary button — transparent with forest border */
-.btn-secondary {
+.btnSecondary {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -275,7 +275,7 @@
   transition: background 0.15s;
 }
 
-.btn-secondary:hover {
+.btnSecondary:hover {
   background: var(--forest-soft);
 }
 
@@ -284,7 +284,7 @@
   margin-bottom: 72px;
 }
 
-.section-head {
+.sectionHead {
   display: flex;
   flex-direction: row;
   align-items: baseline;
@@ -292,7 +292,7 @@
   margin-bottom: 28px;
 }
 
-.section-num {
+.sectionNum {
   font-family: var(--mono);
   font-size: 12px;
   font-weight: 400;
@@ -301,7 +301,7 @@
   flex-shrink: 0;
 }
 
-.section-title {
+.sectionTitle {
   font-family: var(--mono);
   font-size: 14px;
   font-weight: 500;
@@ -310,15 +310,16 @@
   color: var(--ink-muted);
 }
 
-.section-rule {
+.sectionRule {
   flex: 1;
   height: 1px;
   background: var(--rule);
 }
 
-/* ── Print scaffold (Phase 10 will validate with real content) ── */
+/* ── Print — full block (content validated in Phase 10) ── */
+/* Note: body { background: white; font-size: 11pt; } is in globals.css @media print block */
 @media print {
-  .recruiter-scroll-root {
+  .recruiterScrollRoot {
     overflow: visible;
     height: auto;
   }
@@ -328,7 +329,11 @@
     padding: 0;
   }
 
-  .masthead-switch {
+  .mastheadSwitch {
+    display: none !important;
+  }
+
+  .footer {
     display: none !important;
   }
 
@@ -350,9 +355,406 @@
   }
 }
 
-/* ── Mobile (≤600px) — Plan 02 adds remaining breakpoints ── */
+/* ── §02 Now paragraph — drop-cap ── */
+.now {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.55;
+  max-width: 60ch;
+  color: var(--ink-soft);
+}
+
+.now::first-letter {
+  font-size: 1.4em;
+  font-weight: 600;
+  color: var(--forest);
+  font-style: normal;
+  float: left;
+  line-height: 1;
+  margin-right: 6px;
+}
+
+/* ── §01 Metrics grid ── */
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.metricTile {
+  padding: 24px 18px 24px 0;
+  border-right: 1px solid var(--rule);
+}
+
+.metricTile:last-child {
+  border-right: none;
+}
+
+.metricNum {
+  font-family: var(--serif);
+  font-size: clamp(32px, 4.2vw, 44px);
+  font-weight: 500;
+  color: var(--forest);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.unit {
+  font-size: 0.55em;
+  font-weight: 400;
+  color: var(--ink-muted);
+}
+
+.metricLabel {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  line-height: 1.4;
+  white-space: pre-line;
+}
+
+/* ── §03 Experience timeline ── */
+.timelineList {
+  display: flex;
+  flex-direction: column;
+}
+
+.timelineJob {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 32px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.timelineJob:last-child {
+  border-bottom: none;
+}
+
+.spanCol {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink-muted);
+  padding-top: 6px;
+}
+
+.spanYearCurrent {
+  color: var(--forest);
+  font-weight: 500;
+}
+
+.jobRole {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 0 0 4px;
+}
+
+.jobCompany {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 14px;
+}
+
+.jobScope {
+  font-family: var(--serif);
+  font-size: 17px;
+  color: var(--ink-soft);
+  max-width: 60ch;
+  line-height: 1.55;
+  margin: 0 0 12px;
+}
+
+.jobStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.stackPill {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-muted);
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+}
+
+/* ── §04 Skills ── */
+.skillsList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.skillGroup {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 32px;
+  align-items: baseline;
+}
+
+.skillCat {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.skillPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skillPill {
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 400;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--paper-soft);
+  border: 1px solid var(--rule);
+  color: var(--ink);
+  cursor: default;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+
+.skillPill:hover {
+  border-color: var(--forest);
+  background: var(--forest-soft);
+  color: var(--forest);
+}
+
+/* ── §05 Availability card ── */
+.availCard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--forest-line);
+  border-radius: 10px;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--paper-soft), var(--paper));
+}
+
+.availRow {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px 24px;
+  border-right: 1px solid var(--forest-line);
+  border-bottom: 1px solid var(--forest-line);
+}
+
+.availRow:nth-child(even) {
+  border-right: none;
+}
+
+.availRow:nth-last-child(-n+2) {
+  border-bottom: none;
+}
+
+.availLabelCard {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.availValueCard {
+  font-family: var(--serif);
+  font-size: 17px;
+  color: var(--ink);
+  line-height: 1.35;
+}
+
+.good {
+  color: var(--forest);
+  font-weight: 500;
+}
+
+/* ── Contact section ── */
+.contactSection {
+  margin-top: 80px;
+  padding-top: 48px;
+  border-top: 2px solid var(--ink);
+}
+
+.contactPre {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 18px;
+}
+
+.contactLine {
+  font-family: var(--serif);
+  font-size: clamp(32px, 4vw, 42px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+
+.contactLine a {
+  color: var(--forest);
+  text-decoration: none;
+  border-bottom: 2px solid var(--forest-line);
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.contactLine a:hover {
+  border-bottom-color: var(--forest);
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding-top: 16px;
+}
+
+.contactItem {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contactItemLabel {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.contactItemValue {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.contactItemValue:hover {
+  color: var(--forest);
+}
+
+/* ── Footer ── */
+.footer {
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+}
+
+.footerCopy {
+  color: var(--ink-faint);
+}
+
+.footerSwitch {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 4px;
+  transition: color 0.15s, text-decoration-color 0.15s;
+}
+
+.footerSwitch:hover {
+  color: var(--forest);
+  text-decoration-color: var(--forest);
+}
+
+/* ── Mobile (≤600px) ── */
 @media (max-width: 600px) {
   .recruiter {
     padding: 24px 24px 80px;
+  }
+
+  .metricsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .metricTile:nth-child(2) {
+    border-right: none;
+  }
+
+  .metricTile:nth-child(1),
+  .metricTile:nth-child(2) {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .timelineJob {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .spanCol {
+    padding-top: 0;
+  }
+
+  .skillGroup {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .contactGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* ── Mobile (≤540px) — availability card collapses to 1-column ── */
+@media (max-width: 540px) {
+  .availCard {
+    grid-template-columns: 1fr;
+  }
+
+  .availRow {
+    border-right: none;
+  }
+
+  .availRow:last-child {
+    border-bottom: none;
   }
 }
