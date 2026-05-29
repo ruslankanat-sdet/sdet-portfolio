@@ -4,7 +4,7 @@ import styles from './recruiter.module.css';
 
 export function Hero() {
   return (
-    <section className={styles.hero}>
+    <section className={styles.hero} aria-label="Introduction">
       <div className={styles.eyebrow}>
         <span className={styles.avail}>
           <span className={styles.availDot} aria-hidden="true" />

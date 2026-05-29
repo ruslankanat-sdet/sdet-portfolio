@@ -4,7 +4,7 @@ import styles from './recruiter.module.css';
 
 export function ContactSection() {
   return (
-    <section className={styles.contactSection}>
+    <section className={styles.contactSection} aria-label="Get in touch">
       <div className={styles.contactPre}>Get in touch</div>
       <p className={styles.contactLine}>
         The fastest way to reach me is{' '}
