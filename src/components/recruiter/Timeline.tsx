@@ -40,9 +40,9 @@ const JOBS: Job[] = [
 
 export function Timeline() {
   return (
-    <div className={styles.timelineList}>
+    <ul className={styles.timelineList} style={{ listStyle: 'none', margin: 0, padding: 0 }}>
       {JOBS.map((job) => (
-        <div key={job.role} className={styles.timelineJob}>
+        <li key={job.role} className={styles.timelineJob}>
           <div className={styles.spanCol}>
             {job.current ? (
               <>
@@ -65,8 +65,8 @@ export function Timeline() {
               ))}
             </div>
           </div>
-        </div>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
