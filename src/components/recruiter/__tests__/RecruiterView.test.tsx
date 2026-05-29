@@ -93,10 +93,12 @@ describe('RecruiterView — click interactions', () => {
 describe('RecruiterView — content sections', () => {
   it('REC-03: renders all four metric numbers', () => {
     render(<RecruiterView {...defaultProps} />);
-    expect(screen.getByText('9')).toBeInTheDocument();
-    expect(screen.getByText('0.4')).toBeInTheDocument();
-    expect(screen.getByText('98.2')).toBeInTheDocument();
-    expect(screen.getByText('1,247')).toBeInTheDocument();
+    // metricNum div text content includes the unit span ("9yrs", "0.4%", etc.)
+    // use exact:false / regex so the match works regardless of the child <span> unit
+    expect(screen.getByText(/^9/, { exact: false })).toBeInTheDocument();
+    expect(screen.getByText(/^0\.4/, { exact: false })).toBeInTheDocument();
+    expect(screen.getByText(/^98\.2/, { exact: false })).toBeInTheDocument();
+    expect(screen.getByText(/^1,247/, { exact: false })).toBeInTheDocument();
   });
 
   it('REC-05: renders all three job role headings', () => {
