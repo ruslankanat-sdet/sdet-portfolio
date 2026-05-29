@@ -5,7 +5,7 @@
    ───────────────────────────────────────────────────────────── */
 
 /* ── Scroll root ── fills site-body flex child, provides cream surface ── */
-.recruiter-scroll-root {
+.recruiterScrollRoot {
   height: 100%;
   overflow-y: auto;
   background: var(--paper);
@@ -41,14 +41,14 @@
   align-items: center;
 }
 
-.masthead-l {
+.mastheadL {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   font-family: var(--mono);
 }
 
-.masthead-logo {
+.mastheadLogo {
   width: 26px;
   height: 26px;
   display: grid;
@@ -59,19 +59,19 @@
   border: 1px solid var(--forest-line);
 }
 
-.masthead-wordmark {
+.mastheadWordmark {
   font-size: 13px;
   font-weight: 600;
   letter-spacing: -0.005em;
   color: var(--ink);
 }
 
-.masthead-sep {
+.mastheadSep {
   font-size: 13px;
   color: var(--ink-muted);
 }
 
-.masthead-section {
+.mastheadSection {
   font-size: 11px;
   font-weight: 400;
   letter-spacing: 0.12em;
@@ -80,7 +80,7 @@
 }
 
 /* ── Engineer view pill button ── */
-.masthead-switch {
+.mastheadSwitch {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -96,13 +96,13 @@
   transition: border-color 0.15s, color 0.15s, background 0.15s;
 }
 
-.masthead-switch:hover {
+.mastheadSwitch:hover {
   border-color: var(--forest);
   color: var(--forest);
   background: var(--forest-soft);
 }
 
-.masthead-switch:hover .arrow {
+.mastheadSwitch:hover .arrow {
   transform: translate(2px, -2px);
 }
 
@@ -137,12 +137,12 @@
   font-family: var(--mono);
 }
 
-.avail-dot {
+.availDot {
   position: relative;
   display: inline-block;
 }
 
-.avail-dot::before {
+.availDot::before {
   content: '';
   display: inline-block;
   width: 7px;
@@ -161,12 +161,12 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .avail-dot::before {
+  .availDot::before {
     animation: avail-pulse 1.8s ease-in-out infinite;
   }
 }
 
-.avail-label {
+.availLabel {
   font-size: 10.5px;
   font-weight: 400;
   letter-spacing: 0.10em;
@@ -174,11 +174,11 @@
   color: var(--ink-muted);
 }
 
-.avail-sep {
+.availSep {
   color: var(--ink-muted);
 }
 
-.avail-value {
+.availValue {
   font-size: 17px;
   font-weight: 500;
   color: var(--forest);
@@ -231,7 +231,7 @@
 }
 
 /* Primary button — forest background */
-.btn-primary {
+.btnPrimary {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -250,13 +250,13 @@
   transition: background 0.15s, transform 0.15s;
 }
 
-.btn-primary:hover {
+.btnPrimary:hover {
   background: var(--forest-deep);
   transform: translateY(-1px);
 }
 
 /* Secondary button — transparent with forest border */
-.btn-secondary {
+.btnSecondary {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -275,7 +275,7 @@
   transition: background 0.15s;
 }
 
-.btn-secondary:hover {
+.btnSecondary:hover {
   background: var(--forest-soft);
 }
 
@@ -284,7 +284,7 @@
   margin-bottom: 72px;
 }
 
-.section-head {
+.sectionHead {
   display: flex;
   flex-direction: row;
   align-items: baseline;
@@ -292,7 +292,7 @@
   margin-bottom: 28px;
 }
 
-.section-num {
+.sectionNum {
   font-family: var(--mono);
   font-size: 12px;
   font-weight: 400;
@@ -301,7 +301,7 @@
   flex-shrink: 0;
 }
 
-.section-title {
+.sectionTitle {
   font-family: var(--mono);
   font-size: 14px;
   font-weight: 500;
@@ -310,20 +310,16 @@
   color: var(--ink-muted);
 }
 
-.section-rule {
+.sectionRule {
   flex: 1;
   height: 1px;
   background: var(--rule);
 }
 
 /* ── Print — full block (content validated in Phase 10) ── */
+/* Note: body { background: white; font-size: 11pt; } is in globals.css @media print block */
 @media print {
-  body {
-    background: white;
-    font-size: 11pt;
-  }
-
-  .recruiter-scroll-root {
+  .recruiterScrollRoot {
     overflow: visible;
     height: auto;
   }
@@ -333,7 +329,7 @@
     padding: 0;
   }
 
-  .masthead-switch {
+  .mastheadSwitch {
     display: none !important;
   }
 
@@ -380,23 +376,23 @@
 }
 
 /* ── §01 Metrics grid ── */
-.metrics-grid {
+.metricsGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   border-top: 1px solid var(--rule);
   border-bottom: 1px solid var(--rule);
 }
 
-.metric-tile {
+.metricTile {
   padding: 24px 18px 24px 0;
   border-right: 1px solid var(--rule);
 }
 
-.metric-tile:last-child {
+.metricTile:last-child {
   border-right: none;
 }
 
-.metric-num {
+.metricNum {
   font-family: var(--serif);
   font-size: clamp(32px, 4.2vw, 44px);
   font-weight: 500;
@@ -416,7 +412,7 @@
   color: var(--ink-muted);
 }
 
-.metric-label {
+.metricLabel {
   font-family: var(--mono);
   font-size: 11px;
   font-weight: 400;
@@ -428,12 +424,12 @@
 }
 
 /* ── §03 Experience timeline ── */
-.timeline-list {
+.timelineList {
   display: flex;
   flex-direction: column;
 }
 
-.timeline-job {
+.timelineJob {
   display: grid;
   grid-template-columns: 120px 1fr;
   gap: 32px;
@@ -441,23 +437,23 @@
   border-bottom: 1px solid var(--rule-soft);
 }
 
-.timeline-job:last-child {
+.timelineJob:last-child {
   border-bottom: none;
 }
 
-.span-col {
+.spanCol {
   font-family: var(--mono);
   font-size: 12px;
   color: var(--ink-muted);
   padding-top: 6px;
 }
 
-.span-year-current {
+.spanYearCurrent {
   color: var(--forest);
   font-weight: 500;
 }
 
-.job-role {
+.jobRole {
   font-family: var(--serif);
   font-size: 22px;
   font-weight: 500;
@@ -466,7 +462,7 @@
   margin: 0 0 4px;
 }
 
-.job-company {
+.jobCompany {
   font-family: var(--mono);
   font-size: 12px;
   font-weight: 400;
@@ -476,7 +472,7 @@
   margin-bottom: 14px;
 }
 
-.job-scope {
+.jobScope {
   font-family: var(--serif);
   font-size: 17px;
   color: var(--ink-soft);
@@ -485,13 +481,13 @@
   margin: 0 0 12px;
 }
 
-.job-stack {
+.jobStack {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
 }
 
-.stack-pill {
+.stackPill {
   font-family: var(--mono);
   font-size: 11px;
   color: var(--ink-muted);
@@ -502,20 +498,20 @@
 }
 
 /* ── §04 Skills ── */
-.skills-list {
+.skillsList {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.skill-group {
+.skillGroup {
   display: grid;
   grid-template-columns: 120px 1fr;
   gap: 32px;
   align-items: baseline;
 }
 
-.skill-cat {
+.skillCat {
   font-family: var(--mono);
   font-size: 12px;
   font-weight: 400;
@@ -524,13 +520,13 @@
   color: var(--ink-muted);
 }
 
-.skill-pills {
+.skillPills {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-.skill-pill {
+.skillPill {
   font-family: var(--serif);
   font-size: 15px;
   font-weight: 400;
@@ -543,14 +539,14 @@
   transition: border-color 0.15s, background 0.15s, color 0.15s;
 }
 
-.skill-pill:hover {
+.skillPill:hover {
   border-color: var(--forest);
   background: var(--forest-soft);
   color: var(--forest);
 }
 
 /* ── §05 Availability card ── */
-.avail-card {
+.availCard {
   display: grid;
   grid-template-columns: 1fr 1fr;
   border: 1px solid var(--forest-line);
@@ -559,7 +555,7 @@
   background: linear-gradient(180deg, var(--paper-soft), var(--paper));
 }
 
-.avail-row {
+.availRow {
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -568,15 +564,15 @@
   border-bottom: 1px solid var(--forest-line);
 }
 
-.avail-row:nth-child(even) {
+.availRow:nth-child(even) {
   border-right: none;
 }
 
-.avail-row:nth-last-child(-n+2) {
+.availRow:nth-last-child(-n+2) {
   border-bottom: none;
 }
 
-.avail-label-card {
+.availLabelCard {
   font-family: var(--mono);
   font-size: 10.5px;
   font-weight: 400;
@@ -585,7 +581,7 @@
   color: var(--ink-muted);
 }
 
-.avail-value-card {
+.availValueCard {
   font-family: var(--serif);
   font-size: 17px;
   color: var(--ink);
@@ -598,13 +594,13 @@
 }
 
 /* ── Contact section ── */
-.contact-section {
+.contactSection {
   margin-top: 80px;
   padding-top: 48px;
   border-top: 2px solid var(--ink);
 }
 
-.contact-pre {
+.contactPre {
   font-family: var(--mono);
   font-size: 12px;
   font-weight: 400;
@@ -614,7 +610,7 @@
   margin-bottom: 18px;
 }
 
-.contact-line {
+.contactLine {
   font-family: var(--serif);
   font-size: clamp(32px, 4vw, 42px);
   font-weight: 400;
@@ -625,31 +621,31 @@
   margin-bottom: 16px;
 }
 
-.contact-line a {
+.contactLine a {
   color: var(--forest);
   text-decoration: none;
   border-bottom: 2px solid var(--forest-line);
   transition: border-color 0.15s, color 0.15s;
 }
 
-.contact-line a:hover {
+.contactLine a:hover {
   border-bottom-color: var(--forest);
 }
 
-.contact-grid {
+.contactGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   padding-top: 16px;
 }
 
-.contact-item {
+.contactItem {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-.contact-item-label {
+.contactItemLabel {
   font-family: var(--mono);
   font-size: 10.5px;
   font-weight: 400;
@@ -658,7 +654,7 @@
   color: var(--ink-muted);
 }
 
-.contact-item-value {
+.contactItemValue {
   font-family: var(--mono);
   font-size: 14px;
   color: var(--ink);
@@ -666,7 +662,7 @@
   transition: color 0.15s;
 }
 
-.contact-item-value:hover {
+.contactItemValue:hover {
   color: var(--forest);
 }
 
@@ -685,11 +681,11 @@
   color: var(--ink-faint);
 }
 
-.footer-copy {
+.footerCopy {
   color: var(--ink-faint);
 }
 
-.footer-switch {
+.footerSwitch {
   background: none;
   border: none;
   cursor: pointer;
@@ -704,7 +700,7 @@
   transition: color 0.15s, text-decoration-color 0.15s;
 }
 
-.footer-switch:hover {
+.footerSwitch:hover {
   color: var(--forest);
   text-decoration-color: var(--forest);
 }
@@ -715,34 +711,34 @@
     padding: 24px 24px 80px;
   }
 
-  .metrics-grid {
+  .metricsGrid {
     grid-template-columns: 1fr 1fr;
   }
 
-  .metric-tile:nth-child(2) {
+  .metricTile:nth-child(2) {
     border-right: none;
   }
 
-  .metric-tile:nth-child(1),
-  .metric-tile:nth-child(2) {
+  .metricTile:nth-child(1),
+  .metricTile:nth-child(2) {
     border-bottom: 1px solid var(--rule);
   }
 
-  .timeline-job {
+  .timelineJob {
     grid-template-columns: 1fr;
     gap: 8px;
   }
 
-  .span-col {
+  .spanCol {
     padding-top: 0;
   }
 
-  .skill-group {
+  .skillGroup {
     grid-template-columns: 1fr;
     gap: 10px;
   }
 
-  .contact-grid {
+  .contactGrid {
     grid-template-columns: 1fr;
     gap: 16px;
   }
@@ -750,15 +746,15 @@
 
 /* ── Mobile (≤540px) — availability card collapses to 1-column ── */
 @media (max-width: 540px) {
-  .avail-card {
+  .availCard {
     grid-template-columns: 1fr;
   }
 
-  .avail-row {
+  .availRow {
     border-right: none;
   }
 
-  .avail-row:last-child {
+  .availRow:last-child {
     border-bottom: none;
   }
 }

@@ -12,13 +12,13 @@ test.describe('Recruiter view', () => {
     await page.goto('/');
     await expect(page.getByText('ruslan.kanat')).toBeVisible();
     await expect(
-      page.getByRole('button', { name: /Engineer view/i }),
+      page.getByRole('button', { name: /Engineer view/ }).first(),
     ).toBeVisible();
   });
 
   test('REC-01: clicking Engineer view switches to IDE', async ({ page }) => {
     await page.goto('/');
-    await page.getByRole('button', { name: /Engineer view/i }).click();
+    await page.getByRole('button', { name: /Engineer view/ }).first().click();
     await expect(
       page.getByRole('button', { name: /README\.md/ }).first(),
     ).toBeVisible();
@@ -36,7 +36,8 @@ test.describe('Recruiter view', () => {
     await expect(
       page.getByRole('button', { name: /Download PDF/i }),
     ).toBeVisible();
-    const mailtoLink = page.getByRole('link', { name: /alex@morgan\.dev/i });
+    // Use first() since multiple mailto links exist (hero + contact section)
+    const mailtoLink = page.getByRole('link', { name: /alex@morgan\.dev/i }).first();
     await expect(mailtoLink).toBeVisible();
     const href = await mailtoLink.getAttribute('href');
     expect(href).toMatch(/^mailto:/);
@@ -52,10 +53,11 @@ test.describe('Recruiter view', () => {
 
   test('REC-03: renders four metric numbers', async ({ page }) => {
     await page.goto('/');
-    await expect(page.getByText('9')).toBeVisible();
-    await expect(page.getByText('0.4')).toBeVisible();
-    await expect(page.getByText('98.2')).toBeVisible();
-    await expect(page.getByText('1,247')).toBeVisible();
+    // CSS Modules with camelCase class names: class attribute contains "metricNum"
+    await expect(page.locator('[class*="metricNum"]').filter({ hasText: /^9/ }).first()).toBeVisible();
+    await expect(page.locator('[class*="metricNum"]').filter({ hasText: /^0\.4/ }).first()).toBeVisible();
+    await expect(page.locator('[class*="metricNum"]').filter({ hasText: /^98\.2/ }).first()).toBeVisible();
+    await expect(page.locator('[class*="metricNum"]').filter({ hasText: /^1,247/ }).first()).toBeVisible();
   });
 
   test('REC-05: renders three job role headings', async ({ page }) => {
