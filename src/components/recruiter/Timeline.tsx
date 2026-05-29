@@ -2,7 +2,16 @@
 
 import styles from './recruiter.module.css';
 
-const JOBS = [
+interface Job {
+  current?: boolean;
+  span?: string;
+  role: string;
+  company: string;
+  scope: string;
+  stack: readonly string[];
+}
+
+const JOBS: Job[] = [
   {
     current: true,
     role: 'Staff SDET, AI Platform',
@@ -27,7 +36,7 @@ const JOBS = [
       'HIPAA-compliant test pipelines for a patient portal serving 2M+ users. Cut release cycle from two weeks to two days.',
     stack: ['Java', 'Selenium', 'Jenkins'],
   },
-] as const;
+];
 
 export function Timeline() {
   return (

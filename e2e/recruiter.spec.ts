@@ -49,4 +49,54 @@ test.describe('Recruiter view', () => {
       .analyze();
     expect(results.violations).toEqual([]);
   });
+
+  test('REC-03: renders four metric numbers', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.getByText('9')).toBeVisible();
+    await expect(page.getByText('0.4')).toBeVisible();
+    await expect(page.getByText('98.2')).toBeVisible();
+    await expect(page.getByText('1,247')).toBeVisible();
+  });
+
+  test('REC-05: renders three job role headings', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.getByRole('heading', { level: 3, name: /Staff SDET/ })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 3, name: /Senior SDET/ })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 3, name: /Automation Engineer/ })).toBeVisible();
+  });
+
+  test('REC-07: renders availability spec with Status forest accent', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.getByText('Open to offers · Q3 start')).toBeVisible();
+    await expect(page.getByText('US citizen — no sponsorship needed')).toBeVisible();
+  });
+
+  test('REC-08: renders contact + footer with external link security', async ({ page }) => {
+    await page.goto('/');
+    // GitHub link has rel containing noopener
+    const githubLink = page.getByRole('link', { name: /github\.com\/amorgan/i });
+    await expect(githubLink).toBeVisible();
+    const githubRel = await githubLink.getAttribute('rel');
+    expect(githubRel).toContain('noopener');
+    expect(githubRel).toContain('noreferrer');
+
+    // LinkedIn link has rel containing noopener
+    const linkedinLink = page.getByRole('link', { name: /in\/amorgan-sdet/i });
+    await expect(linkedinLink).toBeVisible();
+    const linkedinRel = await linkedinLink.getAttribute('rel');
+    expect(linkedinRel).toContain('noopener');
+    expect(linkedinRel).toContain('noreferrer');
+
+    // Footer Open the IDE button visible
+    await expect(page.getByRole('button', { name: /Open the IDE/i })).toBeVisible();
+  });
+
+  test('REC-10: renders without horizontal overflow at 375px', async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 812 });
+    await page.goto('/');
+    await expect(page.getByText('ruslan.kanat')).toBeVisible();
+    await expect(page.getByText('Lumen Systems').first()).toBeVisible();
+    const scrollWidth = await page.evaluate(() => document.documentElement.scrollWidth);
+    expect(scrollWidth).toBeLessThanOrEqual(375);
+  });
 });
