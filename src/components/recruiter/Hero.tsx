@@ -39,8 +39,8 @@ export function Hero() {
           <span>Download PDF</span>
           <span>↓</span>
         </button>
-        <a className={styles.btnSecondary} href="mailto:alex@morgan.dev">
-          <span>alex@morgan.dev</span>
+        <a className={styles.btnSecondary} href="mailto:ruslankanat.b@gmail.com">
+          <span>ruslankanat.b@gmail.com</span>
           <span>→</span>
         </a>
       </div>

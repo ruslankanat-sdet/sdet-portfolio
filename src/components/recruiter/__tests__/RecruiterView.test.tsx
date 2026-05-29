@@ -56,12 +56,12 @@ describe('RecruiterView — rendering', () => {
     ).toBeInTheDocument();
   });
 
-  it('REC-02: renders mailto link to alex@morgan.dev (hero CTA)', () => {
+  it('REC-02: renders mailto link to ruslankanat.b@gmail.com (hero CTA)', () => {
     render(<RecruiterView {...defaultProps} />);
     // Multiple mailto links exist (hero + contact section) — check at least one has correct href
-    const links = screen.getAllByRole('link', { name: /alex@morgan\.dev/i });
+    const links = screen.getAllByRole('link', { name: /ruslankanat\.b@gmail\.com/i });
     expect(links.length).toBeGreaterThanOrEqual(1);
-    expect(links[0]).toHaveAttribute('href', 'mailto:alex@morgan.dev');
+    expect(links[0]).toHaveAttribute('href', 'mailto:ruslankanat.b@gmail.com');
   });
 });
 
@@ -123,9 +123,9 @@ describe('RecruiterView — content sections', () => {
   it('REC-08: renders contact section with correct hrefs and rel attributes', () => {
     render(<RecruiterView {...defaultProps} />);
     // Large email line in contact-line paragraph
-    const emailLinks = screen.getAllByRole('link', { name: /alex@morgan\.dev/i });
+    const emailLinks = screen.getAllByRole('link', { name: /ruslankanat\.b@gmail\.com/i });
     expect(emailLinks.length).toBeGreaterThanOrEqual(1);
-    expect(emailLinks[0]).toHaveAttribute('href', 'mailto:alex@morgan.dev');
+    expect(emailLinks[0]).toHaveAttribute('href', 'mailto:ruslankanat.b@gmail.com');
 
     // Three contact item labels
     expect(screen.getByText('Email')).toBeInTheDocument();
@@ -133,12 +133,12 @@ describe('RecruiterView — content sections', () => {
     expect(screen.getByText('LinkedIn')).toBeInTheDocument();
 
     // GitHub link has noopener
-    const githubLink = screen.getByRole('link', { name: /github\.com\/amorgan/i });
+    const githubLink = screen.getByRole('link', { name: /github\.com\/ruslankanat-sdet/i });
     const githubRel = githubLink.getAttribute('rel') ?? '';
     expect(githubRel).toContain('noopener');
 
     // LinkedIn link has noopener
-    const linkedinLink = screen.getByRole('link', { name: /in\/amorgan-sdet/i });
+    const linkedinLink = screen.getByRole('link', { name: /in\/ruslan-kanatbek/i });
     const linkedinRel = linkedinLink.getAttribute('rel') ?? '';
     expect(linkedinRel).toContain('noopener');
   });
