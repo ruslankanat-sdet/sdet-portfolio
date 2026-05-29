@@ -5,6 +5,7 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import { IDEShell } from '@/components/ide/IDEShell';
 import { SiteHeader } from '@/components/layout/SiteHeader';
 import { DoorScreen } from '@/components/door/DoorScreen';
+import { RecruiterView } from '@/components/recruiter/RecruiterView';
 
 const MODE_KEY = 'resume-mode';
 type Mode = 'recruiter' | 'ide' | null;
@@ -58,22 +59,13 @@ function ResumeGateInner() {
   }
 
   if (mode === 'recruiter') {
-    // Phase 9 will replace this stub with the full RecruiterView component
     return (
-      <div
-        style={{
-          background: '#f4ecdc',
-          height: '100dvh',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          fontFamily: 'var(--font-newsreader, serif)',
-          fontSize: '1.5rem',
-          color: '#1a1f1c',
+      <RecruiterView
+        onSwitchToIDE={() => {
+          try { localStorage.setItem(MODE_KEY, 'ide'); } catch {}
+          setMode('ide');
         }}
-      >
-        Recruiter view — coming in Phase 9
-      </div>
+      />
     );
   }
 
