@@ -22,6 +22,8 @@
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  /* Explicit background ensures axe-core resolves contrast from article, not body */
+  background: var(--paper);
 }
 
 /* ── Masthead — sticky header ── */
@@ -185,12 +187,12 @@
 
 .ghost {
   font-size: 12px;
-  color: var(--ink-faint);
+  color: var(--ink-muted);
   letter-spacing: 0.04em;
 }
 
 .sep {
-  color: var(--ink-faint);
+  color: var(--ink-muted);
   font-size: 12px;
 }
 
