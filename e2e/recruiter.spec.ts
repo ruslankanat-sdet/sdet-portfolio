@@ -26,18 +26,18 @@ test.describe('Recruiter view', () => {
     expect(stored).toBe('ide');
   });
 
-  test('REC-02: hero renders availability, headline em, pitch, two CTAs', async ({ page }) => {
+  test('REC-02: hero renders availability, headline, pitch, two CTAs', async ({ page }) => {
     await page.goto('/');
-    await expect(page.getByText('Available · Q3 start')).toBeVisible();
+    await expect(page.getByText('Open to opportunities · Q3 start')).toBeVisible();
     await expect(
-      page.locator('h1 em').filter({ hasText: 'AI products' }),
+      page.locator('h1').filter({ hasText: 'Senior SDET & Quality Architect' }),
     ).toBeVisible();
-    await expect(page.getByText(/Nine years writing/i)).toBeVisible();
+    await expect(page.getByText(/For the past decade/i)).toBeVisible();
     await expect(
       page.getByRole('button', { name: /Download PDF/i }),
     ).toBeVisible();
     // Use first() since multiple mailto links exist (hero + contact section)
-    const mailtoLink = page.getByRole('link', { name: /alex@morgan\.dev/i }).first();
+    const mailtoLink = page.getByRole('link', { name: /ruslankanat\.b@gmail\.com/i }).first();
     await expect(mailtoLink).toBeVisible();
     const href = await mailtoLink.getAttribute('href');
     expect(href).toMatch(/^mailto:/);
@@ -54,36 +54,36 @@ test.describe('Recruiter view', () => {
   test('REC-03: renders four metric numbers', async ({ page }) => {
     await page.goto('/');
     // CSS Modules with camelCase class names: class attribute contains "metricNum"
-    await expect(page.locator('[class*="metricNum"]').filter({ hasText: /^9/ }).first()).toBeVisible();
-    await expect(page.locator('[class*="metricNum"]').filter({ hasText: /^0\.4/ }).first()).toBeVisible();
-    await expect(page.locator('[class*="metricNum"]').filter({ hasText: /^98\.2/ }).first()).toBeVisible();
-    await expect(page.locator('[class*="metricNum"]').filter({ hasText: /^1,247/ }).first()).toBeVisible();
+    await expect(page.locator('[class*="metricNum"]').filter({ hasText: /^10/ }).first()).toBeVisible();
+    await expect(page.locator('[class*="metricNum"]').filter({ hasText: /^80/ }).first()).toBeVisible();
+    await expect(page.locator('[class*="metricNum"]').filter({ hasText: /^30/ }).first()).toBeVisible();
+    await expect(page.locator('[class*="metricNum"]').filter({ hasText: /^16/ }).first()).toBeVisible();
   });
 
   test('REC-05: renders three job role headings', async ({ page }) => {
     await page.goto('/');
-    await expect(page.getByRole('heading', { level: 3, name: /Staff SDET/ })).toBeVisible();
-    await expect(page.getByRole('heading', { level: 3, name: /Senior SDET/ })).toBeVisible();
-    await expect(page.getByRole('heading', { level: 3, name: /Automation Engineer/ })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 3, name: /Senior SDET \(AWS/ })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 3, name: /SDET \/ Software Engineer/ })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 3, name: /QA Tester/ })).toBeVisible();
   });
 
   test('REC-07: renders availability spec with Status forest accent', async ({ page }) => {
     await page.goto('/');
-    await expect(page.getByText('Open to offers · Q3 start')).toBeVisible();
-    await expect(page.getByText('US citizen — no sponsorship needed')).toBeVisible();
+    await expect(page.getByText('Open to opportunities · Q3 start')).toBeVisible();
+    await expect(page.getByText('Authorized to work in the US (details on request)')).toBeVisible();
   });
 
   test('REC-08: renders contact + footer with external link security', async ({ page }) => {
     await page.goto('/');
     // GitHub link has rel containing noopener
-    const githubLink = page.getByRole('link', { name: /github\.com\/amorgan/i });
+    const githubLink = page.getByRole('link', { name: /github\.com\/ruslankanat-sdet/i });
     await expect(githubLink).toBeVisible();
     const githubRel = await githubLink.getAttribute('rel');
     expect(githubRel).toContain('noopener');
     expect(githubRel).toContain('noreferrer');
 
     // LinkedIn link has rel containing noopener
-    const linkedinLink = page.getByRole('link', { name: /in\/amorgan-sdet/i });
+    const linkedinLink = page.getByRole('link', { name: /in\/ruslan-kanatbek/i });
     await expect(linkedinLink).toBeVisible();
     const linkedinRel = await linkedinLink.getAttribute('rel');
     expect(linkedinRel).toContain('noopener');
@@ -97,7 +97,7 @@ test.describe('Recruiter view', () => {
     await page.setViewportSize({ width: 375, height: 812 });
     await page.goto('/');
     await expect(page.getByText('ruslan.kanat')).toBeVisible();
-    await expect(page.getByText('Lumen Systems').first()).toBeVisible();
+    await expect(page.getByText('ResMed').first()).toBeVisible();
     const scrollWidth = await page.evaluate(() => document.documentElement.scrollWidth);
     expect(scrollWidth).toBeLessThanOrEqual(375);
   });

@@ -33,19 +33,22 @@ describe('RecruiterView — rendering', () => {
 
   it('REC-02: renders availability status value', () => {
     render(<RecruiterView {...defaultProps} />);
-    expect(screen.getByText('Available · Q3 start')).toBeInTheDocument();
+    const matches = screen.getAllByText('Open to opportunities · Q3 start');
+    expect(matches.length).toBeGreaterThanOrEqual(1);
+    expect(matches[0]).toBeInTheDocument();
   });
 
-  it('REC-02: renders headline with em "AI products"', () => {
+  it('REC-02: renders headline', () => {
     render(<RecruiterView {...defaultProps} />);
-    const em = screen.getByText('AI products');
-    expect(em.tagName).toBe('EM');
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
+      'Senior SDET & Quality Architect — AI-Augmented Testing at Scale',
+    );
   });
 
-  it('REC-02: renders pitch paragraph with nine years copy', () => {
+  it('REC-02: renders pitch paragraph with decade copy', () => {
     render(<RecruiterView {...defaultProps} />);
     expect(
-      screen.getByText(/Nine years writing self-healing/i),
+      screen.getByText(/For the past decade/i),
     ).toBeInTheDocument();
   });
 
@@ -93,31 +96,33 @@ describe('RecruiterView — click interactions', () => {
 describe('RecruiterView — content sections', () => {
   it('REC-03: renders all four metric numbers', () => {
     render(<RecruiterView {...defaultProps} />);
-    // metricNum div text content includes the unit span ("9yrs", "0.4%", etc.)
+    // metricNum div text content includes the unit span ("10yrs", "80%", etc.)
     // use exact:false / regex so the match works regardless of the child <span> unit
-    expect(screen.getByText(/^9/, { exact: false })).toBeInTheDocument();
-    expect(screen.getByText(/^0\.4/, { exact: false })).toBeInTheDocument();
-    expect(screen.getByText(/^98\.2/, { exact: false })).toBeInTheDocument();
-    expect(screen.getByText(/^1,247/, { exact: false })).toBeInTheDocument();
+    expect(screen.getByText(/^10/, { exact: false })).toBeInTheDocument();
+    expect(screen.getByText(/^80/, { exact: false })).toBeInTheDocument();
+    expect(screen.getByText(/^30/, { exact: false })).toBeInTheDocument();
+    expect(screen.getByText(/^16/, { exact: false })).toBeInTheDocument();
   });
 
   it('REC-05: renders all three job role headings', () => {
     render(<RecruiterView {...defaultProps} />);
     expect(
-      screen.getByRole('heading', { level: 3, name: 'Staff SDET, AI Platform' }),
+      screen.getByRole('heading', { level: 3, name: 'Senior SDET (AWS/Mobile/Web)' }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole('heading', { level: 3, name: 'Senior SDET' }),
+      screen.getByRole('heading', { level: 3, name: 'SDET / Software Engineer' }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole('heading', { level: 3, name: 'Automation Engineer' }),
+      screen.getByRole('heading', { level: 3, name: 'QA Tester (Mobile)' }),
     ).toBeInTheDocument();
   });
 
   it('REC-07: renders availability Status and Visa row values', () => {
     render(<RecruiterView {...defaultProps} />);
-    expect(screen.getByText('Open to offers · Q3 start')).toBeInTheDocument();
-    expect(screen.getByText('US citizen — no sponsorship needed')).toBeInTheDocument();
+    // Status value appears in both Hero eyebrow and AvailabilityCard — use getAllByText
+    const statusMatches = screen.getAllByText('Open to opportunities · Q3 start');
+    expect(statusMatches.length).toBeGreaterThanOrEqual(1);
+    expect(screen.getByText('Authorized to work in the US (details on request)')).toBeInTheDocument();
   });
 
   it('REC-08: renders contact section with correct hrefs and rel attributes', () => {
