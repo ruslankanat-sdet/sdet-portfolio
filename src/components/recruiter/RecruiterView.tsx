@@ -45,7 +45,7 @@ export function RecruiterView({ onSwitchToIDE }: RecruiterViewProps) {
         </section>
 
         {/* §03 Experience */}
-        <section className={styles.section}>
+        <section className={`${styles.section} ${styles.sectionExperience}`}>
           <div className={styles.sectionHead}>
             <span className={styles.sectionNum}>§03</span>
             <span className={styles.sectionTitle}>Experience</span>

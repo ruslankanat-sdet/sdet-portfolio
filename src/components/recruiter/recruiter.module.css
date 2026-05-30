@@ -318,6 +318,11 @@
 
 /* ── Print — full block (content validated in Phase 10) ── */
 /* Note: body { background: white; font-size: 11pt; } is in globals.css @media print block */
+@page {
+  size: Letter;
+  margin: 1in 0.75in;
+}
+
 @media print {
   .recruiterScrollRoot {
     overflow: visible;
@@ -352,6 +357,39 @@
 
   .pitch {
     font-size: 13pt;
+  }
+
+  .masthead {
+    display: none !important;
+  }
+
+  .sectionExperience {
+    page-break-before: always;
+  }
+
+  .timelineJob {
+    page-break-inside: avoid;
+  }
+
+  .now {
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  .metricsGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .metricNum {
+    font-size: 20pt;
+  }
+
+  .skillsList {
+    gap: 12pt;
+  }
+
+  .earlierCareers {
+    display: block;
   }
 }
 
