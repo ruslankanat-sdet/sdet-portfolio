@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: — Recruiter View & Dual-Audience Landing
 status: planned
-stopped_at: Phase 10 planned — 2 plans ready to execute
+stopped_at: "Phase 10, Plan 01 complete — content consolidation done; Plan 02 (print polish) is next"
 last_updated: "2026-05-29T00:00:00.000Z"
 last_activity: 2026-05-29
 progress:
   total_phases: 7
   completed_phases: 5
   total_plans: 17
-  completed_plans: 13
-  percent: 71
+  completed_plans: 14
+  percent: 74
 ---
 
 # Project State
@@ -26,8 +26,8 @@ See: .planning/PROJECT.md (updated 2026-05-26 for v1.2)
 ## Current Position
 
 Phase: 10
-Plan: Ready to execute (2 plans, 2 waves)
-Status: Planned
+Plan: 02 (print polish — next)
+Status: In Progress (1/2 plans complete)
 Last activity: 2026-05-29
 
 ## Performance Metrics
@@ -49,6 +49,11 @@ Last activity: 2026-05-29
 ### Decisions
 
 All v1.0 and v1.1 decisions logged in PROJECT.md Key Decisions table.
+
+Phase 10 decisions:
+- Named exports from src/lib/resume-content.ts — pure data module, no React, no use client (D-01)
+- JOBS array uses span field for all three jobs (no current:true) — simplifies Timeline render
+- getAllByText used for "Open to opportunities · Q3 start" in tests — same string appears in Hero eyebrow and AvailabilityCard Status row by design
 
 Key decisions carried forward:
 
@@ -96,6 +101,6 @@ High-fidelity design prototype available at `.planning/design/design_handoff_res
 
 ## Session Continuity
 
-Last session: 2026-05-27
-Stopped at: Phase 07 complete — Phase 8 Landing Door is next
-Resume file: .planning/phases/08-landing-door/ (TBD)
+Last session: 2026-05-29
+Stopped at: Phase 10 Plan 01 complete — content consolidation, all placeholder data replaced with real Ruslan Kanatbek data
+Resume file: .planning/phases/10-content-print-polish/10-02-PLAN.md

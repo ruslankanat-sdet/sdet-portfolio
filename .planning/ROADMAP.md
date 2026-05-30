@@ -192,7 +192,7 @@ Wave 2 (depends on 09-01):
 
 Wave 1:
 
-- [ ] 10-01-PLAN.md — Content consolidation: create src/lib/resume-content.ts, update six recruiter components to import from it, update unit tests and E2E spec (CONT-RK-01)
+- [x] 10-01-PLAN.md — Content consolidation: create src/lib/resume-content.ts, update six recruiter components to import from it, update unit tests and E2E spec (CONT-RK-01) — completed 2026-05-29
 
 Wave 2 *(blocked on Wave 1 completion)*:
 
@@ -213,4 +213,4 @@ Wave 2 *(blocked on Wave 1 completion)*:
 | 7. Foundation — Route Restructure & Font Setup | v1.2 | 2/2 | Complete | 2026-05-27 |
 | 8. Landing Door | v1.2 | 2/2 | Complete    | 2026-05-28 |
 | 9. Recruiter View | v1.2 | 0/TBD | Not started | - |
-| 10. Content, Print & Polish | v1.2 | 0/2 | Planned | - |
+| 10. Content, Print & Polish | v1.2 | 1/2 | In Progress | - |
