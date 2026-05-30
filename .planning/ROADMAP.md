@@ -188,7 +188,16 @@ Wave 2 (depends on 09-01):
   2. The experience timeline, stack groups, availability card, metrics, and contact section all reflect Ruslan Kanatbek's actual data
   3. Triggering `window.print()` (via the Download PDF CTA) produces a layout where the masthead switch pill, CTAs, and footer are hidden, and the remaining content fits on one A4/Letter page without overflow or orphaned sections
 
-**Plans**: TBD
+**Plans**: 2 plans
+
+Wave 1:
+
+- [ ] 10-01-PLAN.md — Content consolidation: create src/lib/resume-content.ts, update six recruiter components to import from it, update unit tests and E2E spec (CONT-RK-01)
+
+Wave 2 *(blocked on Wave 1 completion)*:
+
+- [ ] 10-02-PLAN.md — Print polish: extend @media print block with @page Letter margins, page-break-before on §03 Experience, font tuning, and print-preview human checkpoint (REC-09)
+
 **UI hint**: yes
 
 ## Progress
@@ -204,4 +213,4 @@ Wave 2 (depends on 09-01):
 | 7. Foundation — Route Restructure & Font Setup | v1.2 | 2/2 | Complete | 2026-05-27 |
 | 8. Landing Door | v1.2 | 2/2 | Complete    | 2026-05-28 |
 | 9. Recruiter View | v1.2 | 0/TBD | Not started | - |
-| 10. Content, Print & Polish | v1.2 | 0/TBD | Not started | - |
+| 10. Content, Print & Polish | v1.2 | 0/2 | Planned | - |
