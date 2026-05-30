@@ -24,16 +24,17 @@ export function Hero() {
         {HERO_COPY.pitch}
       </p>
       <div className={styles.ctas}>
-        <button
-          type="button"
-          className={styles.btnPrimary}
-          onClick={(e) => {
-            e.preventDefault();
-            window.print();
-          }}
-        >
+        <a className={styles.btnPrimary} href="/resume.pdf" download>
           <span>Download PDF</span>
           <span>↓</span>
+        </a>
+        <button
+          type="button"
+          className={styles.btnSecondary}
+          onClick={() => window.print()}
+        >
+          <span>Print</span>
+          <span>⎙</span>
         </button>
         <a className={styles.btnSecondary} href="mailto:ruslankanat.b@gmail.com">
           <span>ruslankanat.b@gmail.com</span>

@@ -52,11 +52,12 @@ describe('RecruiterView — rendering', () => {
     ).toBeInTheDocument();
   });
 
-  it('REC-02: renders Download PDF button', () => {
+  it('REC-02: renders Download PDF link and Print button', () => {
     render(<RecruiterView {...defaultProps} />);
-    expect(
-      screen.getByRole('button', { name: /Download PDF/i }),
-    ).toBeInTheDocument();
+    const downloadLink = screen.getByRole('link', { name: /Download PDF/i });
+    expect(downloadLink).toBeInTheDocument();
+    expect(downloadLink).toHaveAttribute('href', '/resume.pdf');
+    expect(screen.getByRole('button', { name: /Print/i })).toBeInTheDocument();
   });
 
   it('REC-02: renders mailto link to ruslankanat.b@gmail.com (hero CTA)', () => {
@@ -78,10 +79,10 @@ describe('RecruiterView — click interactions', () => {
     expect(defaultProps.onSwitchToIDE).toHaveBeenCalledOnce();
   });
 
-  it('REC-02: Download PDF button calls window.print()', async () => {
+  it('REC-02: Print button calls window.print()', async () => {
     const user = userEvent.setup();
     render(<RecruiterView {...defaultProps} />);
-    await user.click(screen.getByRole('button', { name: /Download PDF/i }));
+    await user.click(screen.getByRole('button', { name: /Print/i }));
     expect(window.print).toHaveBeenCalledOnce();
   });
 

@@ -33,9 +33,10 @@ test.describe('Recruiter view', () => {
       page.locator('h1').filter({ hasText: 'Senior SDET & Quality Architect' }),
     ).toBeVisible();
     await expect(page.getByText(/For the past decade/i)).toBeVisible();
-    await expect(
-      page.getByRole('button', { name: /Download PDF/i }),
-    ).toBeVisible();
+    const downloadPdfLink = page.getByRole('link', { name: /Download PDF/i });
+    await expect(downloadPdfLink).toBeVisible();
+    await expect(downloadPdfLink).toHaveAttribute('href', '/resume.pdf');
+    await expect(page.getByRole('button', { name: /Print/i })).toBeVisible();
     // Use first() since multiple mailto links exist (hero + contact section)
     const mailtoLink = page.getByRole('link', { name: /ruslankanat\.b@gmail\.com/i }).first();
     await expect(mailtoLink).toBeVisible();
