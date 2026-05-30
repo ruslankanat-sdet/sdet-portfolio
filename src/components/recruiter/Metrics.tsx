@@ -1,13 +1,7 @@
 'use client';
 
 import styles from './recruiter.module.css';
-
-const METRICS = [
-  { num: '9', unit: 'yrs', label: 'Building test\ninfrastructure' },
-  { num: '0.4', unit: '%', label: 'Flake rate\nacross suites' },
-  { num: '98.2', unit: '%', label: 'Coverage on\ncritical paths' },
-  { num: '1,247', unit: '', label: 'Bugs caught\nYTD' },
-] as const;
+import { METRICS } from '@/lib/resume-content';
 
 export function Metrics() {
   return (

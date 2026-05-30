@@ -497,6 +497,15 @@
   border: 1px solid var(--rule);
 }
 
+.earlierCareers {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--ink-muted);
+  font-style: italic;
+  margin-top: 12px;
+  line-height: 1.4;
+}
+
 /* ── §04 Skills ── */
 .skillsList {
   display: flex;

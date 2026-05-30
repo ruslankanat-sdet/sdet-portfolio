@@ -1,6 +1,7 @@
 'use client';
 
 import styles from './recruiter.module.css';
+import { HERO_COPY } from '@/lib/resume-content';
 import { Masthead } from './Masthead';
 import { Hero } from './Hero';
 import { Metrics } from './Metrics';
@@ -39,10 +40,7 @@ export function RecruiterView({ onSwitchToIDE }: RecruiterViewProps) {
             <span className={styles.sectionRule} aria-hidden="true" />
           </div>
           <p className={styles.now}>
-            Leading a team of six building eval infra for production LLM agents at{' '}
-            <strong>Lumen Systems</strong>. Shipped a self-healing selector agent that watches
-            Playwright failures, diffs the DOM, proposes new selectors, and opens a PR with the fix
-            — now in use across four product lines.
+            {HERO_COPY.nowLede}
           </p>
         </section>
 
