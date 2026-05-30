@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: — Recruiter View & Dual-Audience Landing
-status: planned
-stopped_at: "Phase 10, Plan 01 complete — content consolidation done; Plan 02 (print polish) is next"
-last_updated: "2026-05-29T00:00:00.000Z"
-last_activity: 2026-05-29
+status: complete
+stopped_at: "Phase 10 complete — real content live, print stylesheet polished, hero dual PDF/Print CTAs"
+last_updated: "2026-05-30T00:00:00.000Z"
+last_activity: 2026-05-30
 progress:
   total_phases: 7
-  completed_phases: 5
+  completed_phases: 6
   total_plans: 17
-  completed_plans: 14
-  percent: 74
+  completed_plans: 15
+  percent: 88
 ---
 
 # Project State
@@ -26,9 +26,9 @@ See: .planning/PROJECT.md (updated 2026-05-26 for v1.2)
 ## Current Position
 
 Phase: 10
-Plan: 02 (print polish — next)
-Status: In Progress (1/2 plans complete)
-Last activity: 2026-05-29
+Plan: 02 (complete)
+Status: Complete (2/2 plans complete)
+Last activity: 2026-05-30
 
 ## Performance Metrics
 
@@ -102,5 +102,4 @@ High-fidelity design prototype available at `.planning/design/design_handoff_res
 ## Session Continuity
 
 Last session: 2026-05-29
-Stopped at: Phase 10 Plan 01 complete — content consolidation, all placeholder data replaced with real Ruslan Kanatbek data
-Resume file: .planning/phases/10-content-print-polish/10-02-PLAN.md
+Stopped at: Phase 10 complete — all plans done, code review + verification pending

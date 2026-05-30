@@ -196,7 +196,7 @@ Wave 1:
 
 Wave 2 *(blocked on Wave 1 completion)*:
 
-- [ ] 10-02-PLAN.md — Print polish: extend @media print block with @page Letter margins, page-break-before on §03 Experience, font tuning, and print-preview human checkpoint (REC-09)
+- [x] 10-02-PLAN.md — Print polish: extend @media print block with @page Letter margins, page-break-before on §03 Experience, font tuning, and print-preview human checkpoint (REC-09) — completed 2026-05-30
 
 **UI hint**: yes
 
@@ -212,5 +212,5 @@ Wave 2 *(blocked on Wave 1 completion)*:
 | 6. Vitest Unit Tests | v1.1 | 3/3 | Complete | 2026-05-26 |
 | 7. Foundation — Route Restructure & Font Setup | v1.2 | 2/2 | Complete | 2026-05-27 |
 | 8. Landing Door | v1.2 | 2/2 | Complete    | 2026-05-28 |
-| 9. Recruiter View | v1.2 | 0/TBD | Not started | - |
-| 10. Content, Print & Polish | v1.2 | 1/2 | In Progress | - |
+| 9. Recruiter View | v1.2 | 5/5 | Complete | 2026-05-29 |
+| 10. Content, Print & Polish | v1.2 | 2/2 | Complete | 2026-05-30 |
