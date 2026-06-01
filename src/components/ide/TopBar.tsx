@@ -108,8 +108,6 @@ export function TopBar({ onRun, running, theme, toggleTheme, onToggleSidebar, si
           pulse={ciPassing}
           hideClass="badgeRail1"
         />
-        <StatusBadge tone="green" label="Coverage" value="98%" hideClass="badgeRail2" />
-        <StatusBadge tone="blue" label="Tests" value="312" hideClass="badgeRail3" />
       </div>
 
       <div className={styles.topbarR}>
