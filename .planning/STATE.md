@@ -3,7 +3,7 @@ gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: — Recruiter View & Dual-Audience Landing
 status: complete
-stopped_at: "Phase 10 complete — real content live, print stylesheet polished, hero dual PDF/Print CTAs"
+stopped_at: "Phase 10.1 inserted (URGENT) — IDE polish, Playwright CI fix, masthead name correction"
 last_updated: "2026-05-30T00:00:00.000Z"
 last_activity: 2026-05-30
 progress:
@@ -21,14 +21,15 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-26 for v1.2)
 
 **Core value:** A recruiter opens the page and immediately sees working code — real Playwright tests, real TypeScript — and thinks "I need to interview this person."
-**Current focus:** Phase 10 — content-print-polish
+**Current focus:** Phase 10.1 — IDE polish, Playwright CI fix, masthead name correction (INSERTED)
 
 ## Current Position
 
-Phase: 10
-Plan: 02 (complete)
-Status: Complete (2/2 plans complete)
-Last activity: 2026-05-30
+Phase: 10.1 (INSERTED after Phase 10)
+Plan: not started
+Status: Planned — run /gsd-execute-phase 10.1
+Last activity: 2026-06-01
+Plans created: 2026-06-01
 
 ## Performance Metrics
 
@@ -83,6 +84,10 @@ High-fidelity design prototype available at `.planning/design/design_handoff_res
 - TestAutomatorPane is dead code in bundle (deferred from v1.1)
 - 0/6 phases have VERIFICATION.md (gsd-verify-work skipped in v1.0 and v1.1)
 
+### Roadmap Evolution
+
+- Phase 10.1 inserted after Phase 10 (URGENT) on 2026-06-01 — masthead wordmark fix, TopBar badge cleanup, Playwright CI fix, E2E coverage expansion
+
 ### Quick Tasks Completed
 
 | # | Description | Date | Commit | Directory |
@@ -101,5 +106,5 @@ High-fidelity design prototype available at `.planning/design/design_handoff_res
 
 ## Session Continuity
 
-Last session: 2026-05-29
-Stopped at: Phase 10 complete — all plans done, code review + verification pending
+Last session: 2026-06-01
+Stopped at: Phase 10.1 inserted — ready to plan

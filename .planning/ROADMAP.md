@@ -34,6 +34,7 @@ Full archive: [milestones/v1.0-ROADMAP.md](milestones/v1.0-ROADMAP.md)
 - [x] **Phase 8: Landing Door** - Full-viewport split-screen door with hover animation, localStorage routing, and ?reset support (completed 2026-05-27)
 - [ ] **Phase 9: Recruiter View** - Complete editorial resume: masthead, hero, all five content sections, contact footer, and mobile responsiveness
 - [ ] **Phase 10: Content, Print & Polish** - Real Ruslan Kanatbek content replaces all prototype copy; print stylesheet produces clean PDF
+- [ ] **Phase 10.1: IDE Polish, Playwright CI & Name Fix** (INSERTED) - Fix masthead wordmark to ruslan.kanatbek, remove non-functional IDE status badges, fix failing GitHub Actions Playwright suite, expand E2E coverage
 
 ## Phase Details
 
@@ -200,6 +201,30 @@ Wave 2 *(blocked on Wave 1 completion)*:
 
 **UI hint**: yes
 
+### Phase 10.1: IDE Polish, Playwright CI & Name Fix (INSERTED)
+
+**Goal**: The masthead displays the correct author handle, the IDE TopBar shows no fake/hardcoded metrics, the GitHub Actions Playwright suite is green, and test coverage of recruiter/IDE flows is expanded
+**Depends on**: Phase 10 (recruiter view complete; content module in place)
+**Requirements**: POLISH-01, POLISH-02, POLISH-03, POLISH-04
+**Success Criteria** (what must be TRUE):
+
+  1. The recruiter masthead wordmark reads `ruslan.kanatbek` (not `ruslan.kanat`); the matching E2E assertion is updated to pass
+  2. The TopBar no longer renders hardcoded "Coverage 98%" and "Tests 312" badges — only the live CI badge (driven by `/api/ci-status`) remains
+  3. `pnpm exec playwright test --project=chromium` exits 0 in CI (GitHub Actions `playwright-tests` job passes)
+  4. At least 3 new meaningful Playwright test cases are added: one for masthead wordmark text, one for the Run Smoke Test button behavior, and one for the door → recruiter → IDE navigation flow
+
+**Plans**: 2 plans
+
+Wave 1:
+
+- [x] 10.1-01-PLAN.md — Quick fixes: masthead wordmark `ruslan.kanat` → `ruslan.kanatbek`, remove fake Coverage/Tests badges from TopBar, update recruiter.spec.ts REC-01 assertion (POLISH-01, POLISH-02)
+
+Wave 2 *(depends on Wave 1 — CI must be green before adding new tests)*:
+
+- [ ] 10.1-02-PLAN.md — Playwright suite: diagnose and fix failing CI assertions, add 3+ new test cases covering masthead text, Run button idle state, and door-to-recruiter-to-IDE flow (POLISH-03, POLISH-04)
+
+**UI hint**: yes
+
 ## Progress
 
 | Phase | Milestone | Plans Complete | Status | Completed |
@@ -214,3 +239,4 @@ Wave 2 *(blocked on Wave 1 completion)*:
 | 8. Landing Door | v1.2 | 2/2 | Complete    | 2026-05-28 |
 | 9. Recruiter View | v1.2 | 5/5 | Complete | 2026-05-29 |
 | 10. Content, Print & Polish | v1.2 | 2/2 | Complete | 2026-05-30 |
+| 10.1. IDE Polish, Playwright CI & Name Fix | v1.2 | 1/2 | In Progress | — |
