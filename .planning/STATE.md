@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: — Recruiter View & Dual-Audience Landing
 status: complete
-stopped_at: "Phase 10.1 inserted (URGENT) — IDE polish, Playwright CI fix, masthead name correction"
-last_updated: "2026-05-30T00:00:00.000Z"
-last_activity: 2026-05-30
+stopped_at: "Phase 10.1 complete — masthead fix, badge cleanup, Playwright CI green (33/33), 3 new E2E tests"
+last_updated: "2026-06-01T00:00:00.000Z"
+last_activity: 2026-06-01
 progress:
-  total_phases: 7
-  completed_phases: 6
-  total_plans: 17
-  completed_plans: 15
-  percent: 88
+  total_phases: 8
+  completed_phases: 7
+  total_plans: 19
+  completed_plans: 17
+  percent: 89
 ---
 
 # Project State
@@ -21,15 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-26 for v1.2)
 
 **Core value:** A recruiter opens the page and immediately sees working code — real Playwright tests, real TypeScript — and thinks "I need to interview this person."
-**Current focus:** Phase 10.1 — IDE polish, Playwright CI fix, masthead name correction (INSERTED)
+**Current focus:** Phase 10.1 — Complete. Milestone v1.2 fully shipped.
 
 ## Current Position
 
 Phase: 10.1 (INSERTED after Phase 10)
-Plan: not started
-Status: Planned — run /gsd-execute-phase 10.1
+Plan: 10.1-02 (final)
+Status: Complete — all plans executed, Playwright CI green
 Last activity: 2026-06-01
-Plans created: 2026-06-01
 
 ## Performance Metrics
 
@@ -43,7 +42,7 @@ Plans created: 2026-06-01
 - Total plans completed: 10
 - Phases: 3 (phases 4–6)
 
-**v1.2 — in progress (0/? phases complete)**
+**v1.2 — complete (phases 7–10.1 shipped)**
 
 ## Accumulated Context
 
@@ -107,4 +106,4 @@ High-fidelity design prototype available at `.planning/design/design_handoff_res
 ## Session Continuity
 
 Last session: 2026-06-01
-Stopped at: Phase 10.1 inserted — ready to plan
+Stopped at: Phase 10.1 complete — milestone v1.2 shipped; Playwright CI green (33/33 tests)

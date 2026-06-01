@@ -34,7 +34,7 @@ Full archive: [milestones/v1.0-ROADMAP.md](milestones/v1.0-ROADMAP.md)
 - [x] **Phase 8: Landing Door** - Full-viewport split-screen door with hover animation, localStorage routing, and ?reset support (completed 2026-05-27)
 - [ ] **Phase 9: Recruiter View** - Complete editorial resume: masthead, hero, all five content sections, contact footer, and mobile responsiveness
 - [ ] **Phase 10: Content, Print & Polish** - Real Ruslan Kanatbek content replaces all prototype copy; print stylesheet produces clean PDF
-- [ ] **Phase 10.1: IDE Polish, Playwright CI & Name Fix** (INSERTED) - Fix masthead wordmark to ruslan.kanatbek, remove non-functional IDE status badges, fix failing GitHub Actions Playwright suite, expand E2E coverage
+- [x] **Phase 10.1: IDE Polish, Playwright CI & Name Fix** (INSERTED) - Fix masthead wordmark to ruslan.kanatbek, remove non-functional IDE status badges, fix failing GitHub Actions Playwright suite, expand E2E coverage
 
 ## Phase Details
 
@@ -221,7 +221,7 @@ Wave 1:
 
 Wave 2 *(depends on Wave 1 — CI must be green before adding new tests)*:
 
-- [ ] 10.1-02-PLAN.md — Playwright suite: diagnose and fix failing CI assertions, add 3+ new test cases covering masthead text, Run button idle state, and door-to-recruiter-to-IDE flow (POLISH-03, POLISH-04)
+- [x] 10.1-02-PLAN.md — Playwright suite: diagnose and fix failing CI assertions, add 3+ new test cases covering masthead text, Run button idle state, and door-to-recruiter-to-IDE flow (POLISH-03, POLISH-04)
 
 **UI hint**: yes
 
@@ -239,4 +239,4 @@ Wave 2 *(depends on Wave 1 — CI must be green before adding new tests)*:
 | 8. Landing Door | v1.2 | 2/2 | Complete    | 2026-05-28 |
 | 9. Recruiter View | v1.2 | 5/5 | Complete | 2026-05-29 |
 | 10. Content, Print & Polish | v1.2 | 2/2 | Complete | 2026-05-30 |
-| 10.1. IDE Polish, Playwright CI & Name Fix | v1.2 | 1/2 | In Progress | — |
+| 10.1. IDE Polish, Playwright CI & Name Fix | v1.2 | 2/2 | Complete | 2026-06-01 |
