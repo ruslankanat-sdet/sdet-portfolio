@@ -28,7 +28,8 @@ test.describe('Recruiter view', () => {
 
   test('REC-02: hero renders availability, headline, pitch, two CTAs', async ({ page }) => {
     await page.goto('/');
-    await expect(page.getByText('Open to opportunities · Q3 start')).toBeVisible();
+    // Use .first() — availability text appears in both the hero eyebrow and AvailabilityCard
+    await expect(page.getByText('Open to opportunities · Q3 start').first()).toBeVisible();
     await expect(
       page.locator('h1').filter({ hasText: 'Senior SDET & Quality Architect' }),
     ).toBeVisible();
@@ -70,7 +71,8 @@ test.describe('Recruiter view', () => {
 
   test('REC-07: renders availability spec with Status forest accent', async ({ page }) => {
     await page.goto('/');
-    await expect(page.getByText('Open to opportunities · Q3 start')).toBeVisible();
+    // Use .first() — availability text appears in both the hero eyebrow and AvailabilityCard
+    await expect(page.getByText('Open to opportunities · Q3 start').first()).toBeVisible();
     await expect(page.getByText('Authorized to work in the US (details on request)')).toBeVisible();
   });
 
@@ -101,5 +103,50 @@ test.describe('Recruiter view', () => {
     await expect(page.getByText('ResMed').first()).toBeVisible();
     const scrollWidth = await page.evaluate(() => document.documentElement.scrollWidth);
     expect(scrollWidth).toBeLessThanOrEqual(375);
+  });
+
+  test('REC-11: recruiter masthead is not rendered in IDE mode', async ({ page }) => {
+    // Override beforeEach's recruiter mode by registering ide mode script second
+    // (addInitScript scripts run in registration order — later registration wins)
+    await page.addInitScript(() => {
+      localStorage.setItem('resume-mode', 'ide');
+    });
+    await page.goto('/');
+    // Verify IDE mode is active
+    await expect(page.getByRole('button', { name: /README\.md/ }).first()).toBeVisible();
+    // The recruiter Masthead header renders an "Engineer view" button — absent in IDE mode
+    // (IDE mode has a "Recruiter view" button in TopBar instead)
+    await expect(page.getByRole('button', { name: /Engineer view/i })).not.toBeVisible();
+  });
+
+  test('IDE-01: Run Smoke Test button is visible and not disabled when idle', async ({ page }) => {
+    // Override beforeEach's recruiter mode — set ide mode before goto
+    await page.addInitScript(() => {
+      localStorage.setItem('resume-mode', 'ide');
+    });
+    await page.goto('/');
+    const runBtn = page.getByRole('button', { name: /Run Smoke Test/i });
+    await expect(runBtn).toBeVisible();
+    await expect(runBtn).not.toBeDisabled();
+    await expect(runBtn).toHaveText(/Run Smoke Test/);
+  });
+});
+
+test.describe('Navigation flows', () => {
+  test('NAV-01: door → recruiter → IDE round-trip navigation', async ({ page }) => {
+    // Start fresh — no stored mode, door shows
+    await page.goto('/');
+    await expect(page.getByRole('button', { name: /Enter the résumé/i })).toBeVisible();
+
+    // Step 1: Enter recruiter view via the door
+    await page.getByRole('button', { name: /Enter the résumé/i }).click();
+    await expect(page.getByText('ruslan.kanatbek')).toBeVisible();
+    await expect(page.getByRole('button', { name: /Enter the résumé/i })).not.toBeVisible();
+
+    // Step 2: Switch to IDE via the Engineer view button in the masthead
+    await page.getByRole('button', { name: /Engineer view/i }).first().click();
+    await expect(page.getByRole('button', { name: /README\.md/ }).first()).toBeVisible();
+    const stored = await page.evaluate(() => localStorage.getItem('resume-mode'));
+    expect(stored).toBe('ide');
   });
 });

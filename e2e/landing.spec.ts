@@ -15,7 +15,8 @@ test.describe('Landing page', () => {
 
   test('shows IDE chrome on load', async ({ page }) => {
     await page.goto('/');
-    await expect(page.getByRole('main')).toBeVisible();
+    // IDEShell renders a region (not main) containing the editor and terminal
+    await expect(page.getByRole('region', { name: /Editor and terminal/i })).toBeVisible();
     // The sidebar file row uses role="button"; target the first match (sidebar row)
     await expect(page.getByRole('button', { name: /README\.md/ }).first()).toBeVisible();
   });
