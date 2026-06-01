@@ -28,7 +28,8 @@ test.describe('Recruiter view', () => {
 
   test('REC-02: hero renders availability, headline, pitch, two CTAs', async ({ page }) => {
     await page.goto('/');
-    await expect(page.getByText('Open to opportunities · Q3 start')).toBeVisible();
+    // Use .first() — availability text appears in both the hero eyebrow and AvailabilityCard
+    await expect(page.getByText('Open to opportunities · Q3 start').first()).toBeVisible();
     await expect(
       page.locator('h1').filter({ hasText: 'Senior SDET & Quality Architect' }),
     ).toBeVisible();
@@ -70,7 +71,8 @@ test.describe('Recruiter view', () => {
 
   test('REC-07: renders availability spec with Status forest accent', async ({ page }) => {
     await page.goto('/');
-    await expect(page.getByText('Open to opportunities · Q3 start')).toBeVisible();
+    // Use .first() — availability text appears in both the hero eyebrow and AvailabilityCard
+    await expect(page.getByText('Open to opportunities · Q3 start').first()).toBeVisible();
     await expect(page.getByText('Authorized to work in the US (details on request)')).toBeVisible();
   });
 
