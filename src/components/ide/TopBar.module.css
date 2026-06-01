@@ -398,7 +398,13 @@
 
 @media (max-width: 640px) {
   .viewSwitchBtn {
-    display: none;
+    padding: 6px 10px;
+    font-size: 0; /* hide text label */
+    gap: 0;
+  }
+  .viewSwitchBtn .switchArrow {
+    font-size: 16px;
+    line-height: 1;
   }
 }
 
