@@ -16,7 +16,7 @@ test.describe('Recruiter view', () => {
     ).toBeVisible();
   });
 
-  test('REC-01: clicking Engineer view switches to IDE', async ({ page }) => {
+  test('REC-06: clicking Engineer view switches to IDE', async ({ page }) => {
     await page.goto('/');
     await page.getByRole('button', { name: /Engineer view/ }).first().click();
     await expect(
@@ -106,9 +106,9 @@ test.describe('Recruiter view', () => {
   });
 
   test('REC-11: recruiter masthead is not rendered in IDE mode', async ({ page }) => {
-    // Override beforeEach's recruiter mode by registering ide mode script second
-    // (addInitScript scripts run in registration order — later registration wins)
+    // Explicitly clear and re-set to avoid relying on addInitScript ordering
     await page.addInitScript(() => {
+      localStorage.removeItem('resume-mode');
       localStorage.setItem('resume-mode', 'ide');
     });
     await page.goto('/');
@@ -120,8 +120,9 @@ test.describe('Recruiter view', () => {
   });
 
   test('IDE-01: Run Smoke Test button is visible and not disabled when idle', async ({ page }) => {
-    // Override beforeEach's recruiter mode — set ide mode before goto
+    // Explicitly clear and re-set to avoid relying on addInitScript ordering
     await page.addInitScript(() => {
+      localStorage.removeItem('resume-mode');
       localStorage.setItem('resume-mode', 'ide');
     });
     await page.goto('/');

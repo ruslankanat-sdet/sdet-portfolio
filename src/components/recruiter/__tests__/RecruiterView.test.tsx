@@ -138,14 +138,16 @@ describe('RecruiterView — content sections', () => {
     expect(screen.getByText('GitHub')).toBeInTheDocument();
     expect(screen.getByText('LinkedIn')).toBeInTheDocument();
 
-    // GitHub link has noopener
+    // GitHub link has noopener and noreferrer
     const githubLink = screen.getByRole('link', { name: /github\.com\/ruslankanat-sdet/i });
     const githubRel = githubLink.getAttribute('rel') ?? '';
     expect(githubRel).toContain('noopener');
+    expect(githubRel).toContain('noreferrer');
 
-    // LinkedIn link has noopener
+    // LinkedIn link has noopener and noreferrer
     const linkedinLink = screen.getByRole('link', { name: /in\/ruslan-kanatbek/i });
     const linkedinRel = linkedinLink.getAttribute('rel') ?? '';
     expect(linkedinRel).toContain('noopener');
+    expect(linkedinRel).toContain('noreferrer');
   });
 });

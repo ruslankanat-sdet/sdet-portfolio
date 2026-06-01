@@ -22,9 +22,10 @@ export function Masthead({ onSwitchToIDE }: MastheadProps) {
         type="button"
         className={styles.mastheadSwitch}
         onClick={onSwitchToIDE}
+        aria-label="Switch to engineer / IDE view"
       >
-        <span>Engineer view</span>
-        <span className={styles.arrow}>↗</span>
+        <span aria-hidden="true">Engineer view</span>
+        <span className={styles.arrow} aria-hidden="true">↗</span>
       </button>
     </header>
   );

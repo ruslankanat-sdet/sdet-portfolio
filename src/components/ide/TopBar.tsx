@@ -36,17 +36,18 @@ function StatusBadge({ tone, label, value, pulse, hideClass }: StatusBadgeProps)
 }
 
 export function TopBar({ onRun, running, theme, toggleTheme, onToggleSidebar, sidebarOpen, onSwitchToRecruiter }: TopBarProps) {
-  const [time, setTime] = useState<string>(() => {
-    const now = new Date();
-    return now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
-  });
+  const [time, setTime] = useState<string>('');
 
   useEffect(() => {
-    const tick = () => {
-      const now = new Date();
-      setTime(now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false }));
-    };
-    const id = setInterval(tick, 30000);
+    const fmt = () =>
+      new Date().toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+        timeZone: 'Asia/Almaty',
+      });
+    setTime(fmt());
+    const id = setInterval(() => setTime(fmt()), 30_000);
     return () => clearInterval(id);
   }, []);
 
@@ -55,9 +56,14 @@ export function TopBar({ onRun, running, theme, toggleTheme, onToggleSidebar, si
 
   useEffect(() => {
     fetch('/api/ci-status')
-      .then((r) => r.json())
-      .then((data: { passing: boolean }) => {
-        setCiPassing(data.passing);
+      .then((r) => {
+        if (!r.ok) return;          // non-2xx → keep green fallback, no state update
+        return r.json();
+      })
+      .then((data?: { passing: boolean }) => {
+        if (data !== undefined) {
+          setCiPassing(data.passing);
+        }
       })
       .catch(() => {
         // silently keep the green fallback (D-02)
