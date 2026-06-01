@@ -3,7 +3,6 @@
 import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { IDEShell } from '@/components/ide/IDEShell';
-import { SiteHeader } from '@/components/layout/SiteHeader';
 import { DoorScreen } from '@/components/door/DoorScreen';
 import { RecruiterView } from '@/components/recruiter/RecruiterView';
 
@@ -49,12 +48,12 @@ function ResumeGateInner() {
 
   if (mode === 'ide') {
     return (
-      <>
-        <SiteHeader />
-        <main className="site-main">
-          <IDEShell />
-        </main>
-      </>
+      <IDEShell
+        onSwitchToRecruiter={() => {
+          try { localStorage.setItem(MODE_KEY, 'recruiter'); } catch {}
+          setMode('recruiter');
+        }}
+      />
     );
   }
 

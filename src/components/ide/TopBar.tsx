@@ -13,6 +13,7 @@ interface TopBarProps {
   toggleTheme: () => void;
   onToggleSidebar: () => void;
   sidebarOpen: boolean;
+  onSwitchToRecruiter?: () => void;
 }
 
 interface StatusBadgeProps {
@@ -34,7 +35,7 @@ function StatusBadge({ tone, label, value, pulse, hideClass }: StatusBadgeProps)
   );
 }
 
-export function TopBar({ onRun, running, theme, toggleTheme, onToggleSidebar, sidebarOpen }: TopBarProps) {
+export function TopBar({ onRun, running, theme, toggleTheme, onToggleSidebar, sidebarOpen, onSwitchToRecruiter }: TopBarProps) {
   const [time, setTime] = useState<string>(() => {
     const now = new Date();
     return now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
@@ -126,6 +127,18 @@ export function TopBar({ onRun, running, theme, toggleTheme, onToggleSidebar, si
         >
           {theme === "dark" ? <Sun size={14} /> : <Moon size={14} />}
         </button>
+
+        {onSwitchToRecruiter && (
+          <button
+            type="button"
+            className={styles.viewSwitchBtn}
+            onClick={onSwitchToRecruiter}
+            aria-label="Switch to recruiter view"
+          >
+            <span>Recruiter view</span>
+            <span className={styles.switchArrow}>↗</span>
+          </button>
+        )}
 
         <button
           className={cn(styles.runBtn, { [styles.running]: running })}

@@ -348,6 +348,50 @@
   }
 }
 
+/* View-switch button */
+.viewSwitchBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.viewSwitchBtn:hover {
+  border-color: rgba(61, 220, 132, 0.5);
+  color: var(--green-bright);
+  background: var(--hover);
+}
+
+.viewSwitchBtn:hover .switchArrow {
+  transform: translate(2px, -2px);
+}
+
+.viewSwitchBtn:focus-visible {
+  outline: 2px solid #79b8ff;
+  outline-offset: 2px;
+}
+
+.switchArrow {
+  display: inline-block;
+  transition: transform 0.2s;
+}
+
+@media (max-width: 640px) {
+  .viewSwitchBtn {
+    display: none;
+  }
+}
+
 /* Run button */
 .runBtn {
   position: relative;

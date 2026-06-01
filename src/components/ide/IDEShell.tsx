@@ -74,7 +74,11 @@ function buildLogEntries(data: GitHubJobsPayload): LogEntry[] {
   return entries;
 }
 
-export function IDEShell() {
+interface IDEShellProps {
+  onSwitchToRecruiter?: () => void;
+}
+
+export function IDEShell({ onSwitchToRecruiter }: IDEShellProps = {}) {
   const [activeFile, setActiveFile] = useState<string>("README.md");
   const [tabs, setTabs] = useState<string[]>(["README.md"]);
   const [termHeight, setTermHeight] = useState<number>(() => {
@@ -216,7 +220,7 @@ export function IDEShell() {
 
   return (
     <>
-      <TopBar onRun={runSmoke} running={running} theme={theme} toggleTheme={toggleTheme} onToggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
+      <TopBar onRun={runSmoke} running={running} theme={theme} toggleTheme={toggleTheme} onToggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} onSwitchToRecruiter={onSwitchToRecruiter} />
       <div className={styles.ideBody}>
         <Sidebar
           activeFile={activeFile}
