@@ -17,11 +17,11 @@ export const FILES: Record<string, FileEntry> = {
     content: `# 👋 Hi, I'm Ruslan.
 
 I build the test infrastructure that keeps AI products honest —
-self-healing Playwright suites, LLM eval pipelines, and the
-automation that catches regressions before they ship.
+AI-augmented test frameworks, mobile/web automation, and the
+quality systems that catch regressions before they ship.
 
-**Currently:** Senior SDET / QA Automation Engineer (9+ years).
-**Recently:** Resmed, Gemini, Google, Citi.
+**Currently:** Senior SDET & Quality Architect (10+ years).
+**Recently:** ResMed, Gemini, TCS (Google).
 
 ## What this site is
 
@@ -39,26 +39,26 @@ Open to senior / staff SDET roles. Reach me at \`ruslankanat.b@gmail.com\`.
     content: `{
   "engineer": {
     "name": "Ruslan Kanatbek",
-    "role": "Senior SDET / QA Automation Engineer",
-    "location": "Remote",
+    "role": "Senior SDET & Quality Architect",
+    "location": "Fremont, CA (Hybrid or Remote)",
     "available": true,
-    "yearsOfExperience": 9
+    "yearsOfExperience": 10
   },
   "summary": [
-    "Builds self-healing test frameworks that catch regressions",
-    "before they ship. Deep work in LLM-driven test generation,",
-    "Playwright + Pytest pipelines, and AI eval orchestration."
+    "10+ years building quality infrastructure for mobile, web,",
+    "and cloud platforms. AI-augmented test engineering via",
+    "GitHub Copilot rulesets and MCP servers — 30% faster cycles."
   ],
   "expertise": {
-    "automation": ["Playwright", "Pytest", "Cypress", "Selenium"],
-    "ai_ml":      ["LangChain", "LangGraph", "RAG", "LLM Evals"],
-    "infra":      ["GitHub Actions", "Docker", "Kubernetes"],
-    "languages":  ["Python", "TypeScript", "Java"]
+    "automation": ["Playwright", "Pytest", "Cypress", "Selenium", "Appium", "Espresso", "XCUITest", "Behave"],
+    "ai_tools":   ["GitHub Copilot (Custom Rule Sets)", "Claude Code", "MCP Server Engineering"],
+    "infra":      ["AWS (Lambda, DynamoDB, AppSync)", "GitHub Actions", "Docker", "Jenkins", "Terraform", "Bazel"],
+    "languages":  ["Python", "TypeScript", "Java", "Kotlin", "Swift", "SQL", "Scala", "Ruby"]
   },
   "contact": {
     "email":    "ruslankanat.b@gmail.com",
     "github":   "github.com/ruslankanat-sdet",
-    "linkedin": "in/ruslankanat"
+    "linkedin": "in/ruslan-kanatbek"
   }
 }`,
   },
@@ -69,37 +69,46 @@ Open to senior / staff SDET roles. Reach me at \`ruslankanat.b@gmail.com\`.
     icon: 'yaml',
     content: `# Career timeline — most recent first
 
-- company: Resmed
-  role:    Senior SDET
+- company: ResMed
+  role:    Senior SDET (AWS/Mobile/Web)
+  span:    2022 — Now
   scope:   |
-    Owned automation for connected sleep devices —
-    cloud APIs + mobile companion apps. Built self-healing
-    Playwright + Pytest framework adopted across 4 product lines.
-  stack: [Python, TypeScript, Playwright, Pytest, GitHub Actions]
+    Led end-to-end quality for myAir ecosystem (16M+ users).
+    80% reduction in production defects. Mobile automation with
+    Kotlin/Espresso (Android) and Swift/XCUITest (iOS). Migrated
+    web stack to TypeScript/Cypress. Python/Behave framework for
+    AWS GraphQL microservices. Pioneered AI-augmented engineering
+    via GitHub Copilot rulesets and MCP servers — 30% faster cycles.
+  stack: [Python, TypeScript, Kotlin, Swift, Cypress, Espresso, XCUITest, Behave, AWS Lambda, AppSync, GraphQL, GitHub Copilot, MCP, Datadog]
 
 - company: Gemini
-  role:    SDET / QA Automation Engineer
+  role:    SDET / Software Engineer
+  span:    2021 — 2022
   scope:   |
-    Cryptocurrency exchange — API + UI test coverage,
-    OWASP-aligned security regression suites, audit trail
-    integrity tests against immutable ledger.
-  stack: [Python, Pytest, Cypress, k6]
+    Python/Pytest framework for trading modules — 0% to 80%
+    automated coverage. Revamped Selenium suites, enhanced
+    PostgreSQL validation. Engineered Scala backend components
+    for institutional trading platform.
+  stack: [Python, Scala, Pytest, Selenium, PostgreSQL]
 
-- company: Google
-  role:    Test Engineer (contract)
+- company: TCS (Client — Google)
+  role:    QA Tester (Mobile)
+  span:    2021
   scope:   |
-    Ads measurement platform — large-scale data integrity
-    tests, BigQuery validation pipelines, dashboard accuracy
-    checks across 100s of millions of events / day.
-  stack: [Java, Python, BigQuery, Apache Beam]
+    Mobile quality for Google Shopping on Android and iOS.
+    Automated smoke and regression suites for release stability.
+    GWS Test Lead during product launches — 24/7 blocker response.
+    Java/Appium/Bazel functional and visual automation.
+  stack: [Java, Appium, Bazel, Android, iOS]
 
-- company: Citi
+- company: Veridian IT Staffing
   role:    QA Automation Engineer
+  span:    2015 — 2020
   scope:   |
-    Treasury & trade solutions — payments processing,
-    SWIFT message validation, regulatory reporting
-    automation across multiple regions.
-  stack: [Java, Selenium, JUnit, Jenkins]
+    Clients: Citibank · Cisco · Health First.
+    Java/Selenium frameworks, BDD with Cucumber/JUnit, Jenkins CI.
+    API testing, SQL data integrity, HIPAA-compliant test design.
+  stack: [Java, Selenium, JUnit, Pytest, REST-assured, Cucumber, Jenkins, SQL]
 `,
   },
 
@@ -111,23 +120,27 @@ Open to senior / staff SDET roles. Reach me at \`ruslankanat.b@gmail.com\`.
 
 languages:
   primary:   [Python, TypeScript]
-  secondary: [Java]
+  secondary: [Java, Kotlin, Swift, SQL, Scala, Ruby]
 
 testing:
-  e2e_web:    Playwright
-  e2e_mobile: Appium
-  api:        Pytest + httpx
-  load:       k6
-  bdd:        pytest-bdd
+  e2e_web:    [Playwright, Cypress, Selenium]
+  e2e_mobile: [Appium, Espresso, XCUITest]
+  api:        [Pytest, Behave, REST-assured]
+  bdd:        [Cucumber, Behave]
+  unit:       [TestNG, JUnit]
 
-ai_automation:
-  orchestration: LangGraph
-  evals:         Custom + Braintrust
-  inference:     [Anthropic Claude, OpenAI]
+ai_tools:
+  copilot:   GitHub Copilot (Custom Rule Sets)
+  cli:       Claude Code
+  protocol:  MCP (Model Context Protocol) Server Engineering
 
 infra:
-  ci:    GitHub Actions
-  cloud: [AWS, GCP]
+  ci:    [GitHub Actions, Jenkins]
+  cloud: [AWS (Lambda, DynamoDB, AppSync), Firebase]
+  other: [Docker, Terraform, Bazel]
+
+observability:
+  monitoring: Datadog
 `,
   },
 
@@ -138,9 +151,9 @@ infra:
     content: `{
   "email":    "ruslankanat.b@gmail.com",
   "github":   "https://github.com/ruslankanat-sdet",
-  "linkedin": "https://www.linkedin.com/in/ruslankanat",
-  "preferred_role": "Senior / Staff SDET, QA Automation Engineer",
-  "remote": true,
+  "linkedin": "https://linkedin.com/in/ruslan-kanatbek",
+  "preferred_role": "Senior / Lead / Principal SDET",
+  "location": "Fremont, CA (Hybrid or Remote)",
   "open_to": ["full-time", "contract-to-hire"]
 }`,
   },
