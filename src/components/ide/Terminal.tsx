@@ -43,7 +43,7 @@ function LogRow({ log }: { log: LogEntry }) {
   );
 }
 
-const TERM_TABS: TerminalTab[] = ['TERMINAL', 'PROBLEMS', 'OUTPUT', 'DEBUG CONSOLE'];
+const TERM_TABS: TerminalTab[] = ['TERMINAL'];
 
 export function Terminal({ logs, running, height, setHeight, tab, setTab }: TerminalProps) {
   const termBodyRef = useRef<HTMLDivElement>(null);
@@ -89,14 +89,9 @@ export function Terminal({ logs, running, height, setHeight, tab, setTab }: Term
             onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setTab(t); } }}
           >
             {t}
-            {t === 'TERMINAL' && (
-              <>
-                <span aria-hidden="true"> · </span>
-                <span className={styles.paneSubtitle}>Test output</span>
-              </>
-            )}
-            {t === 'PROBLEMS' && <span className={styles.termTabBadge}>0</span>}
-            {t === 'DEBUG CONSOLE' && running && <span className={styles.termTabDot} />}
+            <span aria-hidden="true"> · </span>
+            <span className={styles.paneSubtitle}>Test output</span>
+            {running && <span className={styles.termTabDot} />}
           </div>
         ))}
         <div className={styles.termSpacer} />

@@ -102,4 +102,16 @@
   .minimap {
     display: none;
   }
+
+  .code {
+    font-size: 12px;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    padding: 12px 16px;
+  }
+
+  .gutter {
+    font-size: 11px;
+    padding: 12px 8px 12px 8px;
+  }
 }

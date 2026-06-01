@@ -127,6 +127,7 @@ export function IDEShell({ onSwitchToRecruiter }: IDEShellProps = {}) {
   }, []);
 
   const closeTab = useCallback((name: string) => {
+    if (name === 'README.md') return;
     setTabs(t => {
       const next = t.filter(x => x !== name);
       if (activeFile === name && next.length) setActiveFile(next[next.length - 1]);

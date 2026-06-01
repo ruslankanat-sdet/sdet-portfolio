@@ -75,13 +75,15 @@ export function EditorArea({ tabs, activeFile, setActiveFile, closeTab }: Editor
                 <span className={styles.tabIcon} aria-hidden="true"><FileIcon size={12} /></span>
                 <span className={styles.tabName}>{name}</span>
               </button>
-              <button
-                className={styles.tabClose}
-                onClick={() => closeTab(name)}
-                aria-label={`Close ${name}`}
-              >
-                <X size={10} aria-hidden="true" />
-              </button>
+              {name !== 'README.md' && (
+                <button
+                  className={styles.tabClose}
+                  onClick={() => closeTab(name)}
+                  aria-label={`Close ${name}`}
+                >
+                  <X size={10} aria-hidden="true" />
+                </button>
+              )}
             </div>
           );
         })}

@@ -19,4 +19,4 @@ export interface LogEntry {
 
 export type Theme = 'dark' | 'light';
 
-export type TerminalTab = 'TERMINAL' | 'PROBLEMS' | 'OUTPUT' | 'DEBUG CONSOLE';
+export type TerminalTab = 'TERMINAL';

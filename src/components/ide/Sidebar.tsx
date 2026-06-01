@@ -7,12 +7,6 @@ import {
   FileJson2,
   FileCode2,
   FileText,
-  Search,
-  GitBranch,
-  Play,
-  Settings,
-  User,
-  Boxes,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { FILES } from '@/lib/files-data';
@@ -99,50 +93,6 @@ export function Sidebar({ activeFile, setActiveFile, openTab, sidebarOpen = true
             title="Explorer"
           >
             <Folder size={20} />
-          </button>
-          <button
-            className={styles.actBtn}
-            aria-label="Search"
-            title="Search"
-          >
-            <Search size={20} />
-          </button>
-          <button
-            className={styles.actBtn}
-            aria-label="Source Control"
-            title="Source Control"
-          >
-            <GitBranch size={20} />
-          </button>
-          <button
-            className={styles.actBtn}
-            aria-label="Run and Debug"
-            title="Run and Debug"
-          >
-            <Play size={20} />
-          </button>
-          <button
-            className={styles.actBtn}
-            aria-label="Extensions"
-            title="Extensions"
-          >
-            <Boxes size={20} />
-          </button>
-        </div>
-        <div className={styles.actBtnGroupBottom}>
-          <button
-            className={styles.actBtn}
-            aria-label="Profile"
-            title="Profile"
-          >
-            <User size={20} />
-          </button>
-          <button
-            className={styles.actBtn}
-            aria-label="Settings"
-            title="Settings"
-          >
-            <Settings size={20} />
           </button>
         </div>
       </nav>
