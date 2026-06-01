@@ -83,7 +83,7 @@ test.describe('Landing door', () => {
     await page.goto('/');
     const url = page.url();
     await page.getByRole('button', { name: /Enter the résumé/i }).click();
-    await expect(page.getByText('ruslan.kanat')).toBeVisible();
+    await expect(page.getByText('ruslan.kanatbek')).toBeVisible();
     await expect(page.getByRole('button', { name: /Enter the résumé/i })).not.toBeVisible();
     expect(page.url()).toBe(url);
   });

@@ -14,7 +14,7 @@ export function Masthead({ onSwitchToIDE }: MastheadProps) {
         <span className={styles.mastheadLogo}>
           <LogoMark size={16} />
         </span>
-        <span className={styles.mastheadWordmark}>ruslan.kanat</span>
+        <span className={styles.mastheadWordmark}>ruslan.kanatbek</span>
         <span className={styles.mastheadSep}>/</span>
         <span className={styles.mastheadSection}>résumé</span>
       </div>

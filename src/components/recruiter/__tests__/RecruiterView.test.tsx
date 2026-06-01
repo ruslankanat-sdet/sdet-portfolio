@@ -18,9 +18,9 @@ beforeEach(() => {
 });
 
 describe('RecruiterView — rendering', () => {
-  it('REC-01: renders masthead wordmark "ruslan.kanat"', () => {
+  it('REC-01: renders masthead wordmark "ruslan.kanatbek"', () => {
     render(<RecruiterView {...defaultProps} />);
-    expect(screen.getByText('ruslan.kanat')).toBeInTheDocument();
+    expect(screen.getByText('ruslan.kanatbek')).toBeInTheDocument();
   });
 
   it('REC-01: renders Engineer view pill button in masthead', () => {

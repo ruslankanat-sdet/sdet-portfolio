@@ -10,7 +10,7 @@ test.describe('Recruiter view', () => {
 
   test('REC-01: shows masthead wordmark and Engineer view pill', async ({ page }) => {
     await page.goto('/');
-    await expect(page.getByText('ruslan.kanat')).toBeVisible();
+    await expect(page.getByText('ruslan.kanatbek')).toBeVisible();
     await expect(
       page.getByRole('button', { name: /Engineer view/ }).first(),
     ).toBeVisible();
@@ -97,7 +97,7 @@ test.describe('Recruiter view', () => {
   test('REC-10: renders without horizontal overflow at 375px', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 812 });
     await page.goto('/');
-    await expect(page.getByText('ruslan.kanat')).toBeVisible();
+    await expect(page.getByText('ruslan.kanatbek')).toBeVisible();
     await expect(page.getByText('ResMed').first()).toBeVisible();
     const scrollWidth = await page.evaluate(() => document.documentElement.scrollWidth);
     expect(scrollWidth).toBeLessThanOrEqual(375);
