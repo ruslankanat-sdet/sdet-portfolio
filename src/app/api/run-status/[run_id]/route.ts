@@ -27,23 +27,32 @@ export async function GET(
     return Response.json({ error: 'CI trigger not configured' }, { status: 503 });
   }
 
-  const res = await fetch(
-    `https://api.github.com/repos/${owner}/${repo}/actions/runs/${run_id}/jobs`,
-    {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${token}`,
-        Accept: 'application/vnd.github+json',
-        'X-GitHub-Api-Version': '2022-11-28',
-      },
-    }
-  );
+  const base = `https://api.github.com/repos/${owner}/${repo}`;
+  const headers = {
+    Authorization: `Bearer ${token}`,
+    Accept: 'application/vnd.github+json',
+    'X-GitHub-Api-Version': '2022-11-28',
+  };
 
-  if (!res.ok) {
-    return Response.json({ error: 'Status fetch failed' }, { status: res.status });
+  // Fetch jobs and run metadata in parallel for efficiency (T-11-03: strip response to only needed fields)
+  const [jobsRes, runRes] = await Promise.all([
+    fetch(`${base}/actions/runs/${run_id}/jobs`, { method: 'GET', headers }),
+    fetch(`${base}/actions/runs/${run_id}`, { method: 'GET', headers }),
+  ]);
+
+  if (!jobsRes.ok) {
+    return Response.json({ error: 'Status fetch failed' }, { status: jobsRes.status });
   }
 
-  const data = await res.json();
-  // Pure proxy — GITHUB_TOKEN is server-side only, never echoed (T-03-01).
-  return Response.json(data);
+  const jobsData = await jobsRes.json();
+  // Timing data is best-effort enrichment — don't fail if run endpoint returns an error
+  const runData: { run_started_at?: string | null; updated_at?: string | null } =
+    runRes.ok ? await runRes.json() : {};
+
+  // Strip response to only necessary fields — GITHUB_TOKEN never echoed (T-11-03)
+  return Response.json({
+    jobs: jobsData.jobs,
+    run_started_at: runData.run_started_at ?? null,
+    updated_at: runData.updated_at ?? null,
+  });
 }

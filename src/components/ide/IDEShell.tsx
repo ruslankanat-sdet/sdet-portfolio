@@ -26,6 +26,28 @@ interface GitHubJob {
 
 interface GitHubJobsPayload {
   jobs?: GitHubJob[];
+  run_started_at?: string | null;
+  updated_at?: string | null;
+}
+
+// GitHub Pages URL for the Playwright HTML report — confirmed via:
+// git remote get-url origin → git@github.com:ruslankanat-sdet/sdet-portfolio.git
+// Pattern: https://{github-user}.github.io/{repo-name}/
+const REPORT_URL = 'https://ruslankanat-sdet.github.io/sdet-portfolio/';
+
+function formatDuration(
+  startedAt: string | null | undefined,
+  completedAt: string | null | undefined
+): string {
+  if (!startedAt || !completedAt) return '';
+  const elapsedMs = new Date(completedAt).getTime() - new Date(startedAt).getTime();
+  const totalSeconds = Math.round(elapsedMs / 1000);
+  if (totalSeconds >= 60) {
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${minutes}m ${seconds}s`;
+  }
+  return `${totalSeconds}s`;
 }
 
 export function buildLogEntries(data: GitHubJobsPayload): LogEntry[] {
@@ -43,9 +65,9 @@ export function buildLogEntries(data: GitHubJobsPayload): LogEntry[] {
     } else if (job.status === 'completed' && job.conclusion === 'cancelled') {
       entries.push({ kind: 'warn', text: `Job cancelled - ${job.name}` });
     } else if (job.status === 'in_progress') {
-      entries.push({ kind: 'info', text: `> Running: ${job.name}` });
+      entries.push({ kind: 'info', text: `▶ Running: ${job.name}` });
     } else if (job.status === 'queued') {
-      entries.push({ kind: 'info', text: `[queued] ${job.name}` });
+      entries.push({ kind: 'info', text: `⏳ Queued: ${job.name}` });
     }
 
     // Append failed steps for completed jobs to surface what broke
@@ -65,10 +87,15 @@ export function buildLogEntries(data: GitHubJobsPayload): LogEntry[] {
     const failed = jobs.filter(j => j.conclusion !== 'success').length;
     const total = jobs.length;
     const summaryKind: LogKind = failed === 0 ? 'ok' : 'fail';
+    const duration = formatDuration(data.run_started_at, data.updated_at);
     entries.push({
       kind: summaryKind,
-      text: `Summary: ${passed} passed, ${failed} failed, ${total} total`,
+      text: `Jobs: ${passed}/${total} passed${duration ? ' · ' + duration : ''}`,
     });
+    // Only emit the report link when all jobs pass
+    if (failed === 0) {
+      entries.push({ kind: 'link', text: 'View Report →', href: REPORT_URL });
+    }
   }
 
   return entries;
