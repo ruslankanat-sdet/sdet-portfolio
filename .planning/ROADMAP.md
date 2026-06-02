@@ -4,7 +4,8 @@
 
 - ✅ **v1.0 MVP** — Phases 1-3 (shipped 2026-05-23)
 - ✅ **v1.1 Content, Quality & Accessibility Pass** — Phases 4-6 (shipped 2026-05-26)
-- **v1.2 Recruiter View & Dual-Audience Landing** — Phases 7-10 (in progress)
+- ✅ **v1.2 Recruiter View & Dual-Audience Landing** — Phases 7-10.1 (shipped 2026-06-01)
+- **v1.3 E2E Showcase & Live Test Report** — Phase 11 (planning)
 
 ## Phases
 
@@ -32,9 +33,13 @@ Full archive: [milestones/v1.0-ROADMAP.md](milestones/v1.0-ROADMAP.md)
 
 - [x] **Phase 7: Foundation — Route Restructure & Font Setup** - IDE and About pages scoped under route group; root layout header-free; serif font available — completed 2026-05-27
 - [x] **Phase 8: Landing Door** - Full-viewport split-screen door with hover animation, localStorage routing, and ?reset support (completed 2026-05-27)
-- [ ] **Phase 9: Recruiter View** - Complete editorial resume: masthead, hero, all five content sections, contact footer, and mobile responsiveness
-- [ ] **Phase 10: Content, Print & Polish** - Real Ruslan Kanatbek content replaces all prototype copy; print stylesheet produces clean PDF
-- [x] **Phase 10.1: IDE Polish, Playwright CI & Name Fix** (INSERTED) - Fix masthead wordmark to ruslan.kanatbek, remove non-functional IDE status badges, fix failing GitHub Actions Playwright suite, expand E2E coverage
+- [x] **Phase 9: Recruiter View** - Complete editorial resume: masthead, hero, all five content sections, contact footer, and mobile responsiveness (completed 2026-05-29)
+- [x] **Phase 10: Content, Print & Polish** - Real Ruslan Kanatbek content replaces all prototype copy; print stylesheet produces clean PDF (completed 2026-05-30)
+- [x] **Phase 10.1: IDE Polish, Playwright CI & Name Fix** (INSERTED) - Fix masthead wordmark to ruslan.kanatbek, remove non-functional IDE status badges, fix failing GitHub Actions Playwright suite, expand E2E coverage (completed 2026-06-01)
+
+### v1.3 — E2E Showcase & Live Test Report
+
+- [ ] **Phase 11: E2E Showcase & Live Test Report** - IDE sidebar synced to real e2e/ test files; Run Smoke Test completes full CI dispatch-poll cycle with a pass/fail summary in the terminal; Playwright HTML report accessible from IDE
 
 ## Phase Details
 
@@ -225,6 +230,35 @@ Wave 2 *(depends on Wave 1 — CI must be green before adding new tests)*:
 
 **UI hint**: yes
 
+### Phase 11: E2E Showcase & Live Test Report
+
+**Goal**: The IDE view displays the complete, up-to-date Playwright test suite; clicking "Run Smoke Test" completes its full CI dispatch-poll cycle with a clear pass/fail summary in the terminal; and the full Playwright HTML report is one click away from the IDE
+**Depends on**: Phase 10.1 (Playwright CI green, E2E suite at 33 tests, smoke test button wired)
+**Requirements**: E2E-01, E2E-02, RUN-01, RUN-02, RPT-01
+**Success Criteria** (what must be TRUE):
+
+  1. The IDE sidebar file list matches every `.spec.ts` file currently in the `e2e/` directory — no stale, missing, or phantom entries
+  2. Selecting any test file in the IDE editor pane shows the full, real TypeScript source with syntax highlighting
+  3. Clicking "Run Smoke Test" dispatches a GitHub Actions `workflow_dispatch`, and the terminal pane streams live status messages (queued → running → complete) rather than a static one-liner
+  4. When the CI run completes, the terminal shows a human-readable summary: total tests, passed count, failed count, and wall-clock duration
+  5. A "View Report →" link (in the terminal output or as a persistent IDE control) opens the Playwright HTML report — the report shows test names, results, screenshots, and traces
+
+**Plans**: 3 plans
+
+Wave 1:
+
+- [ ] 11-01-PLAN.md — Sidebar sync: add recruiter.spec.ts to files-data.ts and Sidebar.tsx; refresh stale content; 2 new E2E assertions (E2E-01, E2E-02)
+
+Wave 2 (parallel with Wave 1):
+
+- [ ] 11-02-PLAN.md — Terminal enrichment: LogKind link type, Terminal link rendering, route timing fetch, enriched buildLogEntries with duration + View Report link (RUN-01, RUN-02)
+
+Wave 3 (depends on Wave 2):
+
+- [ ] 11-03-PLAN.md — GitHub Pages CI deploy: fix playwright.config.ts reporter, add deploy-report job, human checkpoint to enable Pages source (RPT-01)
+
+**UI hint**: yes
+
 ## Progress
 
 | Phase | Milestone | Plans Complete | Status | Completed |
@@ -240,3 +274,4 @@ Wave 2 *(depends on Wave 1 — CI must be green before adding new tests)*:
 | 9. Recruiter View | v1.2 | 5/5 | Complete | 2026-05-29 |
 | 10. Content, Print & Polish | v1.2 | 2/2 | Complete | 2026-05-30 |
 | 10.1. IDE Polish, Playwright CI & Name Fix | v1.2 | 2/2 | Complete | 2026-06-01 |
+| 11. E2E Showcase & Live Test Report | v1.3 | 0/TBD | Planning | — |
