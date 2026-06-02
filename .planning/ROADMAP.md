@@ -247,7 +247,7 @@ Wave 2 *(depends on Wave 1 — CI must be green before adding new tests)*:
 
 Wave 1:
 
-- [ ] 11-01-PLAN.md — Sidebar sync: add recruiter.spec.ts to files-data.ts and Sidebar.tsx; refresh stale content; 2 new E2E assertions (E2E-01, E2E-02)
+- [x] 11-01-PLAN.md — Sidebar sync: add recruiter.spec.ts to files-data.ts and Sidebar.tsx; refresh stale content; 2 new E2E assertions (E2E-01, E2E-02) — completed 2026-06-02
 
 Wave 2 (parallel with Wave 1):
 
@@ -274,4 +274,4 @@ Wave 3 (depends on Wave 2):
 | 9. Recruiter View | v1.2 | 5/5 | Complete | 2026-05-29 |
 | 10. Content, Print & Polish | v1.2 | 2/2 | Complete | 2026-05-30 |
 | 10.1. IDE Polish, Playwright CI & Name Fix | v1.2 | 2/2 | Complete | 2026-06-01 |
-| 11. E2E Showcase & Live Test Report | v1.3 | 0/TBD | Planning | — |
+| 11. E2E Showcase & Live Test Report | v1.3 | 1/3 | In Progress | — |
