@@ -166,6 +166,12 @@ observability:
 import AxeBuilder from '@axe-core/playwright';
 
 test.describe('Landing page', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.addInitScript(() => {
+      localStorage.setItem('resume-mode', 'ide');
+    });
+  });
+
   test('has correct page title', async ({ page }) => {
     await page.goto('/');
     await expect(page).toHaveTitle(/Ruslan Kanatbek/);
@@ -173,7 +179,8 @@ test.describe('Landing page', () => {
 
   test('shows IDE chrome on load', async ({ page }) => {
     await page.goto('/');
-    await expect(page.getByRole('main')).toBeVisible();
+    // IDEShell renders a region (not main) containing the editor and terminal
+    await expect(page.getByRole('region', { name: /Editor and terminal/i })).toBeVisible();
     // The sidebar file row uses role="button"; target the first match (sidebar row)
     await expect(page.getByRole('button', { name: /README\\.md/ }).first()).toBeVisible();
   });
@@ -211,6 +218,58 @@ test.describe('Landing page', () => {
       .analyze();
     expect(results.violations).toEqual([]);
   });
+});
+
+test.describe('Landing door', () => {
+  test('DOOR-A11Y: DoorScreen has no WCAG AA violations', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.getByRole('button', { name: /Enter the résumé/i })).toBeVisible();
+    const results = await new AxeBuilder({ page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+      .analyze();
+    expect(results.violations).toEqual([]);
+  });
+
+  test('DOOR-01: shows door at / with no stored mode', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.getByRole('button', { name: /Enter the résumé/i })).toBeVisible();
+    await expect(page.getByRole('button', { name: /\\$ \\.\\//i })).toBeVisible();
+  });
+
+  test('DOOR-02: clicking IDE half stores mode and renders IDE shell', async ({ page }) => {
+    await page.goto('/');
+    await page.getByRole('button', { name: /\\$ \\.\\//i }).click();
+    await expect(page.getByRole('button', { name: /README\\.md/ }).first()).toBeVisible();
+    const stored = await page.evaluate(() => localStorage.getItem('resume-mode'));
+    expect(stored).toBe('ide');
+  });
+
+  test('DOOR-03 same-session: clicking recruiter half re-renders without navigation', async ({ page }) => {
+    await page.goto('/');
+    const url = page.url();
+    await page.getByRole('button', { name: /Enter the résumé/i }).click();
+    await expect(page.getByText('ruslan.kanatbek')).toBeVisible();
+    await expect(page.getByRole('button', { name: /Enter the résumé/i })).not.toBeVisible();
+    expect(page.url()).toBe(url);
+  });
+
+  test('DOOR-03 return-visit: pre-seeded ide mode skips the door', async ({ page }) => {
+    await page.addInitScript(() => {
+      localStorage.setItem('resume-mode', 'ide');
+    });
+    await page.goto('/');
+    await expect(page.getByRole('button', { name: /Enter the résumé/i })).not.toBeVisible();
+    await expect(page.getByRole('button', { name: /README\\.md/ }).first()).toBeVisible();
+  });
+
+  test('DOOR-04: ?reset clears stored mode and re-shows the door', async ({ page }) => {
+    await page.addInitScript(() => {
+      localStorage.setItem('resume-mode', 'ide');
+    });
+    await page.goto('/?reset');
+    await expect(page.getByRole('button', { name: /Enter the résumé/i })).toBeVisible();
+    await expect(page.getByRole('button', { name: /\\$ \\.\\//i })).toBeVisible();
+  });
 });`,
   },
 
@@ -220,19 +279,37 @@ test.describe('Landing page', () => {
     icon: 'ts',
     content: `import { test, expect } from '@playwright/test';
 
+// The /about page was removed in the IDE restructuring (commit b1b3900).
+// Navigation between IDE and recruiter views is now handled by in-page buttons.
 test.describe('Navigation', () => {
-  test('About link navigates to /about', async ({ page }) => {
+  test('IDE → Recruiter view switch via TopBar button', async ({ page }) => {
+    await page.addInitScript(() => {
+      localStorage.setItem('resume-mode', 'ide');
+    });
     await page.goto('/');
-    await page.getByRole('link', { name: /About/i }).first().click();
-    await expect(page).toHaveURL(/\\/about$/);
-    await expect(page.getByRole('main')).toBeVisible();
+    // Verify we start in IDE mode
+    await expect(page.getByRole('button', { name: /README\\.md/ }).first()).toBeVisible();
+    // Click the Recruiter view switch button in TopBar
+    await page.getByRole('button', { name: /Recruiter view/i }).first().click();
+    // Should transition to recruiter view
+    await expect(page.getByText('ruslan.kanatbek')).toBeVisible();
+    const stored = await page.evaluate(() => localStorage.getItem('resume-mode'));
+    expect(stored).toBe('recruiter');
   });
 
-  test('back link returns to /', async ({ page }) => {
-    await page.goto('/about');
-    // On /about the nav link shows "← Back" linking back to /
-    await page.getByRole('link', { name: /Back/i }).first().click();
-    await expect(page).toHaveURL('http://localhost:3000/');
+  test('Recruiter → IDE view switch via Masthead Engineer view button', async ({ page }) => {
+    await page.addInitScript(() => {
+      localStorage.setItem('resume-mode', 'recruiter');
+    });
+    await page.goto('/');
+    // Verify we start in recruiter mode
+    await expect(page.getByText('ruslan.kanatbek')).toBeVisible();
+    // Click the Engineer view button in Masthead
+    await page.getByRole('button', { name: /Engineer view/i }).first().click();
+    // Should transition to IDE view
+    await expect(page.getByRole('button', { name: /README\\.md/ }).first()).toBeVisible();
+    const stored = await page.evaluate(() => localStorage.getItem('resume-mode'));
+    expect(stored).toBe('ide');
   });
 });`,
   },
@@ -302,6 +379,165 @@ test.describe('IDE interactions', () => {
     await page.getByText('tests', { exact: true }).first().click();
     await page.getByRole('button', { name: /landing\\.spec\\.ts/ }).click();
     await expect(page.locator('pre code')).toContainText("'@playwright/test'");
+  });
+});`,
+  },
+
+  'tests/recruiter.spec.ts': {
+    lang: 'typescript',
+    path: '~/portfolio/e2e/recruiter.spec.ts',
+    icon: 'ts',
+    content: `import { test, expect } from '@playwright/test';
+import AxeBuilder from '@axe-core/playwright';
+
+test.describe('Recruiter view', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.addInitScript(() => {
+      localStorage.setItem('resume-mode', 'recruiter');
+    });
+  });
+
+  test('REC-01: shows masthead wordmark and Engineer view pill', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.getByText('ruslan.kanatbek')).toBeVisible();
+    await expect(
+      page.getByRole('button', { name: /Engineer view/ }).first(),
+    ).toBeVisible();
+  });
+
+  test('REC-06: clicking Engineer view switches to IDE', async ({ page }) => {
+    await page.goto('/');
+    await page.getByRole('button', { name: /Engineer view/ }).first().click();
+    await expect(
+      page.getByRole('button', { name: /README\\.md/ }).first(),
+    ).toBeVisible();
+    const stored = await page.evaluate(() => localStorage.getItem('resume-mode'));
+    expect(stored).toBe('ide');
+  });
+
+  test('REC-02: hero renders availability, headline, pitch, two CTAs', async ({ page }) => {
+    await page.goto('/');
+    // Use .first() — availability text appears in both the hero eyebrow and AvailabilityCard
+    await expect(page.getByText('Open to opportunities · Q3 start').first()).toBeVisible();
+    await expect(
+      page.locator('h1').filter({ hasText: 'Senior SDET & Quality Architect' }),
+    ).toBeVisible();
+    await expect(page.getByText(/For the past decade/i)).toBeVisible();
+    const downloadPdfLink = page.getByRole('link', { name: /Download PDF/i });
+    await expect(downloadPdfLink).toBeVisible();
+    await expect(downloadPdfLink).toHaveAttribute('href', '/resume.pdf');
+    await expect(page.getByRole('button', { name: /Print/i })).toBeVisible();
+    // Use first() since multiple mailto links exist (hero + contact section)
+    const mailtoLink = page.getByRole('link', { name: /ruslankanat\\.b@gmail\\.com/i }).first();
+    await expect(mailtoLink).toBeVisible();
+    const href = await mailtoLink.getAttribute('href');
+    expect(href).toMatch(/^mailto:/);
+  });
+
+  test('REC-A11Y: RecruiterView has no WCAG AA violations', async ({ page }) => {
+    await page.goto('/');
+    const results = await new AxeBuilder({ page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+      .analyze();
+    expect(results.violations).toEqual([]);
+  });
+
+  test('REC-03: renders four metric numbers', async ({ page }) => {
+    await page.goto('/');
+    // CSS Modules with camelCase class names: class attribute contains "metricNum"
+    await expect(page.locator('[class*="metricNum"]').filter({ hasText: /^10/ }).first()).toBeVisible();
+    await expect(page.locator('[class*="metricNum"]').filter({ hasText: /^80/ }).first()).toBeVisible();
+    await expect(page.locator('[class*="metricNum"]').filter({ hasText: /^30/ }).first()).toBeVisible();
+    await expect(page.locator('[class*="metricNum"]').filter({ hasText: /^16/ }).first()).toBeVisible();
+  });
+
+  test('REC-05: renders three job role headings', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.getByRole('heading', { level: 3, name: /Senior SDET \\(AWS/ })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 3, name: /SDET \\/ Software Engineer/ })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 3, name: /QA Tester/ })).toBeVisible();
+  });
+
+  test('REC-07: renders availability spec with Status forest accent', async ({ page }) => {
+    await page.goto('/');
+    // Use .first() — availability text appears in both the hero eyebrow and AvailabilityCard
+    await expect(page.getByText('Open to opportunities · Q3 start').first()).toBeVisible();
+    await expect(page.getByText('Authorized to work in the US (details on request)')).toBeVisible();
+  });
+
+  test('REC-08: renders contact + footer with external link security', async ({ page }) => {
+    await page.goto('/');
+    // GitHub link has rel containing noopener
+    const githubLink = page.getByRole('link', { name: /github\\.com\\/ruslankanat-sdet/i });
+    await expect(githubLink).toBeVisible();
+    const githubRel = await githubLink.getAttribute('rel');
+    expect(githubRel).toContain('noopener');
+    expect(githubRel).toContain('noreferrer');
+
+    // LinkedIn link has rel containing noopener
+    const linkedinLink = page.getByRole('link', { name: /in\\/ruslan-kanatbek/i });
+    await expect(linkedinLink).toBeVisible();
+    const linkedinRel = await linkedinLink.getAttribute('rel');
+    expect(linkedinRel).toContain('noopener');
+    expect(linkedinRel).toContain('noreferrer');
+
+    // Footer Open the IDE button visible
+    await expect(page.getByRole('button', { name: /Open the IDE/i })).toBeVisible();
+  });
+
+  test('REC-10: renders without horizontal overflow at 375px', async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 812 });
+    await page.goto('/');
+    await expect(page.getByText('ruslan.kanatbek')).toBeVisible();
+    await expect(page.getByText('ResMed').first()).toBeVisible();
+    const scrollWidth = await page.evaluate(() => document.documentElement.scrollWidth);
+    expect(scrollWidth).toBeLessThanOrEqual(375);
+  });
+
+  test('REC-11: recruiter masthead is not rendered in IDE mode', async ({ page }) => {
+    // Explicitly clear and re-set to avoid relying on addInitScript ordering
+    await page.addInitScript(() => {
+      localStorage.removeItem('resume-mode');
+      localStorage.setItem('resume-mode', 'ide');
+    });
+    await page.goto('/');
+    // Verify IDE mode is active
+    await expect(page.getByRole('button', { name: /README\\.md/ }).first()).toBeVisible();
+    // The recruiter Masthead header renders an "Engineer view" button — absent in IDE mode
+    // (IDE mode has a "Recruiter view" button in TopBar instead)
+    await expect(page.getByRole('button', { name: /Engineer view/i })).not.toBeVisible();
+  });
+
+  test('IDE-01: Run Smoke Test button is visible and not disabled when idle', async ({ page }) => {
+    // Explicitly clear and re-set to avoid relying on addInitScript ordering
+    await page.addInitScript(() => {
+      localStorage.removeItem('resume-mode');
+      localStorage.setItem('resume-mode', 'ide');
+    });
+    await page.goto('/');
+    const runBtn = page.getByRole('button', { name: /Run Smoke Test/i });
+    await expect(runBtn).toBeVisible();
+    await expect(runBtn).not.toBeDisabled();
+    await expect(runBtn).toHaveText(/Run Smoke Test/);
+  });
+});
+
+test.describe('Navigation flows', () => {
+  test('NAV-01: door → recruiter → IDE round-trip navigation', async ({ page }) => {
+    // Start fresh — no stored mode, door shows
+    await page.goto('/');
+    await expect(page.getByRole('button', { name: /Enter the résumé/i })).toBeVisible();
+
+    // Step 1: Enter recruiter view via the door
+    await page.getByRole('button', { name: /Enter the résumé/i }).click();
+    await expect(page.getByText('ruslan.kanatbek')).toBeVisible();
+    await expect(page.getByRole('button', { name: /Enter the résumé/i })).not.toBeVisible();
+
+    // Step 2: Switch to IDE via the Engineer view button in the masthead
+    await page.getByRole('button', { name: /Engineer view/i }).first().click();
+    await expect(page.getByRole('button', { name: /README\\.md/ }).first()).toBeVisible();
+    const stored = await page.evaluate(() => localStorage.getItem('resume-mode'));
+    expect(stored).toBe('ide');
   });
 });`,
   },
