@@ -38,6 +38,7 @@ const TEST_FILES = [
   'tests/navigation.spec.ts',
   'tests/about.spec.ts',
   'tests/ide-interactions.spec.ts',
+  'tests/recruiter.spec.ts',
   'tests/playwright.config.ts',
 ];
 
@@ -52,6 +53,7 @@ const OUTLINE_SYMBOLS: Record<string, Array<{ label: string; kind: 'key' | 'str'
   'tests/navigation.spec.ts':       [{ label: 'About link navigates to /about', kind: 'key' }],
   'tests/about.spec.ts':            [{ label: 'renders work history section', kind: 'key' }, { label: 'has no WCAG AA violations', kind: 'key' }],
   'tests/ide-interactions.spec.ts': [{ label: 'clicking bio.json loads editor', kind: 'key' }, { label: 'test files appear in sidebar', kind: 'key' }],
+  'tests/recruiter.spec.ts':        [{ label: 'REC-01: masthead wordmark', kind: 'key' }, { label: 'REC-02: hero CTAs', kind: 'key' }, { label: 'NAV-01: door → IDE round-trip', kind: 'key' }],
   'tests/playwright.config.ts':     [{ label: 'testDir', kind: 'key' }, { label: 'projects', kind: 'key' }, { label: 'webServer', kind: 'key' }],
 };
 
