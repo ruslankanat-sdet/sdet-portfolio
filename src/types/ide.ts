@@ -8,13 +8,14 @@ export interface FileEntry {
   content: string;
 }
 
-export type LogKind = 'info' | 'warn' | 'ok' | 'pass' | 'fail';
+export type LogKind = 'info' | 'warn' | 'ok' | 'pass' | 'fail' | 'link';
 
 export interface LogEntry {
   kind: LogKind;
   text?: string;
   test?: string;
   detail?: string;
+  href?: string;
 }
 
 export type Theme = 'dark' | 'light';

@@ -33,6 +33,20 @@ function LogRow({ log }: { log: LogEntry }) {
       </div>
     );
   }
+  if (log.kind === 'link') {
+    return (
+      <div className={cn(styles.log, styles.logOk)}>
+        <a
+          href={log.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.logLink}
+        >
+          {log.text}
+        </a>
+      </div>
+    );
+  }
   // pass
   return (
     <div className={cn(styles.log, styles.logPass)}>

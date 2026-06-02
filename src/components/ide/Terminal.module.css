@@ -147,6 +147,22 @@
   font-weight: 500;
 }
 
+.logLink {
+  color: var(--green-bright);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.logLink:hover {
+  color: var(--text);
+}
+
+.logLink:focus-visible {
+  outline: 2px solid #79b8ff;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
 .logFail .logTag {
   color: var(--red);
 }
