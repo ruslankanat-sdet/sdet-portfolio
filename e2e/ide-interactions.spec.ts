@@ -34,4 +34,19 @@ test.describe('IDE interactions', () => {
     await page.getByRole('button', { name: /landing\.spec\.ts/ }).click();
     await expect(page.locator('pre code')).toContainText("'@playwright/test'");
   });
+
+  test('recruiter.spec.ts is visible in sidebar under tests/ folder', async ({ page }) => {
+    // Covers E2E-01: recruiter.spec.ts entry appears in the IDE sidebar tests/ folder
+    await page.goto('/');
+    await page.getByText('tests', { exact: true }).first().click();
+    await expect(page.getByRole('button', { name: /recruiter\.spec\.ts/ })).toBeVisible();
+  });
+
+  test('clicking recruiter.spec.ts loads its TypeScript source in editor', async ({ page }) => {
+    // Covers E2E-02: clicking recruiter.spec.ts loads its source with @playwright/test import
+    await page.goto('/');
+    await page.getByText('tests', { exact: true }).first().click();
+    await page.getByRole('button', { name: /recruiter\.spec\.ts/ }).click();
+    await expect(page.locator('pre code')).toContainText("'@playwright/test'");
+  });
 });
