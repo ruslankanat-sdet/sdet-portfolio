@@ -1,16 +1,16 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.2
-milestone_name: — Recruiter View & Dual-Audience Landing
-status: complete
-stopped_at: "Phase 10.1 complete — masthead fix, badge cleanup, Playwright CI green (33/33), 3 new E2E tests"
+milestone: v1.3
+milestone_name: — E2E Showcase & Live Test Report
+status: planning
+stopped_at: "Phase 11 defined — E2E showcase, smoke test results summary, Playwright HTML report"
 last_updated: "2026-06-01T00:00:00.000Z"
 last_activity: 2026-06-01
 progress:
-  total_phases: 8
-  completed_phases: 7
+  total_phases: 9
+  completed_phases: 8
   total_plans: 19
-  completed_plans: 17
+  completed_plans: 19
   percent: 89
 ---
 
@@ -21,13 +21,13 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-26 for v1.2)
 
 **Core value:** A recruiter opens the page and immediately sees working code — real Playwright tests, real TypeScript — and thinks "I need to interview this person."
-**Current focus:** Phase 10.1 — Complete. Milestone v1.2 fully shipped.
+**Current focus:** Phase 11 — E2E Showcase & Live Test Report (v1.3). Planning.
 
 ## Current Position
 
-Phase: 10.1 (INSERTED after Phase 10)
-Plan: 10.1-02 (final)
-Status: Complete — all plans executed, Playwright CI green
+Phase: 11 (first phase of v1.3)
+Plan: none yet — run /gsd-plan-phase to generate plans
+Status: Planning — phase defined, plans TBD
 Last activity: 2026-06-01
 
 ## Performance Metrics
@@ -86,6 +86,7 @@ High-fidelity design prototype available at `.planning/design/design_handoff_res
 ### Roadmap Evolution
 
 - Phase 10.1 inserted after Phase 10 (URGENT) on 2026-06-01 — masthead wordmark fix, TopBar badge cleanup, Playwright CI fix, E2E coverage expansion
+- Phase 11 added on 2026-06-01 as first phase of v1.3 — E2E sidebar sync, smoke test results summary, Playwright HTML report
 
 ### Quick Tasks Completed
 
@@ -93,6 +94,7 @@ High-fidelity design prototype available at `.planning/design/design_handoff_res
 |---|-------------|------|--------|-----------|
 | 260523-q01 | Fix SHOW-03: add workflow_dispatch to ci.yml + fix /api/run-tests res.json() on 204 | 2026-05-23 | 31bffb4 | [260523-q01-fix-show-03-ci-dispatch](./quick/260523-q01-fix-show-03-ci-dispatch/) |
 | 260523-q02 | Fix CONT-05: remove double footer on /about | 2026-05-23 | 8918ef9 | [260523-q02-fix-cont-05-double-footer](./quick/260523-q02-fix-cont-05-double-footer/) |
+| 260601-q03 | Mobile: show recruiter-view button as ↗ icon on narrow screens; align README to recruiter view content | 2026-06-01 | 234b2e7 | [20260601-mobile-recruiter-btn-readme](./quick/20260601-mobile-recruiter-btn-readme/) |
 
 ## Deferred Items
 

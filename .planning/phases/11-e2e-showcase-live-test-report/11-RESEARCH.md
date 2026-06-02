@@ -443,22 +443,13 @@ The GitHub Pages approach resolves this completely.
 | A3 | GitHub Pages is not already enabled with a different source for this repo | RPT-01 pattern | If repo already uses GitHub Pages for something else, the deploy job conflicts |
 | A4 | The `playwright-tests` job artifact name `playwright-report` matches what `download-artifact@v4` will find | CI pattern | If artifact name changes, download step fails silently |
 
-## Open Questions
+## Open Questions (RESOLVED)
 
-1. **Exact GitHub repository slug for Pages URL**
-   - What we know: git user is `ruslankanat-sdet`; `package.json` name is `resume-website`
-   - What's unclear: the actual GitHub repo URL (could be `sdet-portfolio`, `resume-website`, or something else)
-   - Recommendation: Planner should add a verification step to check `git remote get-url origin` before hardcoding the Pages URL
+1. **Exact GitHub repository slug for Pages URL** — RESOLVED: `git remote get-url origin` returns `git@github.com:ruslankanat-sdet/sdet-portfolio.git`. GitHub Pages URL is `https://ruslankanat-sdet.github.io/sdet-portfolio/`. Hardcoded as `REPORT_URL` constant in IDEShell.tsx.
 
-2. **Is GitHub Pages already configured on this repo?**
-   - What we know: No `gh-pages` branch exists; no deploy job in ci.yml
-   - What's unclear: Whether Settings → Pages has been configured to any source
-   - Recommendation: One-time human checkpoint task in the plan — "Enable GitHub Pages: Settings → Pages → Source: GitHub Actions"
+2. **Is GitHub Pages already configured on this repo?** — RESOLVED: Not yet configured. Handled via `checkpoint:human-verify` task in Plan 11-03: "Enable GitHub Pages: Settings → Pages → Source: GitHub Actions" before first deploy-report run.
 
-3. **Hardcoded test count vs. computed count**
-   - What we know: Suite has 33 tests as of Phase 10.1
-   - What's unclear: Whether planner prefers hardcoded `33` or `"jobs passed"` phrasing
-   - Recommendation: Use `"Jobs: N/N passed · Xs"` phrasing — accurate regardless of test count changes
+3. **Hardcoded test count vs. computed count** — RESOLVED: Use `"Jobs: N/N passed · Xs"` phrasing (live job counts from GitHub Jobs API). Chosen by user — accurate regardless of test count changes, no maintenance burden.
 
 ## Environment Availability
 

@@ -1,7 +1,7 @@
-# Requirements: SDET Portfolio Site — v1.2
+# Requirements: SDET Portfolio Site — v1.3
 
-**Defined:** 2026-05-26
-**Milestone:** v1.2 — Recruiter View & Dual-Audience Landing
+**Defined:** 2026-05-26 (v1.2); 2026-06-01 (v1.3 section added)
+**Milestone:** v1.3 — E2E Showcase & Live Test Report
 **Core Value:** A recruiter opens the page and immediately sees working code — real Playwright tests, real TypeScript — and thinks "I need to interview this person."
 
 ## v1.2 Requirements
@@ -35,6 +35,22 @@
 ### Real Content (CONT)
 
 - [ ] **CONT-RK-01**: All prototype "Alex Morgan" copy replaced with Ruslan Kanatbek's actual name, job history, stack, availability, and contact details — no placeholder data visible on the live site
+
+## v1.3 Requirements
+
+### E2E Showcase (E2E)
+
+- [ ] **E2E-01**: The IDE sidebar file list matches every `.spec.ts` file currently in the `e2e/` directory — no stale, missing, or phantom entries; `files-data.ts` is updated whenever the test suite changes
+- [ ] **E2E-02**: Selecting any test file in the IDE editor pane renders the full, real TypeScript source with syntax highlighting (not truncated, not stubbed)
+
+### Smoke Test Runner (RUN)
+
+- [ ] **RUN-01**: Clicking "Run Smoke Test" dispatches a GitHub Actions `workflow_dispatch` event and the terminal pane streams live status messages (queued → running → complete) — not a static one-liner
+- [ ] **RUN-02**: When the CI run completes, the terminal displays a human-readable summary: total tests run, passed count, failed count, and wall-clock duration
+
+### Test Report (RPT)
+
+- [ ] **RPT-01**: A "View Report →" link (in terminal output or as a persistent IDE control) opens the Playwright HTML report from the latest CI run — the report shows test names, results, screenshots, and traces; accessible at `/report` or equivalent
 
 ## Future Requirements
 
@@ -92,13 +108,19 @@ Acknowledged but deferred from this milestone.
 | REC-09 | Phase 10 | Pending |
 | REC-10 | Phase 10 | Pending |
 | CONT-RK-01 | Phase 10 | Pending |
+| E2E-01 | Phase 11 | Pending |
+| E2E-02 | Phase 11 | Pending |
+| RUN-01 | Phase 11 | Pending |
+| RUN-02 | Phase 11 | Pending |
+| RPT-01 | Phase 11 | Pending |
 
 **Coverage:**
 
 - v1.2 requirements: 18 total
-- Mapped to phases: 18 (100%)
+- v1.3 requirements: 5 total
+- Mapped to phases: 23 (100%)
 - Unmapped: 0
 
 ---
 *Requirements defined: 2026-05-26*
-*Last updated: 2026-05-26 — v1.2 milestone start*
+*Last updated: 2026-06-01 — v1.3 Phase 11 requirements added*
