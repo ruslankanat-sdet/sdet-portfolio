@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.3
 milestone_name: — E2E Showcase & Live Test Report
 status: in-progress
-stopped_at: "Phase 11 Plan 01 complete — sidebar synced with recruiter.spec.ts, 5 E2E tests pass"
-last_updated: "2026-06-02T15:56:47Z"
+stopped_at: "Phase 11 Plan 02 complete — terminal enriched with ⏳/▶ status, Jobs N/N summary, View Report link; 63 Vitest tests pass"
+last_updated: "2026-06-02T16:38:36Z"
 last_activity: 2026-06-02
 progress:
   total_phases: 9
   completed_phases: 8
-  total_plans: 19
-  completed_plans: 19
-  percent: 89
+  total_plans: 20
+  completed_plans: 20
+  percent: 91
 ---
 
 # Project State
@@ -26,8 +26,8 @@ See: .planning/PROJECT.md (updated 2026-05-26 for v1.2)
 ## Current Position
 
 Phase: 11 (first phase of v1.3)
-Plan: 01 complete; Plans 02 and 03 pending
-Status: In Progress — Plan 01 complete (sidebar sync + E2E assertions)
+Plan: 02 complete; Plan 03 pending
+Status: In Progress — Plan 02 complete (terminal enrichment + unit tests)
 Last activity: 2026-06-02
 
 ## Performance Metrics
@@ -54,6 +54,11 @@ Phase 10 decisions:
 - Named exports from src/lib/resume-content.ts — pure data module, no React, no use client (D-01)
 - JOBS array uses span field for all three jobs (no current:true) — simplifies Timeline render
 - getAllByText used for "Open to opportunities · Q3 start" in tests — same string appears in Hero eyebrow and AvailabilityCard Status row by design
+
+Phase 11 Plan 02 decisions:
+- REPORT_URL hardcoded as constant (not from API response) — prevents XSS via href injection (T-11-04)
+- run endpoint timing error is non-fatal — formatDuration returns '' if either timestamp is missing
+- buildLogEntries exported for direct Vitest unit testing without test-specific module indirection
 
 Key decisions carried forward:
 
@@ -108,4 +113,4 @@ High-fidelity design prototype available at `.planning/design/design_handoff_res
 ## Session Continuity
 
 Last session: 2026-06-02
-Stopped at: Phase 11 Plan 01 complete — recruiter.spec.ts synced to sidebar, 5 E2E tests pass, Vitest 59/59 pass
+Stopped at: Phase 11 Plan 02 complete — terminal enriched with ⏳/▶ status, Jobs N/N summary, View Report link; Vitest 63/63 pass

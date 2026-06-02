@@ -251,7 +251,7 @@ Wave 1:
 
 Wave 2 (parallel with Wave 1):
 
-- [ ] 11-02-PLAN.md — Terminal enrichment: LogKind link type, Terminal link rendering, route timing fetch, enriched buildLogEntries with duration + View Report link (RUN-01, RUN-02)
+- [x] 11-02-PLAN.md — Terminal enrichment: LogKind link type, Terminal link rendering, route timing fetch, enriched buildLogEntries with duration + View Report link (RUN-01, RUN-02) — completed 2026-06-02
 
 Wave 3 (depends on Wave 2):
 
@@ -274,4 +274,4 @@ Wave 3 (depends on Wave 2):
 | 9. Recruiter View | v1.2 | 5/5 | Complete | 2026-05-29 |
 | 10. Content, Print & Polish | v1.2 | 2/2 | Complete | 2026-05-30 |
 | 10.1. IDE Polish, Playwright CI & Name Fix | v1.2 | 2/2 | Complete | 2026-06-01 |
-| 11. E2E Showcase & Live Test Report | v1.3 | 1/3 | In Progress | — |
+| 11. E2E Showcase & Live Test Report | v1.3 | 2/3 | In Progress | — |
