@@ -28,7 +28,7 @@ interface GitHubJobsPayload {
   jobs?: GitHubJob[];
 }
 
-function buildLogEntries(data: GitHubJobsPayload): LogEntry[] {
+export function buildLogEntries(data: GitHubJobsPayload): LogEntry[] {
   const entries: LogEntry[] = [
     { kind: 'info', text: 'Run dispatched - polling status' },
   ];
